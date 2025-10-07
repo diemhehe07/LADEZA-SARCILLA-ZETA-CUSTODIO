@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLS-U Matters</title>
+  <link rel="stylesheet" href="webstyles.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>SLS-U Matters</h1>
+    <nav>
+      <a href="#home" data-section="home">Home</a>
+      <a href="#about" data-section="about">About</a>
+      <a href="#resources" data-section="resources">Resources</a>
+      <a href="#services" data-section="services">Services</a>
+      <a href="#feedback" data-section="feedback">Feedback</a>
+      <a href="#contact" data-section="contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="overlay">
+      <h1>Your Mental Well-being Matters</h1>
+      <p>We're here to provide guidance, support, and resources for a healthier mind.</p>
+      <button>Get Started</button>
+    </div>
+  </section>
+
+  <section class="split" id="about">
+    <img src="mental-health.jpg" alt="Mental Health Image">
+    <div class="text">
+      <h2>Mission</h2>
+      <p>We are dedicated to raising awareness and providing resources for individuals seeking mental health support.
+        Our mission is to create a safe space for everyone.</p>
+    </div>
+     <div class="text">
+      <h2>Vision</h2>
+      <p>To create a safe, supportive, and accessible online space that empowers individuals to prioritize their mental well-being, break the stigma surrounding mental health, and build a healthier, more compassionate community.</p>
+    </div>
+  </section>
+
+  <section class="carousel" id="services">
+    <div class="card">
+      <img src="therapy.jpg" alt="Therapy">
+      <h3>Therapy Sessions</h3>
+      <p>Find licensed therapists to guide you through challenges.</p>
+    </div>
+    <div class="card">
+      <img src="community.jpeg" alt="Community">
+      <h3>Community Support</h3>
+      <p>Join support groups and connect with others.</p>
+    </div>
+    <div class="card">
+      <img src="resources.jpg" alt="Resources">
+      <h3>Helpful Resources</h3>
+      <p>Explore our articles, guides, and exercises.</p>
+    </div>
+  </section>
+
+  <section class="blog" id="resources">
+    <article>
+      <h3>How to Manage Anxiety</h3>
+      <p>Discover practical steps and techniques for handling anxiety.</p>
+    </article>
+    <article>
+      <h3>Mindfulness Practices</h3>
+      <p>Learn how mindfulness can improve your daily well-being.</p>
+    </article>
+  </section>
+
+  <section class="feedback-testimonials" id="feedback">
+    <h2>Share Your Feedback</h2>
+    <p>We value your thoughts and experiences. Share your story or feedback with us.</p>
+
+    <div class="feedback-container">
+      <form class="feedback-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="4" placeholder="Write your feedback..." required></textarea>
+        <button type="submit">Submit Feedback</button>
+      </form>
+
+      <div class="extra-testimonials">
+        <div class="testimonial">
+          <img src="pics.jpeg" alt="User 3">
+          <p>"The resources here gave me tools to handle stress better. Highly recommended!"</p>
+        </div>
+        <div class="testimonial">
+          <img src="pics.jpeg" alt="User 4">
+          <p>"I finally found a community that understands what I’m going through."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Need Immediate Help?</h2>
+    <p>Our team is available to guide you whenever you need it.</p>
+    <button>Get Help</button>
+  </section>
+
+  <footer>
+    <div class="links">
+      <h4>Quick Links</h4>
+      <a href="#">About</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">FAQs</a>
+    </div>
+    <div class="contact" id="contact">
+      <h4>Contact Us</h4>
+      <p>Email: support@mentalhealth.org</p>
+      <p>Hotline: 123-456-7890</p>
+      <p>Emergency: 911</p>
+    </div>
+  </footer>
+
+  <!-- Smooth Scroll Script -->
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll("nav a");
+
+    links.forEach(link => {
+      link.addEventListener("click", event => {
+        event.preventDefault(); // Prevent page reload
+        const sectionId = link.getAttribute("data-section");
+        document.getElementById(sectionId).scrollIntoView({
+          behavior: "smooth"
+        });
+      });
+    });
+  });
+  </script>
+
+</body>
+</html>
