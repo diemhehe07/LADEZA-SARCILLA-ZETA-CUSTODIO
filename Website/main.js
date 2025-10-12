@@ -1,4 +1,3 @@
-// Smooth Scroll for Navigation
 document.addEventListener("DOMContentLoaded", () => {
   const links = document.querySelectorAll("nav a");
   links.forEach(link => {
@@ -10,12 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Scroll to Section (for buttons)
 function scrollToSection(id) {
   document.getElementById(id).scrollIntoView({ behavior: "smooth" });
 }
 
-// Reveal Animation on Scroll
 const reveals = document.querySelectorAll(".reveal");
 window.addEventListener("scroll", () => {
   for (let r of reveals) {
@@ -26,7 +23,6 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// Feedback Form Validation
 const feedbackForm = document.getElementById("feedbackForm");
 feedbackForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -42,7 +38,6 @@ feedbackForm.addEventListener("submit", (e) => {
   }
 });
 
-// Simple Carousel Snap
 const carousel = document.querySelector(".carousel");
 let isDown = false, startX, scrollLeft;
 
@@ -57,6 +52,6 @@ carousel.addEventListener("mousemove", (e) => {
   if (!isDown) return;
   e.preventDefault();
   const x = e.pageX - carousel.offsetLeft;
-  const walk = (x - startX) * 2; // scroll speed
+  const walk = (x - startX) * 2; 
   carousel.scrollLeft = scrollLeft - walk;
 });
