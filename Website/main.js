@@ -52,6 +52,6 @@ carousel.addEventListener("mousemove", (e) => {
   if (!isDown) return;
   e.preventDefault();
   const x = e.pageX - carousel.offsetLeft;
-  const walk = (x - startX) * 2; 
+  const walk = (x - startX) * 2;
   carousel.scrollLeft = scrollLeft - walk;
 });

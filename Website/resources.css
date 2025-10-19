@@ -1,0 +1,40 @@
+.resources {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: #fafafa;
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.resource-grid article {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.resource-grid article:hover {
+  transform: translateY(-5px);
+}
+
+.link-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #4CAF50;
+  border: 1px solid #4CAF50;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.link-btn:hover {
+  background: #4CAF50;
+  color: white;
+}

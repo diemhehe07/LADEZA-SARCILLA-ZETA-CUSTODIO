@@ -1,0 +1,51 @@
+.hero {
+  background: url('../images/hero-bg.jpg') no-repeat center center/cover;
+  height: 100vh;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.primary-btn, .secondary-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.primary-btn {
+  background: #4CAF50;
+  color: white;
+}
+
+.primary-btn:hover {
+  background: #388E3C;
+  transform: scale(1.05);
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 2px solid #4CAF50;
+  color: #4CAF50;
+}
+
+.secondary-btn:hover {
+  background: #4CAF50;
+  color: white;
+}
+
+.intro {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: #f9f9f9;
+}
