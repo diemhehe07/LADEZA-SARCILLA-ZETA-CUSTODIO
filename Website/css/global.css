@@ -1,15 +1,28 @@
+:root {
+  --bg: #fbfaf7;
+  --text: #0b1220;
+  --muted: #64748b;
+  --accent: #83c5be;
+  --accent-2: #72a0c1; /* Light blue primary color */
+  --card: #ffffff;
+  --maxw: 1100px;
+  --radius: 12px;
+}
+
+/* RESET + BASE */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", "Inter", system-ui, sans-serif;
   scroll-behavior: smooth;
 }
 
 body {
-  background: #fff;
-  color: #333;
+  background: var(--bg);
+  color: var(--text);
   transition: opacity 0.6s ease;
+  -webkit-font-smoothing: antialiased;
 }
 
 .fade-in {
@@ -21,53 +34,109 @@ body {
   to { opacity: 1; }
 }
 
+/* HEADER */
 header {
-  background: #4CAF50;
-  padding: 1rem 2rem;
+  padding: 10px 0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 1000;
 }
 
+.wrap,
 .nav-container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 20px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* NAVIGATION */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 nav a {
-  color: white;
-  margin: 0 1rem;
+  color: rgb(83, 46, 1);
   text-decoration: none;
+  font-weight: 600;
   position: relative;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
 }
 
 nav a::after {
   content: "";
   position: absolute;
-  width: 0%;
+  bottom: 0;
+  width: 0;
   height: 2px;
-  left: 0;
-  bottom: -5px;
-  background: white;
-  transition: width 0.3s;
+  background: var(--accent-2);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--accent-2);
 }
 
 nav a:hover::after,
 nav a.active::after {
   width: 100%;
+  left: 0;
 }
 
+/* BUTTONS */
+.btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(11, 17, 32, 0.06);
+  transition: background 0.3s;
+}
+
+.btn-ghost:hover {
+  background: var(--accent-2);
+  color: white;
+}
+
+/* FOOTER */
 footer {
-  background: #333;
+  background: var(--accent-2);
   color: white;
   text-align: center;
   padding: 1rem;
+  font-size: 0.95rem;
 }
 
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
+    gap: 10px;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
   }
 
   nav a {

@@ -47,21 +47,23 @@ header {
   justify-content: space-between;
 }
 
-.brand-text {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--accent-2);
+.brand-logo {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 nav {
   display: flex;
+  align-items: center;
   gap: 20px;
 }
 
 nav a {
   color: rgb(83, 46, 1);
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
   position: relative;
   padding: 5px 10px;
   transition: color 0.3s ease;
@@ -70,7 +72,6 @@ nav a {
 nav a::after {
   content: "";
   position: absolute;
-  left: 50%;
   bottom: 0;
   width: 0;
   height: 2px;
@@ -82,7 +83,8 @@ nav a:hover {
   color: var(--accent-2);
 }
 
-nav a:hover::after {
+nav a:hover::after,
+nav a.active::after {
   width: 100%;
   left: 0;
 }

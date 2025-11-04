@@ -46,10 +46,11 @@ header {
   justify-content: space-between;
 }
 
-.brand-text {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--accent-2);
+.brand-logo {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 nav {
