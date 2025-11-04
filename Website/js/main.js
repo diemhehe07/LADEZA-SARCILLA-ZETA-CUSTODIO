@@ -1,57 +1,22 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const links = document.querySelectorAll("nav a");
-  links.forEach(link => {
+// Fade-in effect on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add("fade-in");
+  });
+
+  // Fade-out effect before navigating away
+  document.querySelectorAll("a").forEach(link => {
+    const href = link.getAttribute("href");
+
+    // Ignore links with # or JavaScript
+    if (!href || href.startsWith("#") || href.startsWith("javascript:")) return;
+
     link.addEventListener("click", e => {
       e.preventDefault();
-      const id = link.getAttribute("data-section");
-      document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+      const destination = link.href;
+
+      document.body.style.opacity = 0;
+      setTimeout(() => {
+        window.location = destination;
+      }, 400); // same as transition time in CSS
     });
   });
-});
-
-function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
-}
-
-const reveals = document.querySelectorAll(".reveal");
-window.addEventListener("scroll", () => {
-  for (let r of reveals) {
-    const rect = r.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 80) {
-      r.classList.add("active");
-    }
-  }
-});
-
-const feedbackForm = document.getElementById("feedbackForm");
-feedbackForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const name = feedbackForm.name.value.trim();
-  const email = feedbackForm.email.value.trim();
-  const message = feedbackForm.message.value.trim();
-
-  if (name && email && message) {
-    alert(`Thank you, ${name}! Your feedback has been submitted.`);
-    feedbackForm.reset();
-  } else {
-    alert("Please fill out all fields before submitting.");
-  }
-});
-
-const carousel = document.querySelector(".carousel");
-let isDown = false, startX, scrollLeft;
-
-carousel.addEventListener("mousedown", (e) => {
-  isDown = true;
-  startX = e.pageX - carousel.offsetLeft;
-  scrollLeft = carousel.scrollLeft;
-});
-carousel.addEventListener("mouseleave", () => isDown = false);
-carousel.addEventListener("mouseup", () => isDown = false);
-carousel.addEventListener("mousemove", (e) => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - carousel.offsetLeft;
-  const walk = (x - startX) * 2;
-  carousel.scrollLeft = scrollLeft - walk;
-});
