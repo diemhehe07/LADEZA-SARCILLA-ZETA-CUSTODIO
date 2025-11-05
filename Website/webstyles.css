@@ -21,16 +21,6 @@ body {
   scroll-behavior: smooth;
 }
 
-body {
-  margin: 0;
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  line-height: 1.5;
-  color: var(--text);
-  background: var(--bg);
-  -webkit-font-smoothing: antialiased;
-  scroll-behavior: smooth;
-}
-
 header {
   padding: 10px 0;
   background: rgba(255, 255, 255, 0.8);
@@ -520,3 +510,4 @@ footer a:hover {
   }
 
 }
+
