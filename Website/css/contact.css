@@ -1,130 +1,239 @@
-/* ---------------- CONTACT PAGE ---------------- */
+/* contact.css - Styles specific to the contact page */
 
-.contact-section {
-  background: #f9f9f9;
-  padding: 80px 20px;
-  text-align: center;
+.contact-content {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-height: 100vh; /* ensures vertical centering even on short pages */
-}
-
-.contact-section h2 {
-  font-size: 2.2rem;
-  margin-bottom: 40px;
-  color: #2d3436;
-  text-align: center;
-}
-
-/* Centered container */
-.contact-container {
-  max-width: 1000px;
-  width: 100%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  flex-wrap: wrap;
   gap: 40px;
-  align-items: center; /* center vertically within the grid */
-  justify-content: center; /* ensure grid sits in the middle horizontally */
 }
 
 .contact-info {
-  text-align: center;
+  flex: 1;
+  min-width: 300px;
 }
 
-.contact-info h3 {
-  font-size: 1.4rem;
-  margin-bottom: 15px;
-  color: #1e272e;
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
 }
 
-.contact-info p {
-  margin: 8px 0;
-  color: #636e72;
-  font-size: 1rem;
+.contact-method {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
 }
 
-.contact-info a {
-  color: #0984e3;
-  text-decoration: none;
-  transition: color 0.3s ease;
+.contact-method:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
 }
 
-.contact-info a:hover {
-  color: #74b9ff;
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--accent-2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
 }
 
-/* Contact Form */
+.contact-details h3 {
+  margin-bottom: 5px;
+  color: var(--accent-2);
+}
+
+.contact-details p {
+  color: var(--muted);
+  margin: 2px 0;
+}
+
+.contact-form-container {
+  flex: 1;
+  min-width: 300px;
+}
+
 .contact-form {
   background: white;
   padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  text-align: left;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
-.contact-form label {
-  display: block;
-  text-align: left;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #2d3436;
+.office-hours {
+  margin-top: 40px;
+  background: white;
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
-.contact-form input,
-.contact-form textarea {
+.hours-table {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 20px;
-  border: 1px solid #dcdde1;
-  border-radius: 10px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  border-collapse: collapse;
+  margin-top: 15px;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: #0984e3;
-  box-shadow: 0 0 5px rgba(9, 132, 227, 0.3);
-  outline: none;
+.hours-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
 }
 
-.contact-form button {
-  background: #0984e3;
-  color: white;
-  font-size: 1rem;
+.hours-table tr:last-child td {
+  border-bottom: none;
+}
+
+.hours-table .day {
   font-weight: 600;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  color: var(--accent-2);
 }
 
-.contact-form button:hover {
-  background: #74b9ff;
-  transform: translateY(-2px);
+/* Chat Styles */
+.chat-container {
+  margin: 20px 0;
 }
 
-/* Responsive for smaller screens */
+.chat-messages {
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #f8f9fa;
+}
+
+.chat-message {
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  max-width: 80%;
+}
+
+.chat-message.user {
+  background: var(--accent-2);
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 5px;
+}
+
+.chat-message.bot {
+  background: white;
+  border: 1px solid #ddd;
+  margin-right: auto;
+  border-bottom-left-radius: 5px;
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+}
+
+.chat-notice {
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* Emergency CTA in Contact Page */
+.emergency-cta {
+  text-align: center;
+  padding: 60px 0;
+  background: var(--accent-2);
+  color: white;
+  margin-top: 60px;
+  border-radius: var(--radius);
+}
+
+.emergency-cta h2 {
+  margin-bottom: 15px;
+}
+
+.emergency-cta p {
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.emergency-cta .cta-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.emergency-cta .primary-btn {
+  background: white;
+  color: var(--accent-2);
+}
+
+.emergency-cta .primary-btn:hover {
+  background: #f1f1f1;
+}
+
+.emergency-cta .secondary-btn {
+  border-color: white;
+  color: white;
+}
+
+.emergency-cta .secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.emergency-contacts {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Responsive Contact Styles */
+@media (max-width: 900px) {
+  .contact-content {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 768px) {
-  .contact-section {
-    padding: 60px 15px;
-    min-height: auto;
-  }
-
-  .contact-container {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .contact-section h2 {
-    font-size: 1.8rem;
-  }
-
-  .contact-form {
+  .contact-method {
+    flex-direction: column;
     text-align: center;
+  }
+  
+  .contact-icon {
+    margin: 0 auto 15px;
+  }
+  
+  .chat-message {
+    max-width: 90%;
+  }
+  
+  .emergency-cta .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .emergency-cta .primary-btn,
+  .emergency-cta .secondary-btn {
+    width: 100%;
+    max-width: 250px;
   }
 }

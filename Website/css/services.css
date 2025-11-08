@@ -1,24 +1,251 @@
-.services {
-  padding: 3rem 1.5rem;
-  background: #eef7ee;
+/* services.css - Styles specific to the services page */
+
+.services-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.service-filter {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.filter-btn {
+  padding: 10px 20px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.9rem;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--accent-2);
+  color: white;
+  border-color: var(--accent-2);
+}
+
+.services-grid.detailed {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.service-card {
+  background: white;
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.service-icon {
+  font-size: 2.5rem;
+  color: var(--accent-2);
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+.service-description {
+  margin-bottom: 20px;
+  flex-grow: 1;
+  color: var(--muted);
 }
 
-.service-grid article {
+.service-details {
+  margin: 20px 0;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.service-pricing {
+  text-align: center;
+  margin: 20px 0;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: var(--radius);
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-2);
+}
+
+.period {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.service-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.service-actions .primary-btn,
+.service-actions .secondary-btn {
+  flex: 1;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+.service-comparison {
+  margin: 60px 0;
+}
+
+.comparison-table {
+  overflow-x: auto;
   background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
 }
 
-.service-grid article:hover {
-  transform: translateY(-5px);
+.comparison-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.comparison-table th {
+  background: var(--accent-2);
+  color: white;
+  font-weight: 600;
+}
+
+.comparison-table tr:hover {
+  background: #f8f9fa;
+}
+
+.insurance-section {
+  background: white;
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.insurance-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.insurance-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.insurance-list {
+  list-style: none;
+  margin: 20px 0;
+}
+
+.insurance-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.insurance-list li:before {
+  content: "✓";
+  color: var(--accent);
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.payment-options {
+  flex: 1;
+  min-width: 300px;
+}
+
+.payment-methods {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  font-size: 2rem;
+  color: var(--muted);
+}
+
+.insurance-result {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: var(--radius);
+  background: #f8f9fa;
+}
+
+.coverage-success {
+  color: #155724;
+}
+
+.coverage-failed {
+  color: #721c24;
+}
+
+/* Responsive Services Styles */
+@media (max-width: 900px) {
+  .insurance-content {
+    flex-direction: column;
+  }
+  
+  .service-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid.detailed {
+    grid-template-columns: 1fr;
+  }
+  
+  .filter-options {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .filter-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .comparison-table {
+    padding: 10px;
+  }
+  
+  .comparison-table th,
+  .comparison-table td {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
 }

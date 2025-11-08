@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Session | SLS-U Matter</title>
+  <link rel="stylesheet" href="/Website/css/global.css" />
+  <link rel="stylesheet" href="/Website/css/booking.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="wrap nav-row">
+      <div class="brand">
+        <img src="/Website/images/logo2.png" alt="SLS-U Matters Logo" class="brand-logo">
+      </div>
+      <nav class="main-nav">
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links">
+          <a href="/Website/html/home.html" data-section="home.html">Home</a>
+          <a href="/Website/html/about.html" data-section="about.html">About</a>
+          <a href="/Website/html/resources.html" data-section="resources.html">Resources</a>
+          <a href="/Website/html/services.html" data-section="services.html">Services</a>
+          <a href="/Website/html/feedback.html" data-section="feedback.html">Feedback</a>
+          <a href="/Website/html/contact.html" data-section="contact.html">Contact</a>
+        </div>
+      </nav>
+      <div class="nav-cta"><a class="btn btn-ghost" href="booking.html">Book Session</a></div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="wrap">
+      <h1>Book Your Session</h1>
+      <p>Take the first step towards better mental health. Schedule your appointment with our qualified professionals.</p>
+    </div>
+  </section>
+  
+  <!-- Booking Content -->
+  <section class="page-content">
+    <div class="wrap">
+      <div class="booking-container">
+        <!-- Booking Steps Progress -->
+        <div class="booking-progress">
+          <div class="progress-steps">
+            <div class="step active" data-step="1">
+              <div class="step-number">1</div>
+              <div class="step-label">Service</div>
+            </div>
+            <div class="step" data-step="2">
+              <div class="step-number">2</div>
+              <div class="step-label">Therapist</div>
+            </div>
+            <div class="step" data-step="3">
+              <div class="step-number">3</div>
+              <div class="step-label">Schedule</div>
+            </div>
+            <div class="step" data-step="4">
+              <div class="step-number">4</div>
+              <div class="step-label">Details</div>
+            </div>
+            <div class="step" data-step="5">
+              <div class="step-number">5</div>
+              <div class="step-label">Confirm</div>
+            </div>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+
+        <!-- Step 1: Service Selection -->
+        <div class="booking-step active" id="step1">
+          <h2>Choose a Service</h2>
+          <p class="step-description">Select the type of service that best fits your needs.</p>
+          
+          <div class="service-selection">
+            <div class="service-option" data-service="cbt">
+              <div class="service-option-icon">
+                <i class="fas fa-brain"></i>
+              </div>
+              <div class="service-option-content">
+                <h3>Cognitive Behavioral Therapy</h3>
+                <p>Identify and change negative thought patterns</p>
+                <div class="service-details">
+                  <span class="duration"><i class="fas fa-clock"></i> 50 min</span>
+                  <span class="price">$120</span>
+                </div>
+              </div>
+              <div class="service-option-check">
+                <i class="fas fa-check"></i>
+              </div>
+            </div>
+
+            <div class="service-option" data-service="couples">
+              <div class="service-option-icon">
+                <i class="fas fa-heart"></i>
+              </div>
+              <div class="service-option-content">
+                <h3>Couples Therapy</h3>
+                <p>Strengthen communication and resolve conflicts</p>
+                <div class="service-details">
+                  <span class="duration"><i class="fas fa-clock"></i> 75 min</span>
+                  <span class="price">$150</span>
+                </div>
+              </div>
+              <div class="service-option-check">
+                <i class="fas fa-check"></i>
+              </div>
+            </div>
+
+            <div class="service-option" data-service="trauma">
+              <div class="service-option-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <div class="service-option-content">
+                <h3>Trauma-Informed Care</h3>
+                <p>Specialized approach for healing from trauma</p>
+                <div class="service-details">
+                  <span class="duration"><i class="fas fa-clock"></i> 60 min</span>
+                  <span class="price">$140</span>
+                </div>
+              </div>
+              <div class="service-option-check">
+                <i class="fas fa-check"></i>
+              </div>
+            </div>
+
+            <div class="service-option" data-service="child">
+              <div class="service-option-icon">
+                <i class="fas fa-child"></i>
+              </div>
+              <div class="service-option-content">
+                <h3>Child & Adolescent Therapy</h3>
+                <p>Age-appropriate therapy for young people</p>
+                <div class="service-details">
+                  <span class="duration"><i class="fas fa-clock"></i> 45 min</span>
+                  <span class="price">$130</span>
+                </div>
+              </div>
+              <div class="service-option-check">
+                <i class="fas fa-check"></i>
+              </div>
+            </div>
+
+            <div class="service-option" data-service="online">
+              <div class="service-option-icon">
+                <i class="fas fa-laptop-medical"></i>
+              </div>
+              <div class="service-option-content">
+                <h3>Online Therapy</h3>
+                <p>Professional therapy through video conferencing</p>
+                <div class="service-details">
+                  <span class="duration"><i class="fas fa-clock"></i> 50 min</span>
+                  <span class="price">$110</span>
+                </div>
+              </div>
+              <div class="service-option-check">
+                <i class="fas fa-check"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <button class="primary-btn next-step" data-next="2">Continue to Therapist Selection</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Therapist Selection -->
+        <div class="booking-step" id="step2">
+          <h2>Choose Your Therapist</h2>
+          <p class="step-description">Select a qualified professional who matches your needs.</p>
+          
+          <div class="therapist-selection">
+            <div class="therapist-option" data-therapist="sarah">
+              <div class="therapist-photo">
+                <i class="fas fa-user-md"></i>
+              </div>
+              <div class="therapist-info">
+                <h3>Dr. Sarah Johnson</h3>
+                <p class="specialty">Clinical Psychologist</p>
+                <p class="expertise">Specializes in CBT and anxiety disorders</p>
+                <div class="therapist-details">
+                  <span class="experience"><i class="fas fa-award"></i> 15 years</span>
+                  <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                </div>
+              </div>
+              <div class="therapist-option-check">
+                <i class="fas fa-check"></i>
+              </div>
+            </div>
+
+            <div class="therapist-option" data-therapist="michael">
+              <div class="therapist-photo">
+                <i class="fas fa-user-md"></i>
+              </div>
+              <div class="therapist-info">
+                <h3>Michael Chen</h3>
+                <p class="specialty">Licensed Therapist</p>
+                <p class="expertise">Trauma-informed care and mindfulness</p>
+                <div class="therapist-details">
+                  <span class="experience"><i class="fas fa-award"></i> 8 years</span>
+                  <span class="rating"><i class="fas fa-star"></i> 4.8</span>
+                </div>
+              </div>
+              <div class="therapist-option-check">
+                <i class="fas fa-check"></i>
+              </div>
+            </div>
+
+            <div class="therapist-option" data-therapist="elena">
+              <div class="therapist-photo">
+                <i class="fas fa-user-md"></i>
+              </div>
+              <div class="therapist-info">
+                <h3>Dr. Elena Rodriguez</h3>
+                <p class="specialty">Psychiatrist</p>
+                <p class="expertise">Child & adolescent mental health</p>
+                <div class="therapist-details">
+                  <span class="experience"><i class="fas fa-award"></i> 12 years</span>
+                  <span class="rating"><i class="fas fa-star"></i> 4.9</span>
+                </div>
+              </div>
+              <div class="therapist-option-check">
+                <i class="fas fa-check"></i>
+              </div>
+            </div>
+
+            <div class="therapist-option" data-therapist="david">
+              <div class="therapist-photo">
+                <i class="fas fa-user-md"></i>
+              </div>
+              <div class="therapist-info">
+                <h3>David Thompson</h3>
+                <p class="specialty">Couples Therapist</p>
+                <p class="expertise">Relationship counseling and communication</p>
+                <div class="therapist-details">
+                  <span class="experience"><i class="fas fa-award"></i> 10 years</span>
+                  <span class="rating"><i class="fas fa-star"></i> 4.7</span>
+                </div>
+              </div>
+              <div class="therapist-option-check">
+                <i class="fas fa-check"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <button class="secondary-btn prev-step" data-prev="1">Back</button>
+            <button class="primary-btn next-step" data-next="3">Continue to Scheduling</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Schedule Selection -->
+        <div class="booking-step" id="step3">
+          <h2>Select Date & Time</h2>
+          <p class="step-description">Choose a convenient time for your session.</p>
+          
+          <div class="schedule-selection">
+            <div class="calendar-section">
+              <h3>Select Date</h3>
+              <div class="calendar-nav">
+                <button class="calendar-nav-btn" id="prevMonth">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <h4 id="currentMonth">March 2024</h4>
+                <button class="calendar-nav-btn" id="nextMonth">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+              <div class="calendar" id="calendar">
+                <!-- Calendar will be generated by JavaScript -->
+              </div>
+            </div>
+
+            <div class="timeslot-section">
+              <h3>Available Time Slots</h3>
+              <div class="timeslot-options" id="timeslotOptions">
+                <!-- Time slots will be generated by JavaScript -->
+              </div>
+              <div class="no-slots-message" id="noSlotsMessage" style="display: none;">
+                <p>No available slots for selected date. Please choose another date.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <button class="secondary-btn prev-step" data-prev="2">Back</button>
+            <button class="primary-btn next-step" data-next="4">Continue to Details</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Personal Details -->
+        <div class="booking-step" id="step4">
+          <h2>Your Information</h2>
+          <p class="step-description">Please provide your details to complete the booking.</p>
+          
+          <div class="personal-details-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="preferredContact">Preferred Contact Method</label>
+              <select id="preferredContact" name="preferredContact">
+                <option value="email">Email</option>
+                <option value="phone">Phone Call</option>
+                <option value="sms">Text Message</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="sessionType">Session Format</label>
+              <select id="sessionType" name="sessionType">
+                <option value="video">Video Call</option>
+                <option value="phone">Phone Call</option>
+                <option value="in-person">In-Person</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="concerns">Brief Description of Concerns (Optional)</label>
+              <textarea id="concerns" name="concerns" rows="4" placeholder="Please share any specific concerns or goals you'd like to address..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="emergencyContact">Emergency Contact (Optional)</label>
+              <input type="text" id="emergencyContact" name="emergencyContact" placeholder="Name and phone number">
+            </div>
+
+            <div class="consent-section">
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="privacyConsent" required>
+                  <span>I agree to the <a href="privacy.html" target="_blank">Privacy Policy</a> and understand my information will be kept confidential *</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="cancellationConsent" required>
+                  <span>I understand the <a href="cancellation.html" target="_blank">cancellation policy</a> (24 hours notice required) *</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <button class="secondary-btn prev-step" data-prev="3">Back</button>
+            <button class="primary-btn next-step" data-next="5">Review & Confirm</button>
+          </div>
+        </div>
+
+        <!-- Step 5: Confirmation -->
+        <div class="booking-step" id="step5">
+          <h2>Review Your Booking</h2>
+          <p class="step-description">Please review all details before confirming your appointment.</p>
+          
+          <div class="booking-summary">
+            <div class="summary-card">
+              <h3>Appointment Details</h3>
+              <div class="summary-item">
+                <strong>Service:</strong>
+                <span id="summaryService">-</span>
+              </div>
+              <div class="summary-item">
+                <strong>Therapist:</strong>
+                <span id="summaryTherapist">-</span>
+              </div>
+              <div class="summary-item">
+                <strong>Date & Time:</strong>
+                <span id="summaryDateTime">-</span>
+              </div>
+              <div class="summary-item">
+                <strong>Duration:</strong>
+                <span id="summaryDuration">-</span>
+              </div>
+              <div class="summary-item">
+                <strong>Format:</strong>
+                <span id="summaryFormat">-</span>
+              </div>
+              <div class="summary-item total">
+                <strong>Total:</strong>
+                <span id="summaryTotal">-</span>
+              </div>
+            </div>
+
+            <div class="summary-card">
+              <h3>Your Information</h3>
+              <div class="summary-item">
+                <strong>Name:</strong>
+                <span id="summaryName">-</span>
+              </div>
+              <div class="summary-item">
+                <strong>Email:</strong>
+                <span id="summaryEmail">-</span>
+              </div>
+              <div class="summary-item">
+                <strong>Phone:</strong>
+                <span id="summaryPhone">-</span>
+              </div>
+              <div class="summary-item">
+                <strong>Contact Method:</strong>
+                <span id="summaryContactMethod">-</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="confirmation-actions">
+            <button class="secondary-btn prev-step" data-prev="4">Back</button>
+            <button class="primary-btn" id="confirmBooking">Confirm Booking</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Booking Sidebar -->
+      <div class="booking-sidebar">
+        <div class="sidebar-card">
+          <h3>Your Booking Summary</h3>
+          <div class="sidebar-summary">
+            <div class="sidebar-item">
+              <span class="label">Service:</span>
+              <span class="value" id="sidebarService">Not selected</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="label">Therapist:</span>
+              <span class="value" id="sidebarTherapist">Not selected</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="label">Date & Time:</span>
+              <span class="value" id="sidebarDateTime">Not selected</span>
+            </div>
+            <div class="sidebar-item total">
+              <span class="label">Total:</span>
+              <span class="value" id="sidebarTotal">$0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-card support-card">
+          <h3>Need Help?</h3>
+          <p>Our team is here to assist you with the booking process.</p>
+          <div class="support-contacts">
+            <button class="support-btn" onclick="window.location.href='tel:+639123456789'">
+              <i class="fas fa-phone"></i> Call Us
+            </button>
+            <button class="support-btn" onclick="window.location.href='mailto:support@slsumatters.org'">
+              <i class="fas fa-envelope"></i> Email Us
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <div class="success-content">
+        <div class="success-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h2>Booking Confirmed!</h2>
+        <p>Your appointment has been successfully scheduled.</p>
+        
+        <div class="appointment-details">
+          <div class="detail-item">
+            <strong>Confirmation #:</strong>
+            <span id="confirmationNumber">-</span>
+          </div>
+          <div class="detail-item">
+            <strong>Appointment:</strong>
+            <span id="successDateTime">-</span>
+          </div>
+          <div class="detail-item">
+            <strong>With:</strong>
+            <span id="successTherapist">-</span>
+          </div>
+        </div>
+
+        <div class="next-steps">
+          <h4>What happens next?</h4>
+          <ul>
+            <li>You'll receive a confirmation email with all details</li>
+            <li>We'll send a reminder 24 hours before your session</li>
+            <li>Join the session via the link provided in the email</li>
+          </ul>
+        </div>
+
+        <div class="success-actions">
+          <button class="primary-btn" onclick="window.location.href='index.html'">Return to Home</button>
+          <button class="secondary-btn" onclick="window.location.href='resources.html'">Explore Resources</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="images/logo2.png" alt="SLS-U Matters Logo" class="footer-logo">
+          <p>Providing compassionate mental health support and resources for everyone.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="links-column">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="resources.html">Resources</a>
+          </div>
+          <div class="links-column">
+            <h4>Support</h4>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="faq.html">FAQs</a>
+            <a href="accessibility.html">Accessibility</a>
+          </div>
+          <div class="links-column contact">
+            <h4>Contact Info</h4>
+            <p>Email: support@slsumatters.org</p>
+            <p>Hotline: +63 912 345 6789</p>
+            <p>Emergency: 911</p>
+            <p>Address: 123 Wellness St., Mental Health City</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 SLS-U Matters. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/Website/js/booking.js"></script>
+</body>
+</html>

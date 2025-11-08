@@ -1,0 +1,800 @@
+/* booking.css - Styles specific to the booking page */
+
+.booking-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Progress Bar - Now at the top */
+.booking-progress {
+  background: white;
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 40px;
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.step::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: -50%;
+  width: 100%;
+  height: 3px;
+  background: #f0f0f0;
+  z-index: -1;
+}
+
+.step:first-child::before {
+  display: none;
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-bottom: 12px;
+  transition: var(--transition);
+  border: 3px solid #ddd;
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.step-label {
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: center;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+.step.active .step-number {
+  background: var(--accent-2);
+  color: white;
+  border-color: var(--accent-2);
+  transform: scale(1.1);
+}
+
+.step.active .step-label {
+  color: var(--accent-2);
+  font-weight: 600;
+}
+
+.step.completed .step-number {
+  background: var(--accent-2);
+  color: white;
+  border-color: var(--accent-2);
+}
+
+.step.completed .step-number::after {
+  content: '✓';
+  font-weight: bold;
+}
+
+.progress-bar {
+  height: 6px;
+  background: #f0f0f0;
+  border-radius: 3px;
+  position: relative;
+  margin-top: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent-2);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+  width: 0%;
+}
+
+/* Main Content Area */
+.booking-content {
+  background: white;
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 30px;
+}
+
+/* Booking Steps */
+.booking-step {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.booking-step.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.step-description {
+  color: var(--muted);
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* Service Selection */
+.service-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.service-option {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: white;
+  border: 2px solid #f0f0f0;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.service-option:hover {
+  border-color: var(--accent-2);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.service-option.selected {
+  border-color: var(--accent-2);
+  background: rgba(108, 142, 245, 0.05);
+}
+
+.service-option-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--accent-2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.service-option-content {
+  flex: 1;
+}
+
+.service-option-content h3 {
+  margin-bottom: 5px;
+  color: var(--text);
+}
+
+.service-option-content p {
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.service-details {
+  display: flex;
+  gap: 20px;
+  font-size: 0.9rem;
+}
+
+.duration, .price {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+}
+
+.price {
+  font-weight: 600;
+  color: var(--accent-2);
+}
+
+.service-option-check {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.service-option.selected .service-option-check {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+  color: white;
+}
+
+/* Therapist Selection */
+.therapist-selection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.therapist-option {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: white;
+  border: 2px solid #f0f0f0;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.therapist-option:hover {
+  border-color: var(--accent-2);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.therapist-option.selected {
+  border-color: var(--accent-2);
+  background: rgba(108, 142, 245, 0.05);
+}
+
+.therapist-photo {
+  width: 80px;
+  height: 80px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.therapist-info {
+  flex: 1;
+}
+
+.therapist-info h3 {
+  margin-bottom: 5px;
+  color: var(--text);
+}
+
+.specialty {
+  color: var(--accent-2);
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.expertise {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.therapist-details {
+  display: flex;
+  gap: 15px;
+  font-size: 0.9rem;
+}
+
+.experience, .rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+}
+
+.rating {
+  color: #ffd700;
+}
+
+.therapist-option-check {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.therapist-option.selected .therapist-option-check {
+  background: var(--accent-2);
+  border-color: var(--accent-2);
+  color: white;
+}
+
+/* Schedule Selection */
+.schedule-selection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.calendar-section, .timeslot-section {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: var(--radius);
+  border: 1px solid #eee;
+}
+
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.calendar-nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: var(--transition);
+  color: var(--muted);
+}
+
+.calendar-nav-btn:hover {
+  background: #f0f0f0;
+  color: var(--text);
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar-header {
+  text-align: center;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 10px 0;
+  font-size: 0.9rem;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.9rem;
+}
+
+.calendar-day:hover:not(.disabled):not(.selected) {
+  background: #f0f0f0;
+}
+
+.calendar-day.disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.calendar-day.selected {
+  background: var(--accent-2);
+  color: white;
+}
+
+.calendar-day.today {
+  border: 2px solid var(--accent-2);
+}
+
+.timeslot-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.timeslot {
+  padding: 12px;
+  background: white;
+  border: 2px solid #f0f0f0;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.timeslot:hover:not(.disabled) {
+  border-color: var(--accent-2);
+}
+
+.timeslot.selected {
+  background: var(--accent-2);
+  color: white;
+  border-color: var(--accent-2);
+}
+
+.timeslot.disabled {
+  background: #f0f0f0;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.no-slots-message {
+  text-align: center;
+  padding: 20px;
+  color: var(--muted);
+}
+
+/* Personal Details Form */
+.personal-details-form {
+  margin-bottom: 30px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.consent-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.checkbox-label input {
+  width: auto;
+  margin-top: 3px;
+}
+
+.checkbox-label a {
+  color: var(--accent-2);
+  text-decoration: none;
+}
+
+.checkbox-label a:hover {
+  text-decoration: underline;
+}
+
+/* Booking Summary */
+.booking-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.summary-card {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: var(--radius);
+  border: 1px solid #eee;
+}
+
+.summary-card h3 {
+  margin-bottom: 20px;
+  color: var(--accent-2);
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 10px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.summary-item.total {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--accent-2);
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px solid #e9ecef;
+}
+
+/* Step Actions */
+.step-actions, .confirmation-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+/* Success Modal */
+.success-content {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.success-icon {
+  font-size: 4rem;
+  color: #28a745;
+  margin-bottom: 20px;
+}
+
+.success-content h2 {
+  margin-bottom: 15px;
+  color: var(--accent-2);
+}
+
+.appointment-details {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: var(--radius);
+  margin: 25px 0;
+  text-align: left;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.detail-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.next-steps {
+  text-align: left;
+  margin: 25px 0;
+}
+
+.next-steps h4 {
+  margin-bottom: 15px;
+  color: var(--accent-2);
+}
+
+.next-steps ul {
+  padding-left: 20px;
+}
+
+.next-steps li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.success-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+/* Mini Summary - Now inline in the content */
+.mini-summary {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: var(--radius);
+  margin-bottom: 30px;
+  border-left: 4px solid var(--accent-2);
+}
+
+.mini-summary h4 {
+  margin-bottom: 15px;
+  color: var(--accent-2);
+}
+
+.mini-summary-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.mini-summary-item:last-child {
+  margin-bottom: 0;
+}
+
+.mini-summary-item.total {
+  font-weight: 600;
+  color: var(--accent-2);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #ddd;
+}
+
+/* Support Section */
+.support-section {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: var(--radius);
+  text-align: center;
+  margin-top: 40px;
+}
+
+.support-section h3 {
+  margin-bottom: 15px;
+  color: var(--accent-2);
+}
+
+.support-contacts {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.support-btn {
+  padding: 12px 20px;
+  background: white;
+  border: 2px solid var(--accent-2);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--accent-2);
+  text-decoration: none;
+}
+
+.support-btn:hover {
+  background: var(--accent-2);
+  color: white;
+}
+
+/* Responsive Booking Styles */
+@media (max-width: 1024px) {
+  .booking-container {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .progress-steps {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .step {
+    flex: 0 0 calc(50% - 15px);
+    margin-bottom: 10px;
+  }
+  
+  .step::before {
+    display: none;
+  }
+  
+  .booking-content {
+    padding: 25px;
+  }
+  
+  .schedule-selection {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .booking-summary {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .step-actions, .confirmation-actions, .success-actions {
+    flex-direction: column;
+  }
+  
+  .therapist-selection {
+    grid-template-columns: 1fr;
+  }
+  
+  .calendar {
+    gap: 2px;
+  }
+  
+  .calendar-day {
+    font-size: 0.8rem;
+  }
+  
+  .support-contacts {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .booking-progress {
+    padding: 20px;
+  }
+  
+  .booking-content {
+    padding: 20px;
+  }
+  
+  .step {
+    flex: 0 0 100%;
+  }
+  
+  .step-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .service-option {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .service-details {
+    justify-content: center;
+  }
+  
+  .therapist-option {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .therapist-details {
+    justify-content: center;
+  }
+  
+  .timeslot-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .calendar-section, .timeslot-section {
+    padding: 20px;
+  }
+}

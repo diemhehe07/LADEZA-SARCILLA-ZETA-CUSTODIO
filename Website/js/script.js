@@ -105,3 +105,48 @@ if (window.location.pathname.includes('resources.html')) {
   
   updateResourceStats();
 }
+
+// Parallax scrolling effect for hero section
+function initParallax() {
+  const heroSection = document.querySelector('.hero-parallax');
+  const heroBackground = document.getElementById('heroBackground');
+  
+  if (!heroSection || !heroBackground) return;
+  
+  function updateParallax() {
+    const scrolled = window.pageYOffset;
+    const rate = scrolled * -0.5;
+    
+    heroBackground.style.transform = `translateY(${rate}px)`;
+  }
+  
+  // Use requestAnimationFrame for smoother performance
+  function tick() {
+    updateParallax();
+    requestAnimationFrame(tick);
+  }
+  
+  // Start the animation loop
+  requestAnimationFrame(tick);
+}
+
+// Alternative: Simple scroll-based parallax
+function initSimpleParallax() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  
+  window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const parallaxSpeed = 0.5;
+    hero.style.backgroundPosition = `center ${scrolled * parallaxSpeed}px`;
+  });
+}
+
+// Initialize based on which hero style is used
+document.addEventListener('DOMContentLoaded', function() {
+  if (document.querySelector('.hero-parallax')) {
+    initParallax();
+  } else if (document.querySelector('.hero')) {
+    initSimpleParallax();
+  }
+});
