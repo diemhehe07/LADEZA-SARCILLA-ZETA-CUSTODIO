@@ -1,63 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SLS-U Matters | Contact</title>
-  <link rel="stylesheet" href="/Website/css/global.css">
-  <link rel="stylesheet" href="/Website/css/contact.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | SLS-U Matter</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="fade-in">
+<body>
+  <!-- Header -->
   <header class="site-header">
     <div class="wrap nav-row">
       <div class="brand">
-        <img src="/Website/images/logo2.png" alt="SLS-U Matters Logo" class="brand-logo">
+        <img src="images/logo2.png" alt="SLS-U Matters Logo" class="brand-logo">
       </div>
-      <nav>
-        <a href="/Website/websitehehe.html" data-section="websitehehe.html">Home</a>
-        <a href="/Website/html/about.html" data-section="about.html">About</a>
-        <a href="/Website/html/resources.html" data-section="resources.html">Resources</a>
-        <a href="/Website/html/services.html" data-section="services.html">Services</a>
-        <a href="/Website/html/feedback.html" data-section="feedback.html">Feedback</a>
-        <a href="/Website/html/contact.html" data-section="contact.html">Contact</a>
+      <nav class="main-nav">
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="resources.html">Resources</a>
+          <a href="services.html">Services</a>
+          <a href="feedback.html">Feedback</a>
+          <a href="contact.html" class="active">Contact</a>
+        </div>
       </nav>
-      <div class="nav-cta"><a class="btn btn-ghost" href="#contact">Book</a></div>
+      <div class="nav-cta"><a class="btn btn-ghost" href="booking.html">Book Session</a></div>
     </div>
   </header>
 
-  <section class="contact">
-    <h2>Contact Us</h2>
-    <p>We’re here to listen. Reach out for help or inquiries anytime.</p>
-
-    <div class="contact-grid">
-      <div class="info">
-        <p><strong>Email:</strong> support@slsumatters.org</p>
-        <p><strong>Hotline:</strong> +63 912 345 6789</p>
-        <p><strong>Emergency:</strong> Dial 911</p>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="wrap">
+      <h1>Contact Us</h1>
+      <p>Get in touch with our team. We're here to help and support you on your mental health journey.</p>
+    </div>
+  </section>
+  
+  <!-- Contact Content -->
+  <section class="page-content">
+    <div class="wrap">
+      <div class="contact-content">
+        <div class="contact-info">
+          <h2>Get In Touch</h2>
+          <p>We understand that reaching out can be difficult. Our compassionate team is here to listen and provide the support you need.</p>
+          
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Phone Support</h3>
+                <p>+63 912 345 6789</p>
+                <p>Available 24/7 for urgent matters</p>
+                <button class="primary-btn" onclick="window.location.href='tel:+639123456789'">Call Now</button>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Email Us</h3>
+                <p>support@slsumatters.org</p>
+                <p>We respond within 24 hours</p>
+                <button class="primary-btn" onclick="window.location.href='mailto:support@slsumatters.org'">Send Email</button>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Visit Our Office</h3>
+                <p>123 Wellness Street</p>
+                <p>Mental Health City, 1000</p>
+                <button class="primary-btn" onclick="openMap()">Get Directions</button>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-comments"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Live Chat</h3>
+                <p>Available Mon-Fri, 9AM-6PM</p>
+                <p>Instant support from our team</p>
+                <button class="primary-btn" id="startChat">Start Chat</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="office-hours">
+            <h3>Office Hours</h3>
+            <table class="hours-table">
+              <tr>
+                <td class="day">Monday - Friday</td>
+                <td>9:00 AM - 6:00 PM</td>
+              </tr>
+              <tr>
+                <td class="day">Saturday</td>
+                <td>10:00 AM - 4:00 PM</td>
+              </tr>
+              <tr>
+                <td class="day">Sunday</td>
+                <td>Emergency Only</td>
+              </tr>
+              <tr>
+                <td class="day">24/7 Crisis Line</td>
+                <td>0917-899-8727</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        
+        <div class="contact-form-container">
+          <div class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="contactName">Full Name *</label>
+                <input type="text" id="contactName" name="name" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="contactEmail">Email Address *</label>
+                <input type="email" id="contactEmail" name="email" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="contactPhone">Phone Number</label>
+                <input type="tel" id="contactPhone" name="phone">
+              </div>
+              
+              <div class="form-group">
+                <label for="contactSubject">Subject *</label>
+                <select id="contactSubject" name="subject" required>
+                  <option value="">Select a subject</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="appointment">Appointment Booking</option>
+                  <option value="support">Mental Health Support</option>
+                  <option value="emergency">Emergency Assistance</option>
+                  <option value="feedback">Feedback</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="contactMessage">Message *</label>
+                <textarea id="contactMessage" name="message" rows="6" placeholder="Tell us how we can help you..." required></textarea>
+              </div>
+              
+              <div class="form-group">
+                <label for="contactUrgency">Urgency Level</label>
+                <select id="contactUrgency" name="urgency">
+                  <option value="low">Low - Can wait a few days</option>
+                  <option value="medium" selected>Medium - Would like response within 24 hours</option>
+                  <option value="high">High - Need response today</option>
+                  <option value="emergency">Emergency - Need immediate assistance</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label>
+                  <input type="checkbox" name="consent" required>
+                  I consent to being contacted by SLS-U Matters and understand my information will be kept confidential *
+                </label>
+              </div>
+              
+              <button type="submit" class="primary-btn">Send Message</button>
+            </form>
+            <div id="contactMessageResult" class="message" style="display: none;"></div>
+          </div>
+        </div>
       </div>
-
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea rows="4" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+      
+      <!-- Emergency Section -->
+      <div class="emergency-cta" style="margin-top: 60px;">
+        <div class="wrap">
+          <h2>Need Immediate Help?</h2>
+          <p>If you're in crisis or having thoughts of harm, please reach out to these emergency resources immediately.</p>
+          <div class="cta-buttons">
+            <button class="primary-btn" onclick="window.location.href='tel:09178998727'">Crisis Hotline</button>
+            <button class="secondary-btn" onclick="window.location.href='tel:911'">Emergency Services</button>
+          </div>
+          <div class="emergency-contacts">
+            <p><strong>Emergency Contacts:</strong> National Crisis Hotline: 0917-899-8727 | Hopeline: (02) 8804-4673 | Emergency: 911</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <div class="links">
-      <h4>Quick Links</h4>
-      <a href="#about">About</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">FAQs</a>
-    </div>
-    <div class="contact" id="contact">
-      <h4>Contact Us</h4>
-      <p>Email: support@slsumatters.org</p>
-      <p>Hotline: +63 912 345 6789</p>
-      <p>Emergency: 911</p>
+    <div class="wrap">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="images/logo2.png" alt="SLS-U Matters Logo" class="footer-logo">
+          <p>Providing compassionate mental health support and resources for everyone.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="links-column">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="resources.html">Resources</a>
+          </div>
+          <div class="links-column">
+            <h4>Support</h4>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="faq.html">FAQs</a>
+            <a href="accessibility.html">Accessibility</a>
+          </div>
+          <div class="links-column contact">
+            <h4>Contact Info</h4>
+            <p>Email: support@slsumatters.org</p>
+            <p>Hotline: +63 912 345 6789</p>
+            <p>Emergency: 911</p>
+            <p>Address: 123 Wellness St., Mental Health City</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 SLS-U Matters. All rights reserved.</p>
+      </div>
     </div>
   </footer>
+
+  <!-- Chat Modal -->
+  <div id="chatModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Live Chat Support</h2>
+      <div class="chat-container">
+        <div class="chat-messages" id="chatMessages">
+          <div class="chat-message bot">
+            <p>Hello! Thank you for reaching out to SLS-U Matters. How can we help you today?</p>
+          </div>
+        </div>
+        <div class="chat-input">
+          <input type="text" id="chatInput" placeholder="Type your message...">
+          <button id="sendMessage" class="primary-btn">Send</button>
+        </div>
+      </div>
+      <p class="chat-notice">Our chat support is available Monday-Friday, 9AM-6PM. For urgent matters, please call our crisis hotline.</p>
+    </div>
+  </div>
+
+  <script src="contact.js"></script>
 </body>
 </html>

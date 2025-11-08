@@ -1,70 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SLS-U Matters | About</title>
-  <link rel="stylesheet" href="/Website/css/global.css">
-  <link rel="stylesheet" href="/Website/css/about.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | SLS-U Matter</title>
+  <link rel="stylesheet" href="webstyles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="fade-in">
+<body>
+  <!-- Header -->
   <header class="site-header">
     <div class="wrap nav-row">
       <div class="brand">
-        <img src="/Website/images/logo2.png" alt="SLS-U Matters Logo" class="brand-logo">
+        <img src="images/logo2.png" alt="SLS-U Matters Logo" class="brand-logo">
       </div>
-      <nav>
-        <a href="/Website/websitehehe.html" data-section="websitehehe.html">Home</a>
-        <a href="/Website/html/about.html" data-section="about.html">About</a>
-        <a href="/Website/html/resources.html" data-section="resources.html">Resources</a>
-        <a href="/Website/html/services.html" data-section="services.html">Services</a>
-        <a href="/Website/html/feedback.html" data-section="feedback.html">Feedback</a>
-        <a href="/Website/html/contact.html" data-section="contact.html">Contact</a>
+      <nav class="main-nav">
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html" class="active">About</a>
+          <a href="resources.html">Resources</a>
+          <a href="services.html">Services</a>
+          <a href="feedback.html">Feedback</a>
+          <a href="contact.html">Contact</a>
+        </div>
       </nav>
-      <div class="nav-cta"><a class="btn btn-ghost" href="#contact">Book</a></div>
+      <div class="nav-cta"><a class="btn btn-ghost" href="booking.html">Book Session</a></div>
     </div>
   </header>
 
-  <section class="about-section">
-    <h2>Our Mission</h2>
-    <p>To promote mental wellness through education, empathy, and open communication. We want every person to know that seeking help is a sign of strength.</p>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="wrap">
+      <h1>About SLS-U Matters</h1>
+      <p>Learn more about our mission, vision, and the team behind our mental health initiative</p>
+    </div>
+  </section>
+  
+  <!-- About Content -->
+  <section class="page-content">
+    <div class="wrap">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Our Story</h2>
+          <p>SLS-U Matters was founded in 2020 with a simple yet powerful mission: to make mental health support accessible to everyone. We recognized the growing need for compassionate, professional mental health services that are available when and where people need them most.</p>
+          
+          <h2>Our Mission</h2>
+          <p>We aim to promote mental wellness awareness and offer accessible tools for individuals and families. Our goal is to make help reachable to anyone who needs it, at any time.</p>
+          <p>Through education and empathy, we hope to normalize seeking help and empower people to take proactive steps for their emotional health.</p>
+          
+          <h2>Our Vision</h2>
+          <p>To build an inclusive digital environment where every voice is heard and every story is valued. We envision a future where mental health care is integrated into everyday life and stigma is left behind.</p>
+          
+          <h2>Our Values</h2>
+          <div class="values-grid">
+            <div class="value-item">
+              <div class="value-icon"><i class="fas fa-heart"></i></div>
+              <h3>Compassion</h3>
+              <p>We approach every individual with empathy, understanding, and unconditional positive regard.</p>
+            </div>
+            <div class="value-item">
+              <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+              <h3>Confidentiality</h3>
+              <p>Your privacy and trust are paramount. All interactions are kept strictly confidential.</p>
+            </div>
+            <div class="value-item">
+              <div class="value-icon"><i class="fas fa-hand-holding-heart"></i></div>
+              <h3>Accessibility</h3>
+              <p>We believe mental health support should be available to everyone, regardless of background or circumstances.</p>
+            </div>
+            <div class="value-item">
+              <div class="value-icon"><i class="fas fa-graduation-cap"></i></div>
+              <h3>Evidence-Based</h3>
+              <p>Our approaches are grounded in scientific research and proven therapeutic techniques.</p>
+            </div>
+          </div>
+          
+          <h2>Our Team</h2>
+          <div class="team-grid">
+            <div class="team-member">
+              <div class="member-photo">
+                <i class="fas fa-user-md"></i>
+              </div>
+              <h3>Dr. Sarah Johnson</h3>
+              <p class="role">Clinical Psychologist</p>
+              <p>15+ years of experience in cognitive behavioral therapy</p>
+              <div class="member-contact">
+                <button class="contact-member" data-member="sarah">Contact Dr. Johnson</button>
+              </div>
+            </div>
+            <div class="team-member">
+              <div class="member-photo">
+                <i class="fas fa-user-md"></i>
+              </div>
+              <h3>Michael Chen</h3>
+              <p class="role">Licensed Therapist</p>
+              <p>Specializes in trauma-informed care and mindfulness</p>
+              <div class="member-contact">
+                <button class="contact-member" data-member="michael">Contact Michael</button>
+              </div>
+            </div>
+            <div class="team-member">
+              <div class="member-photo">
+                <i class="fas fa-user-md"></i>
+              </div>
+              <h3>Dr. Elena Rodriguez</h3>
+              <p class="role">Psychiatrist</p>
+              <p>Expert in medication management and adolescent mental health</p>
+              <div class="member-contact">
+                <button class="contact-member" data-member="elena">Contact Dr. Rodriguez</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80" alt="Our Team">
+        </div>
+      </div>
 
-    <h2>Our Vision</h2>
-    <p>To create a digital world where mental health support is accessible, stigma-free, and compassion-driven.</p>
-
-    <div class="team">
-      <h2>Meet Our Team</h2>
-      <div class="team-grid">
-        <div class="member">
-          <img src="images/team1.jpg" alt="Team Member">
-          <p><strong>Alex Rivera</strong><br>Counselor</p>
-        </div>
-        <div class="member">
-          <img src="images/team2.jpg" alt="Team Member">
-          <p><strong>Jamie Santos</strong><br>Community Leader</p>
-        </div>
-        <div class="member">
-          <img src="images/team3.jpg" alt="Team Member">
-          <p><strong>Chris Lee</strong><br>Program Coordinator</p>
-        </div>
+      <!-- Newsletter Signup -->
+      <div class="newsletter-section">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter for mental health tips and updates</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" name="email" placeholder="Enter your email" required>
+          <button type="submit" class="primary-btn">Subscribe</button>
+        </form>
+        <div id="newsletterMessage" class="message"></div>
       </div>
     </div>
   </section>
 
- <footer>
-    <div class="links">
-      <h4>Quick Links</h4>
-      <a href="#about">About</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">FAQs</a>
-    </div>
-    <div class="contact" id="contact">
-      <h4>Contact Us</h4>
-      <p>Email: support@slsumatters.org</p>
-      <p>Hotline: +63 912 345 6789</p>
-      <p>Emergency: 911</p>
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="images/logo2.png" alt="SLS-U Matters Logo" class="footer-logo">
+          <p>Providing compassionate mental health support and resources for everyone.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="links-column">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="resources.html">Resources</a>
+            <a href="feedback.html">Feedback</a>
+          </div>
+          <div class="links-column">
+            <h4>Support</h4>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="faq.html">FAQs</a>
+            <a href="accessibility.html">Accessibility</a>
+          </div>
+          <div class="links-column contact">
+            <h4>Contact Us</h4>
+            <p>Email: support@slsumatters.org</p>
+            <p>Hotline: +63 912 345 6789</p>
+            <p>Emergency: 911</p>
+            <p>Address: 123 Wellness St., Mental Health City</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 SLS-U Matters. All rights reserved.</p>
+      </div>
     </div>
   </footer>
+
+  <!-- Contact Modal -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Contact Team Member</h2>
+      <form id="teamContactForm">
+        <input type="hidden" id="teamMember" name="teamMember">
+        <div class="form-group">
+          <label for="contactName">Your Name</label>
+          <input type="text" id="contactName" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="contactEmail">Your Email</label>
+          <input type="email" id="contactEmail" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="primary-btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="about.js"></script>
 </body>
 </html>

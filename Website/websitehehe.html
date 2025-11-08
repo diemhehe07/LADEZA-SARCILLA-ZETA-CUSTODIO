@@ -4,183 +4,406 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SLS-U Matter</title>
-  <link rel="stylesheet" href="webstyles.css"/>
+  <title>SLS-U Matter | Mental Health Support</title>
+  <link rel="stylesheet" href="webstyles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+  <!-- Header with responsive navigation -->
   <header class="site-header">
     <div class="wrap nav-row">
       <div class="brand">
         <img src="images/logo2.png" alt="SLS-U Matters Logo" class="brand-logo">
       </div>
-      <nav>
-        <a href="websitehehe.html" data-section="websitehehe.html">Home</a>
-        <a href="html/about.html" data-section="about.html">About</a>
-        <a href="html/resources.html" data-section="resources.html">Resources</a>
-        <a href="html/services.html" data-section="services.html">Services</a>
-        <a href="html/feedback.html" data-section="feedback.html">Feedback</a>
-        <a href="html/contact.html" data-section="contact.html">Contact</a>
+      <nav class="main-nav">
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links">
+          <a href="websitehehe.html" data-section="websitehehe.html">Home</a>
+          <a href="html/about.html" data-section="about.html">About</a>
+          <a href="html/resources.html" data-section="resources.html">Resources</a>
+          <a href="html/services.html" data-section="services.html">Services</a>
+          <a href="html/feedback.html" data-section="feedback.html">Feedback</a>
+          <a href="html/contact.html" data-section="contact.html">Contact</a>
+        </div>
       </nav>
-      <div class="nav-cta"><a class="btn btn-ghost" href="#contact">Book</a></div>
+      <div class="nav-cta"><a class="btn btn-ghost" href="#contact">Book Session</a></div>
     </div>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="overlay">
       <h1>Your Mental Well-being Matters</h1>
-      <p>We're here to provide guidance, support, and resources for a healthier mind.</p>
-      <button class="primary-btn" onclick="scrollToSection('about')">Get Started</button>
+      <p>We're here to provide guidance, support, and resources for a healthier mind. Professional help is just a click away.</p>
+      <div class="hero-buttons">
+        <button class="primary-btn" onclick="scrollToSection('about')">Get Started</button>
+        <button class="secondary-btn" onclick="scrollToSection('services')">Our Services</button>
+      </div>
     </div>
   </section>
 
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="wrap">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h3>500+</h3>
+          <p>People Helped</p>
+        </div>
+        <div class="stat-item">
+          <h3>24/7</h3>
+          <p>Support Available</p>
+        </div>
+        <div class="stat-item">
+          <h3>15+</h3>
+          <p>Professional Therapists</p>
+        </div>
+        <div class="stat-item">
+          <h3>98%</h3>
+          <p>Client Satisfaction</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- About Section -->
   <section class="split" id="about">
-    <img src="images/mental-health.jpg" alt="Mental Health Image">
-    <div class="text">
-      <h2>Mission</h2>
-      <p>We aim to promote mental wellness awareness and offer accessible tools for individuals and families. Our goal
-        is to make help reachable to anyone who needs it, at any time.</p>
-      <p>Through education and empathy, we hope to normalize seeking help and empower people to take proactive steps for
-        their emotional health.</p>
-    </div>
-    <div class="text">
-      <h2>Vision</h2>
-      <p>To build an inclusive digital environment where every voice is heard and every story is valued. We envision a
-        future where mental health care is integrated into everyday life and stigma is left behind.</p>
+    <div class="wrap">
+      <div class="split-content">
+        <div class="split-image">
+          <img src="images/mental-health.jpg" alt="Mental Health Image">
+        </div>
+        <div class="split-text">
+          <div class="text-block">
+            <h2>Our Mission</h2>
+            <p>We aim to promote mental wellness awareness and offer accessible tools for individuals and families. Our goal is to make help reachable to anyone who needs it, at any time.</p>
+            <p>Through education and empathy, we hope to normalize seeking help and empower people to take proactive steps for their emotional health.</p>
+          </div>
+          <div class="text-block">
+            <h2>Our Vision</h2>
+            <p>To build an inclusive digital environment where every voice is heard and every story is valued. We envision a future where mental health care is integrated into everyday life and stigma is left behind.</p>
+          </div>
+          <div class="about-buttons">
+            <button class="primary-btn" onclick="scrollToSection('services')">Our Services</button>
+            <button class="secondary-btn" onclick="scrollToSection('contact')">Contact Us</button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- Resources Section -->
   <section class="resources" id="resources">
-    <h2>Featured Mental Health Resources</h2>
-    <div class="resource-grid">
-      <article>
-        <h3>Mindfulness Exercises</h3>
-        <p>Discover guided breathing and meditation techniques designed to reduce anxiety and promote inner peace.</p>
-        <a href="#" class="link-btn">Explore</a>
-      </article>
-      <article>
-        <h3>Wellness Blog</h3>
-        <p>Read stories and expert advice from mental health professionals and advocates around the world.</p>
-        <a href="#" class="link-btn">Read Blog</a>
-      </article>
-      <article>
-        <h3>Hotline Directory</h3>
-        <p>Find verified mental health hotlines and support groups available in your area 24/7.</p>
-        <a href="#" class="link-btn">Find Help</a>
-      </article>
+    <div class="wrap">
+      <h2>Featured Mental Health Resources</h2>
+      <p class="section-subtitle">Access tools and information to support your mental wellness journey</p>
+      <div class="resource-grid">
+        <article class="resource-card">
+          <div class="resource-icon">🧘</div>
+          <h3>Mindfulness Exercises</h3>
+          <p>Discover guided breathing and meditation techniques designed to reduce anxiety and promote inner peace.</p>
+          <a href="#" class="link-btn">Explore Exercises</a>
+        </article>
+        <article class="resource-card">
+          <div class="resource-icon">📝</div>
+          <h3>Wellness Blog</h3>
+          <p>Read stories and expert advice from mental health professionals and advocates around the world.</p>
+          <a href="#" class="link-btn">Read Blog</a>
+        </article>
+        <article class="resource-card">
+          <div class="resource-icon">📞</div>
+          <h3>Hotline Directory</h3>
+          <p>Find verified mental health hotlines and support groups available in your area 24/7.</p>
+          <a href="#" class="link-btn">Find Help</a>
+        </article>
+        <article class="resource-card">
+          <div class="resource-icon">📚</div>
+          <h3>Self-Help Guides</h3>
+          <p>Downloadable workbooks and guides to help you manage stress, anxiety, and other mental health challenges.</p>
+          <a href="#" class="link-btn">Download Guides</a>
+        </article>
+      </div>
+      <div class="resources-cta">
+        <button class="primary-btn">View All Resources</button>
+      </div>
     </div>
   </section>
 
+  <!-- Services Split Section -->
   <section class="services-split" id="services">
-    <div class="service-item">
-      <div class="service-image">
-        <img src="images/therapy.jpg" alt="Therapy Sessions">
+    <div class="wrap">
+      <div class="service-item">
+        <div class="service-image">
+          <img src="images/therapy.jpg" alt="Therapy Sessions">
+        </div>
+        <div class="service-text">
+          <h2>Therapy Sessions</h2>
+          <p>Find licensed therapists ready to listen, guide, and help you navigate life's challenges. Whether you're facing anxiety, burnout, or personal struggles, our professionals offer compassionate support tailored to your needs.</p>
+          <div class="service-features">
+            <span>✓ Individual Sessions</span>
+            <span>✓ Flexible Scheduling</span>
+            <span>✓ Online or In-Person</span>
+          </div>
+          <a href="#" class="link-btn">Book a Session</a>
+        </div>
       </div>
-      <div class="service-text">
-        <h2>Therapy Sessions</h2>
-        <p>Find licensed therapists ready to listen, guide, and help you navigate life's challenges. Whether you're
-          facing anxiety, burnout, or personal struggles, our professionals offer compassionate support tailored to your
-          needs.</p>
-        <a href="#" class="link-btn">Book a Session</a>
+
+      <div class="service-item reverse">
+        <div class="service-text">
+          <h2>Community Support</h2>
+          <p>Join safe, welcoming spaces where people share stories, find understanding, and support one another through healing. You don’t have to go through it alone — there’s a community waiting for you.</p>
+          <div class="service-features">
+            <span>✓ Peer Support Groups</span>
+            <span>✓ Online Forums</span>
+            <span>✓ Monthly Meetups</span>
+          </div>
+          <a href="#" class="link-btn">Join a Group</a>
+        </div>
+        <div class="service-image">
+          <img src="images/community.jpeg" alt="Community Support">
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-image">
+          <img src="images/resources.jpg" alt="Helpful Resources">
+        </div>
+        <div class="service-text">
+          <h2>Helpful Resources</h2>
+          <p>Access practical self-help tools and professional guides designed to promote better mental wellness. From mindfulness to resilience-building, we've got you covered.</p>
+          <div class="service-features">
+            <span>✓ Self-Assessment Tools</span>
+            <span>✓ Educational Materials</span>
+            <span>✓ Crisis Resources</span>
+          </div>
+          <a href="#" class="link-btn">Explore Resources</a>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="service-item reverse">
-      <div class="service-text">
-        <h2>Community Support</h2>
-        <p>Join safe, welcoming spaces where people share stories, find understanding, and support one another through
-          healing. You don’t have to go through it alone — there’s a community waiting for you.</p>
-        <a href="#" class="link-btn">Join a Group</a>
-      </div>
-      <div class="service-image">
-        <img src="images/community.jpeg" alt="Community Support">
-      </div>
-    </div>
-
-    <div class="service-item">
-      <div class="service-image">
-        <img src="images/resources.jpg" alt="Helpful Resources">
-      </div>
-      <div class="service-text">
-        <h2>Helpful Resources</h2>
-        <p>Access practical self-help tools and professional guides designed to promote better mental wellness. From
-          mindfulness to resilience-building, we’ve got you covered.</p>
-        <a href="#" class="link-btn">Explore Resources</a>
+  <!-- Evidence-Based Services -->
+  <section class="section evidence-services">
+    <div class="wrap">
+      <div class="kicker">Our Services</div>
+      <h2>Evidence-Based Care for What Matters</h2>
+      <p class="section-subtitle">Professional, compassionate mental health services tailored to your unique needs</p>
+      <div class="services-grid">
+        <article class="service reveal">
+          <div class="service-icon">🧠</div>
+          <h3>Cognitive Behavioral Therapy</h3>
+          <p>Learn to identify and change negative thought patterns with actionable, science-based techniques.</p>
+          <a href="#" class="read-more">Learn More</a>
+        </article>
+        <article class="service reveal">
+          <div class="service-icon">💑</div>
+          <h3>Couples & Relationship Therapy</h3>
+          <p>Strengthen bonds, rebuild trust, and improve communication with your partner.</p>
+          <a href="#" class="read-more">Learn More</a>
+        </article>
+        <article class="service reveal">
+          <div class="service-icon">🛡️</div>
+          <h3>Trauma-Informed Care</h3>
+          <p>Compassionate, evidence-based care that respects your healing process.</p>
+          <a href="#" class="read-more">Learn More</a>
+        </article>
+        <article class="service reveal">
+          <div class="service-icon">👦</div>
+          <h3>Child & Adolescent Therapy</h3>
+          <p>Encouraging healthy emotional development through play and dialogue.</p>
+          <a href="#" class="read-more">Learn More</a>
+        </article>
+        <article class="service reveal">
+          <div class="service-icon">🧘</div>
+          <h3>Mindfulness & Stress Reduction</h3>
+          <p>Techniques to manage stress, increase focus, and improve emotional regulation.</p>
+          <a href="#" class="read-more">Learn More</a>
+        </article>
+        <article class="service reveal">
+          <div class="service-icon">💼</div>
+          <h3>Workplace Wellness</h3>
+          <p>Programs to support mental health in professional environments and reduce burnout.</p>
+          <a href="#" class="read-more">Learn More</a>
+        </article>
       </div>
     </div>
   </section>
 
-
-  <section class="section">
-    <div class="kicker">Our Services</div>
-    <h2>Evidence-Based Care for What Matters</h2>
-    <div class="services-grid">
-      <article class="service reveal">
-        <h3>Cognitive Behavioral Therapy</h3>
-        <p>Learn to identify and change negative thought patterns with actionable, science-based techniques.</p>
-      </article>
-      <article class="service reveal">
-        <h3>Couples & Relationship Therapy</h3>
-        <p>Strengthen bonds, rebuild trust, and improve communication with your partner.</p>
-      </article>
-      <article class="service reveal">
-        <h3>Trauma-Informed Care</h3>
-        <p>Compassionate, evidence-based care that respects your healing process.</p>
-      </article>
-      <article class="service reveal">
-        <h3>Child & Adolescent Therapy</h3>
-        <p>Encouraging healthy emotional development through play and dialogue.</p>
-      </article>
-    </div>
-  </section>
-
+  <!-- Feedback & Testimonials -->
   <section class="feedback-testimonials" id="feedback">
-    <h2>Share Your Feedback</h2>
-    <p>We value your voice. Tell us how we can make our space better for you.</p>
+    <div class="wrap">
+      <h2>Share Your Feedback</h2>
+      <p class="section-subtitle">We value your voice. Tell us how we can make our space better for you.</p>
 
-    <div class="feedback-container">
-      <form class="feedback-form" id="feedbackForm">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" rows="4" placeholder="Write your feedback..." required></textarea>
-        <button type="submit">Submit Feedback</button>
-      </form>
+      <div class="feedback-container">
+        <form class="feedback-form" id="feedbackForm">
+          <h3>Send Us Your Feedback</h3>
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <select name="feedback-type">
+            <option value="">Select Feedback Type</option>
+            <option value="suggestion">Suggestion</option>
+            <option value="complaint">Complaint</option>
+            <option value="praise">Praise</option>
+            <option value="question">Question</option>
+          </select>
+          <textarea name="message" rows="4" placeholder="Write your feedback..." required></textarea>
+          <button type="submit" class="primary-btn">Submit Feedback</button>
+        </form>
 
-      <div class="extra-testimonials">
-        <div class="testimonial">
-          <img src="pics.jpeg" alt="User 3">
-          <p>"The resources here gave me tools to handle stress better. Highly recommended!"</p>
-        </div>
-        <div class="testimonial">
-          <img src="pics.jpeg" alt="User 4">
-          <p>"I finally found a community that understands what I’m going through."</p>
+        <div class="testimonials-section">
+          <h3>What People Say</h3>
+          <div class="testimonials-grid">
+            <div class="testimonial">
+              <div class="testimonial-content">
+                <p>"The resources here gave me tools to handle stress better. Highly recommended!"</p>
+              </div>
+              <div class="testimonial-author">
+                <img src="images/user1.jpg" alt="User 1">
+                <div>
+                  <h4>Maria Santos</h4>
+                  <span>Client</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-content">
+                <p>"I finally found a community that understands what I'm going through."</p>
+              </div>
+              <div class="testimonial-author">
+                <img src="images/user2.jpg" alt="User 2">
+                <div>
+                  <h4>James Wilson</h4>
+                  <span>Client</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial-content">
+                <p>"Professional, compassionate care that made a real difference in my life."</p>
+              </div>
+              <div class="testimonial-author">
+                <img src="images/user3.jpg" alt="User 3">
+                <div>
+                  <h4>Sarah Johnson</h4>
+                  <span>Client</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="cta">
-    <h2>Need Immediate Help?</h2>
-    <p>Our support line is open 24/7. Don’t hesitate to reach out.</p>
-    <button onclick="scrollToSection('contact')">Get Help</button>
+  <!-- Emergency CTA -->
+  <section class="cta emergency-cta">
+    <div class="wrap">
+      <h2>Need Immediate Help?</h2>
+      <p>Our support line is open 24/7. Don't hesitate to reach out.</p>
+      <div class="cta-buttons">
+        <button class="primary-btn" onclick="window.location.href='tel:+639123456789'">Call Now</button>
+        <button class="secondary-btn" onclick="scrollToSection('contact')">Send Message</button>
+      </div>
+      <div class="emergency-contacts">
+        <p><strong>Emergency Contacts:</strong> National Crisis Hotline: 0917-899-8727 | Hopeline: (02) 8804-4673</p>
+      </div>
+    </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <div class="links">
-      <h4>Quick Links</h4>
-      <a href="#about">About</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">FAQs</a>
-    </div>
-    <div class="contact" id="contact">
-      <h4>Contact Us</h4>
-      <p>Email: support@slsumatters.org</p>
-      <p>Hotline: +63 912 345 6789</p>
-      <p>Emergency: 911</p>
+    <div class="wrap">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="images/logo2.png" alt="SLS-U Matters Logo" class="footer-logo">
+          <p>Providing compassionate mental health support and resources for everyone.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Twitter">TW</a>
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="LinkedIn">IN</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="links-column">
+            <h4>Quick Links</h4>
+            <a href="#about">About Us</a>
+            <a href="#services">Services</a>
+            <a href="#resources">Resources</a>
+            <a href="#feedback">Feedback</a>
+          </div>
+          <div class="links-column">
+            <h4>Support</h4>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">FAQs</a>
+            <a href="#">Accessibility</a>
+          </div>
+          <div class="links-column contact" id="contact">
+            <h4>Contact Us</h4>
+            <p>Email: support@slsumatters.org</p>
+            <p>Hotline: +63 912 345 6789</p>
+            <p>Emergency: 911</p>
+            <p>Address: 123 Wellness St., Mental Health City</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 SLS-U Matters. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+    });
+    
+    // Scroll to section function
+    function scrollToSection(sectionId) {
+      document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Reveal animation on scroll
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealOnScroll = () => {
+      revealElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+          element.classList.add('active');
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', revealOnScroll);
+    // Initial check in case elements are already in view
+    revealOnScroll();
+    
+    // Form submission
+    const feedbackForm = document.getElementById('feedbackForm');
+    feedbackForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // In a real application, you would send the form data to a server here
+      alert('Thank you for your feedback! We appreciate your input.');
+      feedbackForm.reset();
+    });
+  </script>
 </body>
 
 </html>

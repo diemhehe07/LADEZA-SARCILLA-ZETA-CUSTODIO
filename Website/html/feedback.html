@@ -1,55 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SLS-U Matters | Feedback</title>
-  <link rel="stylesheet" href="/Website/css/global.css">
-  <link rel="stylesheet" href="/Website/css/feedback.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback | SLS-U Matter</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="fade-in">
+<body>
+  <!-- Header -->
   <header class="site-header">
     <div class="wrap nav-row">
       <div class="brand">
-        <img src="/Website/images/logo2.png" alt="SLS-U Matters Logo" class="brand-logo"> 
+        <img src="images/logo2.png" alt="SLS-U Matters Logo" class="brand-logo">
       </div>
-      <nav>
-        <a href="/Website/websitehehe.html" data-section="websitehehe.html">Home</a>
-        <a href="/Website/html/about.html" data-section="about.html">About</a>
-        <a href="/Website/html/resources.html" data-section="resources.html">Resources</a>
-        <a href="/Website/html/services.html" data-section="services.html">Services</a>
-        <a href="/Website/html/feedback.html" data-section="feedback.html">Feedback</a>
-        <a href="/Website/html/contact.html" data-section="contact.html">Contact</a>
+      <nav class="main-nav">
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="resources.html">Resources</a>
+          <a href="services.html">Services</a>
+          <a href="feedback.html" class="active">Feedback</a>
+          <a href="contact.html">Contact</a>
+        </div>
       </nav>
-      <div class="nav-cta"><a class="btn btn-ghost" href="#contact">Book</a></div>
+      <div class="nav-cta"><a class="btn btn-ghost" href="booking.html">Book Session</a></div>
     </div>
   </header>
 
-  <section class="feedback">
-    <h2>Share Your Feedback</h2>
-    <p>Your thoughts help us improve our services and outreach.</p>
-
-    <form class="feedback-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Write your feedback..." required></textarea>
-      <button type="submit">Submit</button>
-    </form>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="wrap">
+      <h1>Share Your Feedback</h1>
+      <p>Your voice matters. Help us improve our services and support by sharing your experience.</p>
+    </div>
+  </section>
+  
+  <!-- Feedback Content -->
+  <section class="page-content">
+    <div class="wrap">
+      <div class="feedback-content">
+        <div class="feedback-intro">
+          <h2>We Value Your Opinion</h2>
+          <p>Your feedback helps us enhance our mental health services and create a better experience for everyone. Whether you have suggestions, concerns, or positive experiences to share, we're listening.</p>
+        </div>
+        
+        <div class="feedback-form-container">
+          <form id="feedbackForm">
+            <div class="form-group">
+              <label for="feedbackName">Your Name (Optional)</label>
+              <input type="text" id="feedbackName" name="name" placeholder="If you'd like to share your name">
+            </div>
+            
+            <div class="form-group">
+              <label for="feedbackEmail">Email Address (Optional)</label>
+              <input type="email" id="feedbackEmail" name="email" placeholder="If you'd like us to follow up">
+            </div>
+            
+            <div class="rating-section">
+              <label>Overall Satisfaction</label>
+              <div class="rating-options">
+                <label class="rating-option rating-1">
+                  <input type="radio" name="rating" value="1" required>
+                  <div class="rating-circle">1</div>
+                  <span>Poor</span>
+                </label>
+                <label class="rating-option rating-2">
+                  <input type="radio" name="rating" value="2">
+                  <div class="rating-circle">2</div>
+                  <span>Fair</span>
+                </label>
+                <label class="rating-option rating-3">
+                  <input type="radio" name="rating" value="3">
+                  <div class="rating-circle">3</div>
+                  <span>Good</span>
+                </label>
+                <label class="rating-option rating-4">
+                  <input type="radio" name="rating" value="4">
+                  <div class="rating-circle">4</div>
+                  <span>Very Good</span>
+                </label>
+                <label class="rating-option rating-5">
+                  <input type="radio" name="rating" value="5">
+                  <div class="rating-circle">5</div>
+                  <span>Excellent</span>
+                </label>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label>What type of feedback are you providing?</label>
+              <div class="feedback-type">
+                <label class="feedback-type-option">
+                  <input type="radio" name="feedbackType" value="service" required>
+                  <div class="type-content">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <span>Service Experience</span>
+                  </div>
+                </label>
+                <label class="feedback-type-option">
+                  <input type="radio" name="feedbackType" value="website">
+                  <div class="type-content">
+                    <i class="fas fa-desktop"></i>
+                    <span>Website Feedback</span>
+                  </div>
+                </label>
+                <label class="feedback-type-option">
+                  <input type="radio" name="feedbackType" value="suggestion">
+                  <div class="type-content">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Suggestions</span>
+                  </div>
+                </label>
+                <label class="feedback-type-option">
+                  <input type="radio" name="feedbackType" value="issue">
+                  <div class="type-content">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Report an Issue</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="feedbackService">Which service are you providing feedback about? (Optional)</label>
+              <select id="feedbackService" name="service">
+                <option value="">Select a service</option>
+                <option value="cbt">Cognitive Behavioral Therapy</option>
+                <option value="couples">Couples Therapy</option>
+                <option value="trauma">Trauma-Informed Care</option>
+                <option value="support-group">Support Groups</option>
+                <option value="child-therapy">Child & Adolescent Therapy</option>
+                <option value="online-therapy">Online Therapy</option>
+                <option value="resources">Resources Section</option>
+                <option value="general">General Experience</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="feedbackTitle">Brief Summary</label>
+              <input type="text" id="feedbackTitle" name="title" placeholder="Brief summary of your feedback" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="feedbackMessage">Your Feedback *</label>
+              <textarea id="feedbackMessage" name="message" rows="6" placeholder="Please share your experience, suggestions, or concerns in detail..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="feedbackImprovement">What could we improve? (Optional)</label>
+              <textarea id="feedbackImprovement" name="improvement" rows="3" placeholder="Any specific suggestions for improvement?"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label>
+                <input type="checkbox" name="anonymous" id="anonymousFeedback">
+                Submit anonymously
+              </label>
+            </div>
+            
+            <div class="form-group">
+              <label>
+                <input type="checkbox" name="consent" required>
+                I consent to this feedback being used to improve SLS-U Matters services *
+              </label>
+            </div>
+            
+            <button type="submit" class="primary-btn">Submit Feedback</button>
+          </form>
+          <div id="feedbackResult" class="message" style="display: none;"></div>
+        </div>
+        
+        <div class="feedback-stats">
+          <h2>Community Feedback Impact</h2>
+          <p>See how your feedback contributes to improving our services for everyone.</p>
+          
+          <div class="stats-overview">
+            <div class="stat-box">
+              <span class="stat-number" id="totalFeedback">0</span>
+              <span>Total Feedback Received</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number" id="avgRating">0.0</span>
+              <span>Average Rating</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number" id="improvements">0</span>
+              <span>Improvements Made</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number" id="responseRate">98%</span>
+              <span>Response Rate</span>
+            </div>
+          </div>
+          
+          <div class="recent-feedback">
+            <h3>Recent Community Feedback</h3>
+            <div id="recentFeedbackList">
+              <!-- Feedback items will be loaded here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
- <footer>
-    <div class="links">
-      <h4>Quick Links</h4>
-      <a href="#about">About</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">FAQs</a>
-    </div>
-    <div class="contact" id="contact">
-      <h4>Contact Us</h4>
-      <p>Email: support@slsumatters.org</p>
-      <p>Hotline: +63 912 345 6789</p>
-      <p>Emergency: 911</p>
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="images/logo2.png" alt="SLS-U Matters Logo" class="footer-logo">
+          <p>Providing compassionate mental health support and resources for everyone.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="links-column">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="resources.html">Resources</a>
+          </div>
+          <div class="links-column">
+            <h4>Support</h4>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="faq.html">FAQs</a>
+            <a href="accessibility.html">Accessibility</a>
+          </div>
+          <div class="links-column contact">
+            <h4>Contact Info</h4>
+            <p>Email: support@slsumatters.org</p>
+            <p>Hotline: +63 912 345 6789</p>
+            <p>Emergency: 911</p>
+            <p>Address: 123 Wellness St., Mental Health City</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 SLS-U Matters. All rights reserved.</p>
+      </div>
     </div>
   </footer>
+
+  <!-- Thank You Modal -->
+  <div id="thankYouModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="thank-you-content">
+        <div class="thank-you-icon">
+          <i class="fas fa-heart"></i>
+        </div>
+        <h2>Thank You!</h2>
+        <p>Your feedback has been received and is greatly appreciated. We review all feedback carefully and use it to improve our services.</p>
+        <p><strong>What happens next?</strong></p>
+        <ul>
+          <li>We'll review your feedback within 2-3 business days</li>
+          <li>If you provided contact information, we may follow up</li>
+          <li>Your suggestions will be considered in our service improvements</li>
+        </ul>
+        <button class="primary-btn" onclick="closeThankYouModal()">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="feedback.js"></script>
 </body>
 </html>
