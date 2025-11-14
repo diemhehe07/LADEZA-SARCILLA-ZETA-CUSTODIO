@@ -502,3 +502,86 @@ footer {
     font-size: 1.8rem;
   }
 }
+
+/* Profile icon styles */
+.profile-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--text);
+  text-decoration: none;
+  transition: var(--transition);
+  margin-left: 12px;
+  border: 2px solid rgba(11, 18, 32, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+}
+
+.profile-icon:hover {
+  background: var(--accent-2);
+  color: white;
+  border-color: var(--accent-2);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.profile-icon:active {
+  transform: translateY(0);
+}
+
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Profile icon animation */
+@keyframes profilePulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(108, 142, 245, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(108, 142, 245, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(108, 142, 245, 0);
+  }
+}
+
+.profile-icon.pulse {
+  animation: profilePulse 2s infinite;
+}
+
+/* Mobile responsiveness for profile icon */
+@media (max-width: 768px) {
+  .profile-icon {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+  }
+  
+  .profile-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .nav-cta {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-icon {
+    width: 36px;
+    height: 36px;
+    margin-left: 8px;
+  }
+  
+  .profile-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}
