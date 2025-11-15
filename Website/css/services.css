@@ -149,6 +149,178 @@
   background: #f8f9fa;
 }
 
+/* Campus Support Section Styles */
+.campus-support-section {
+  background: white;
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: 60px 0;
+}
+
+.campus-support-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.support-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.campus-details {
+  margin: 20px 0;
+}
+
+.campus-details .detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 25px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.campus-details .detail-item:hover {
+  background: #e9ecef;
+  transform: translateX(5px);
+}
+
+.campus-details .detail-item i {
+  font-size: 1.5rem;
+  color: var(--accent-2);
+  margin-top: 5px;
+  min-width: 30px;
+}
+
+.campus-details .detail-item div {
+  flex: 1;
+}
+
+.campus-details .detail-item strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.campus-details .detail-item p {
+  margin: 2px 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.accessibility-options {
+  flex: 1;
+  min-width: 300px;
+}
+
+.accessibility-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.feature:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+}
+
+.feature i {
+  font-size: 1.2rem;
+  color: var(--accent-2);
+  min-width: 25px;
+}
+
+.feature span {
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* Testimonials Section Styles */
+.testimonials-section {
+  margin: 60px 0;
+  text-align: center;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  position: relative;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.testimonial-card::before {
+  content: '"';
+  font-size: 4rem;
+  color: var(--accent-2);
+  opacity: 0.2;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-family: Georgia, serif;
+}
+
+.testimonial-content {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px;
+}
+
+.testimonial-content p {
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.testimonial-author {
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.testimonial-author strong {
+  display: block;
+  color: var(--text);
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.testimonial-author span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Insurance Section Styles */
 .insurance-section {
   background: white;
   padding: 40px;
@@ -213,14 +385,78 @@
   color: #721c24;
 }
 
+/* Modal Styles for Accommodations */
+#accommodationModal .modal-content {
+  max-width: 500px;
+}
+
+#accommodationForm .form-group {
+  margin-bottom: 20px;
+}
+
+#accommodationForm label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+#accommodationForm input,
+#accommodationForm select,
+#accommodationForm textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+#accommodationForm input:focus,
+#accommodationForm select:focus,
+#accommodationForm textarea:focus {
+  outline: none;
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+/* Free Service Badge */
+.service-pricing .price {
+  color: #28a745; /* Green color for free services */
+}
+
+/* Campus-specific styling */
+.campus-support-section h2,
+.testimonials-section h2 {
+  color: var(--accent-2);
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.campus-support-section h2::after,
+.testimonials-section h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--accent-2);
+  margin: 10px auto 0;
+}
+
 /* Responsive Services Styles */
 @media (max-width: 900px) {
-  .insurance-content {
+  .insurance-content,
+  .campus-support-content {
     flex-direction: column;
   }
   
   .service-actions {
     flex-direction: column;
+  }
+  
+  .accessibility-features {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -247,5 +483,84 @@
   .comparison-table td {
     padding: 10px;
     font-size: 0.9rem;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .campus-support-section,
+  .insurance-section {
+    padding: 20px;
+  }
+  
+  .campus-details .detail-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .campus-details .detail-item i {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-card {
+    padding: 20px;
+  }
+  
+  .service-icon {
+    font-size: 2rem;
+  }
+  
+  .price {
+    font-size: 1.5rem;
+  }
+  
+  .testimonial-card {
+    padding: 20px;
+  }
+  
+  .testimonial-card::before {
+    font-size: 3rem;
+    top: 5px;
+    left: 15px;
+  }
+}
+
+/* Animation for new sections */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.campus-support-section,
+.testimonials-section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+.testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+.testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* Print Styles */
+@media print {
+  .service-actions,
+  .filter-options,
+  #requestAccommodation {
+    display: none;
+  }
+  
+  .service-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
   }
 }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us | SLS-U Matter</title>
+  <title>Contact Us | SLSU-U Matter</title>
 <head>
   <link rel="stylesheet" href="/Website/css/global.css">
   <link rel="stylesheet" href="/Website/css/contact.css">
@@ -18,7 +18,7 @@
 <header class="site-header">
   <div class="wrap nav-row">
     <div class="brand">
-      <img src="/Website/images/logo2.png" alt="SLS-U Matters Logo" class="brand-logo">
+      <img src="/Website/images/logo2.png" alt="SLSU-U Matters Logo" class="brand-logo">
     </div>
     <nav class="main-nav">
       <button class="mobile-menu-toggle" aria-label="Toggle menu">
@@ -50,8 +50,8 @@
   <!-- Page Header -->
   <section class="page-header">
     <div class="wrap">
-      <h1>Contact Us</h1>
-      <p>Get in touch with our team. We're here to help and support you on your mental health journey.</p>
+      <h1>Contact SLSU-U Matter</h1>
+      <p>Get in touch with our campus team. We're here to support SLSU students on their mental health journey.</p>
     </div>
   </section>
   
@@ -60,8 +60,8 @@
     <div class="wrap">
       <div class="contact-content">
         <div class="contact-info">
-          <h2>Get In Touch</h2>
-          <p>We understand that reaching out can be difficult. Our compassionate team is here to listen and provide the support you need.</p>
+          <h2>Campus Support Channels</h2>
+          <p>We understand that reaching out can be difficult. Our compassionate SLSU team is here to listen and provide the support you need as a student.</p>
           
           <div class="contact-methods">
             <div class="contact-method">
@@ -69,10 +69,10 @@
                 <i class="fas fa-phone-alt"></i>
               </div>
               <div class="contact-details">
-                <h3>Phone Support</h3>
+                <h3>Campus Hotline</h3>
                 <p>+63 912 345 6789</p>
-                <p>Available 24/7 for urgent matters</p>
-                <button class="primary-btn" onclick="window.location.href='tel:+639123456789'">Call Now</button>
+                <p>Available during campus hours for student support</p>
+                <button class="primary-btn" onclick="window.location.href='tel:+639123456789'">Call Campus Line</button>
               </div>
             </div>
             
@@ -81,10 +81,10 @@
                 <i class="fas fa-envelope"></i>
               </div>
               <div class="contact-details">
-                <h3>Email Us</h3>
-                <p>support@slsumatters.org</p>
-                <p>We respond within 24 hours</p>
-                <button class="primary-btn" onclick="window.location.href='mailto:support@slsumatters.org'">Send Email</button>
+                <h3>SLSU Email</h3>
+                <p>slsu-umatter@slsu.edu.ph</p>
+                <p>We respond within 24 hours on school days</p>
+                <button class="primary-btn" onclick="window.location.href='mailto:slsu-umatter@slsu.edu.ph'">Send SLSU Email</button>
               </div>
             </div>
             
@@ -93,10 +93,10 @@
                 <i class="fas fa-map-marker-alt"></i>
               </div>
               <div class="contact-details">
-                <h3>Visit Our Office</h3>
-                <p>123 Wellness Street</p>
-                <p>Mental Health City, 1000</p>
-                <button class="primary-btn" onclick="openMap()">Get Directions</button>
+                <h3>Guidance Office</h3>
+                <p>SLSU Lucena Campus</p>
+                <p>Main Building, 2nd Floor</p>
+                <button class="primary-btn" onclick="openCampusMap()">Get Campus Directions</button>
               </div>
             </div>
             
@@ -105,28 +105,28 @@
                 <i class="fas fa-comments"></i>
               </div>
               <div class="contact-details">
-                <h3>Live Chat</h3>
-                <p>Available Mon-Fri, 9AM-6PM</p>
-                <p>Instant support from our team</p>
-                <button class="primary-btn" id="startChat">Start Chat</button>
+                <h3>Student Chat</h3>
+                <p>Available Mon-Fri, 8AM-5PM</p>
+                <p>Instant support from campus counselors</p>
+                <button class="primary-btn" id="startChat">Start Student Chat</button>
               </div>
             </div>
           </div>
           
           <div class="office-hours">
-            <h3>Office Hours</h3>
+            <h3>Campus Service Hours</h3>
             <table class="hours-table">
               <tr>
                 <td class="day">Monday - Friday</td>
-                <td>9:00 AM - 6:00 PM</td>
+                <td>8:00 AM - 5:00 PM</td>
               </tr>
               <tr>
                 <td class="day">Saturday</td>
-                <td>10:00 AM - 4:00 PM</td>
+                <td>By Appointment Only</td>
               </tr>
               <tr>
                 <td class="day">Sunday</td>
-                <td>Emergency Only</td>
+                <td>Campus Closed</td>
               </tr>
               <tr>
                 <td class="day">24/7 Crisis Line</td>
@@ -134,11 +134,27 @@
               </tr>
             </table>
           </div>
+
+          <div class="campus-departments">
+            <h3>Related Campus Departments</h3>
+            <div class="department-list">
+              <div class="department">
+                <h4>Office of Student Affairs</h4>
+                <p>Email: osa@slsu.edu.ph</p>
+                <p>Phone: (042) 710-2510</p>
+              </div>
+              <div class="department">
+                <h4>University Health Services</h4>
+                <p>Email: health@slsu.edu.ph</p>
+                <p>Phone: (042) 710-2520</p>
+              </div>
+            </div>
+          </div>
         </div>
         
         <div class="contact-form-container">
           <div class="contact-form">
-            <h2>Send Us a Message</h2>
+            <h2>Send Message to SLSU-U Matter</h2>
             <form id="contactForm">
               <div class="form-group">
                 <label for="contactName">Full Name *</label>
@@ -146,8 +162,13 @@
               </div>
               
               <div class="form-group">
-                <label for="contactEmail">Email Address *</label>
-                <input type="email" id="contactEmail" name="email" required>
+                <label for="studentId">SLSU Student ID</label>
+                <input type="text" id="studentId" name="studentId" placeholder="e.g., 2023-00123">
+              </div>
+              
+              <div class="form-group">
+                <label for="contactEmail">SLSU Email Address *</label>
+                <input type="email" id="contactEmail" name="email" placeholder="yourname@slsu.edu.ph" required>
               </div>
               
               <div class="form-group">
@@ -156,13 +177,20 @@
               </div>
               
               <div class="form-group">
+                <label for="courseYear">Course & Year Level</label>
+                <input type="text" id="courseYear" name="courseYear" placeholder="e.g., BS Psychology, 2nd Year">
+              </div>
+              
+              <div class="form-group">
                 <label for="contactSubject">Subject *</label>
                 <select id="contactSubject" name="subject" required>
                   <option value="">Select a subject</option>
+                  <option value="appointment">Counseling Appointment</option>
+                  <option value="academic">Academic Stress Support</option>
+                  <option value="career">Career Guidance</option>
+                  <option value="adjustment">College Adjustment</option>
+                  <option value="crisis">Crisis Support</option>
                   <option value="general">General Inquiry</option>
-                  <option value="appointment">Appointment Booking</option>
-                  <option value="support">Mental Health Support</option>
-                  <option value="emergency">Emergency Assistance</option>
                   <option value="feedback">Feedback</option>
                   <option value="other">Other</option>
                 </select>
@@ -170,7 +198,7 @@
               
               <div class="form-group">
                 <label for="contactMessage">Message *</label>
-                <textarea id="contactMessage" name="message" rows="6" placeholder="Tell us how we can help you..." required></textarea>
+                <textarea id="contactMessage" name="message" rows="6" placeholder="Tell us how we can support you as an SLSU student..." required></textarea>
               </div>
               
               <div class="form-group">
@@ -185,12 +213,19 @@
               
               <div class="form-group">
                 <label>
+                  <input type="checkbox" name="studentConsent" required>
+                  I confirm I am an SLSU Lucena student *
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label>
                   <input type="checkbox" name="consent" required>
-                  I consent to being contacted by SLS-U Matters and understand my information will be kept confidential *
+                  I consent to being contacted by SLSU-U Matter and understand my information will be kept confidential *
                 </label>
               </div>
               
-              <button type="submit" class="primary-btn">Send Message</button>
+              <button type="submit" class="primary-btn">Send Campus Message</button>
             </form>
             <div id="contactMessageResult" class="message" style="display: none;"></div>
           </div>
@@ -200,14 +235,15 @@
       <!-- Emergency Section -->
       <div class="emergency-cta" style="margin-top: 60px;">
         <div class="wrap">
-          <h2>Need Immediate Help?</h2>
+          <h2>Need Immediate Campus Help?</h2>
           <p>If you're in crisis or having thoughts of harm, please reach out to these emergency resources immediately.</p>
           <div class="cta-buttons">
             <button class="primary-btn" onclick="window.location.href='tel:09178998727'">Crisis Hotline</button>
             <button class="secondary-btn" onclick="window.location.href='tel:911'">Emergency Services</button>
+            <button class="secondary-btn" onclick="window.location.href='tel:+63427102525'">Campus Security</button>
           </div>
           <div class="emergency-contacts">
-            <p><strong>Emergency Contacts:</strong> National Crisis Hotline: 0917-899-8727 | Hopeline: (02) 8804-4673 | Emergency: 911</p>
+            <p><strong>SLSU Emergency Contacts:</strong> Campus Crisis Line: 0917-899-8727 | Guidance Office: (042) 710-2525 | Campus Security: (042) 710-2525</p>
           </div>
         </div>
       </div>
@@ -219,8 +255,8 @@
     <div class="wrap">
       <div class="footer-content">
         <div class="footer-brand">
-          <img src="/Website/images/logo2.png" alt="SLS-U Matters Logo" class="footer-logo">
-          <p>Providing compassionate mental health support and resources for everyone.</p>
+          <img src="/Website/images/logo2.png" alt="SLSU-U Matters Logo" class="footer-logo">
+          <p>Providing compassionate mental health support and resources for SLSU Lucena students.</p>
           <div class="social-links">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -231,7 +267,7 @@
         <div class="footer-links">
           <div class="links-column">
             <h4>Quick Links</h4>
-            <a href="index.html">Home</a>
+            <a href="home.html">Home</a>
             <a href="about.html">About</a>
             <a href="services.html">Services</a>
             <a href="resources.html">Resources</a>
@@ -244,16 +280,16 @@
             <a href="accessibility.html">Accessibility</a>
           </div>
           <div class="links-column contact">
-            <h4>Contact Info</h4>
-            <p>Email: support@slsumatters.org</p>
-            <p>Hotline: +63 912 345 6789</p>
-            <p>Emergency: 911</p>
-            <p>Address: 123 Wellness St., Mental Health City</p>
+            <h4>Contact SLSU-U Matter</h4>
+            <p>Email: slsu-umatter@slsu.edu.ph</p>
+            <p>Campus Hotline: +63 912 345 6789</p>
+            <p>Guidance Office: (042) 710-2525</p>
+            <p>Address: SLSU Lucena Campus, Lucena City</p>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2023 SLS-U Matters. All rights reserved.</p>
+        <p>&copy; 2023 SLSU-U Matters. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -262,11 +298,11 @@
   <div id="chatModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <h2>Live Chat Support</h2>
+      <h2>SLSU Student Chat Support</h2>
       <div class="chat-container">
         <div class="chat-messages" id="chatMessages">
           <div class="chat-message bot">
-            <p>Hello! Thank you for reaching out to SLS-U Matters. How can we help you today?</p>
+            <p>Hello! Thank you for reaching out to SLSU-U Matter. How can we support you today as an SLSU student?</p>
           </div>
         </div>
         <div class="chat-input">
@@ -274,7 +310,7 @@
           <button id="sendMessage" class="primary-btn">Send</button>
         </div>
       </div>
-      <p class="chat-notice">Our chat support is available Monday-Friday, 9AM-6PM. For urgent matters, please call our crisis hotline.</p>
+      <p class="chat-notice">Our student chat support is available Monday-Friday, 8AM-5PM. For urgent matters, please call our campus crisis line.</p>
     </div>
   </div>
 

@@ -629,3 +629,129 @@
     padding: 10px;
   }
 }
+
+/* Password strength indicator */
+.password-strength {
+  margin-top: 8px;
+}
+
+.strength-bar {
+  height: 4px;
+  background-color: #e0e0e0;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.strength-fill {
+  height: 100%;
+  width: 0%;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.strength-text {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Password match indicator */
+.password-match {
+  font-size: 12px;
+  margin-top: 4px;
+  height: 16px;
+}
+
+.password-match.valid {
+  color: #27ae60;
+}
+
+.password-match.invalid {
+  color: #e74c3c;
+}
+
+/* Notification system */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  max-width: 350px;
+  z-index: 1000;
+  transform: translateX(400px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notification.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.notification.success {
+  border-left: 4px solid #27ae60;
+}
+
+.notification.error {
+  border-left: 4px solid #e74c3c;
+}
+
+.notification.info {
+  border-left: 4px solid #3498db;
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notification.success .notification-content i {
+  color: #27ae60;
+}
+
+.notification.error .notification-content i {
+  color: #e74c3c;
+}
+
+.notification.info .notification-content i {
+  color: #3498db;
+}
+
+.notification-close {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: 10px;
+}
+
+.notification-close:hover {
+  color: #333;
+}
+
+/* Loading state for buttons */
+.btn-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Form validation styles */
+.form-group input:invalid,
+.form-group select:invalid {
+  border-color: #e74c3c;
+}
+
+.form-group input:valid,
+.form-group select:valid {
+  border-color: #27ae60;
+}
