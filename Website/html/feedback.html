@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Feedback | SLS-U Matter</title>
+  <title>Feedback | SLSU-U Matter</title>
 <head>
   <link rel="stylesheet" href="/Website/css/feedback.css">
   <link rel="stylesheet" href="/Website/css/global.css">
@@ -17,7 +17,7 @@
 <header class="site-header">
   <div class="wrap nav-row">
     <div class="brand">
-      <img src="/Website/images/logo2.png" alt="SLS-U Matters Logo" class="brand-logo">
+      <img src="/Website/images/logo2.png" alt="SLSU-U Matters Logo" class="brand-logo">
     </div>
     <nav class="main-nav">
       <button class="mobile-menu-toggle" aria-label="Toggle menu">
@@ -38,7 +38,7 @@
       <a class="btn btn-ghost" href="booking.html">Book Session</a>
       <!-- Profile icon for login -->
       <a href="/Website/html/login.html" class="profile-icon" aria-label="Login to your account">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www3.org/2000/svg">
           <path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke="currentColor" stroke-width="2"/>
           <path d="M20 21C20 19.6044 20 18.9067 19.8278 18.3389C19.44 17.0605 18.4395 16.06 17.1611 15.6722C16.5933 15.5 15.8956 15.5 14.5 15.5H9.5C8.10444 15.5 7.40665 15.5 6.83886 15.6722C5.56045 16.06 4.56004 17.0605 4.17224 18.3389C4 18.9067 4 19.6044 4 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
@@ -50,8 +50,8 @@
   <!-- Page Header -->
   <section class="page-header">
     <div class="wrap">
-      <h1>Share Your Feedback</h1>
-      <p>Your voice matters. Help us improve our services and support by sharing your experience.</p>
+      <h1>Share Your SLSU Feedback</h1>
+      <p>Your voice matters. Help us improve our campus mental health services and support by sharing your experience.</p>
     </div>
   </section>
   
@@ -60,8 +60,8 @@
     <div class="wrap">
       <div class="feedback-content">
         <div class="feedback-intro">
-          <h2>We Value Your Opinion</h2>
-          <p>Your feedback helps us enhance our mental health services and create a better experience for everyone. Whether you have suggestions, concerns, or positive experiences to share, we're listening.</p>
+          <h2>We Value Your Student Perspective</h2>
+          <p>Your feedback helps us enhance SLSU's mental health services and create a better campus experience for all students. Whether you have suggestions, concerns, or positive experiences to share, we're listening.</p>
         </div>
         
         <div class="feedback-form-container">
@@ -72,12 +72,22 @@
             </div>
             
             <div class="form-group">
-              <label for="feedbackEmail">Email Address (Optional)</label>
-              <input type="email" id="feedbackEmail" name="email" placeholder="If you'd like us to follow up">
+              <label for="studentId">SLSU Student ID (Optional)</label>
+              <input type="text" id="studentId" name="studentId" placeholder="e.g., 2023-00123">
+            </div>
+            
+            <div class="form-group">
+              <label for="feedbackEmail">SLSU Email Address (Optional)</label>
+              <input type="email" id="feedbackEmail" name="email" placeholder="yourname@slsu.edu.ph">
+            </div>
+            
+            <div class="form-group">
+              <label for="courseYear">Course & Year Level (Optional)</label>
+              <input type="text" id="courseYear" name="courseYear" placeholder="e.g., BS Psychology, 2nd Year">
             </div>
             
             <div class="rating-section">
-              <label>Overall Satisfaction</label>
+              <label>Overall Satisfaction with SLSU-U Matter</label>
               <div class="rating-options">
                 <label class="rating-option rating-1">
                   <input type="radio" name="rating" value="1" required>
@@ -111,24 +121,24 @@
               <label>What type of feedback are you providing?</label>
               <div class="feedback-type">
                 <label class="feedback-type-option">
-                  <input type="radio" name="feedbackType" value="service" required>
+                  <input type="radio" name="feedbackType" value="counseling" required>
                   <div class="type-content">
-                    <i class="fas fa-hand-holding-heart"></i>
-                    <span>Service Experience</span>
+                    <i class="fas fa-user-md"></i>
+                    <span>Counseling Service</span>
                   </div>
                 </label>
                 <label class="feedback-type-option">
-                  <input type="radio" name="feedbackType" value="website">
+                  <input type="radio" name="feedbackType" value="campus">
                   <div class="type-content">
-                    <i class="fas fa-desktop"></i>
-                    <span>Website Feedback</span>
+                    <i class="fas fa-university"></i>
+                    <span>Campus Resources</span>
                   </div>
                 </label>
                 <label class="feedback-type-option">
                   <input type="radio" name="feedbackType" value="suggestion">
                   <div class="type-content">
                     <i class="fas fa-lightbulb"></i>
-                    <span>Suggestions</span>
+                    <span>Student Suggestions</span>
                   </div>
                 </label>
                 <label class="feedback-type-option">
@@ -142,81 +152,124 @@
             </div>
             
             <div class="form-group">
-              <label for="feedbackService">Which service are you providing feedback about? (Optional)</label>
+              <label for="feedbackService">Which SLSU service are you providing feedback about? (Optional)</label>
               <select id="feedbackService" name="service">
                 <option value="">Select a service</option>
-                <option value="cbt">Cognitive Behavioral Therapy</option>
-                <option value="couples">Couples Therapy</option>
-                <option value="trauma">Trauma-Informed Care</option>
-                <option value="support-group">Support Groups</option>
-                <option value="child-therapy">Child & Adolescent Therapy</option>
-                <option value="online-therapy">Online Therapy</option>
-                <option value="resources">Resources Section</option>
-                <option value="general">General Experience</option>
+                <option value="academic">Academic Stress Counseling</option>
+                <option value="career">Career Guidance</option>
+                <option value="adjustment">College Adjustment Support</option>
+                <option value="social">Social Skills & Relationships</option>
+                <option value="crisis">Crisis Intervention</option>
+                <option value="workshop">Campus Workshops</option>
+                <option value="peer-support">Peer Support Groups</option>
+                <option value="online">Online Resources</option>
+                <option value="general">General Campus Experience</option>
               </select>
             </div>
             
             <div class="form-group">
               <label for="feedbackTitle">Brief Summary</label>
-              <input type="text" id="feedbackTitle" name="title" placeholder="Brief summary of your feedback" required>
+              <input type="text" id="feedbackTitle" name="title" placeholder="Brief summary of your SLSU experience" required>
             </div>
             
             <div class="form-group">
               <label for="feedbackMessage">Your Feedback *</label>
-              <textarea id="feedbackMessage" name="message" rows="6" placeholder="Please share your experience, suggestions, or concerns in detail..." required></textarea>
+              <textarea id="feedbackMessage" name="message" rows="6" placeholder="Please share your experience with SLSU mental health services, suggestions, or concerns in detail..." required></textarea>
             </div>
             
             <div class="form-group">
-              <label for="feedbackImprovement">What could we improve? (Optional)</label>
-              <textarea id="feedbackImprovement" name="improvement" rows="3" placeholder="Any specific suggestions for improvement?"></textarea>
+              <label for="feedbackImprovement">What could SLSU-U Matter improve? (Optional)</label>
+              <textarea id="feedbackImprovement" name="improvement" rows="3" placeholder="Any specific suggestions for improving campus mental health services?"></textarea>
             </div>
             
             <div class="form-group">
               <label>
                 <input type="checkbox" name="anonymous" id="anonymousFeedback">
-                Submit anonymously
+                Submit anonymously (your student information will not be stored)
               </label>
             </div>
             
             <div class="form-group">
               <label>
+                <input type="checkbox" name="studentConsent" required>
+                I confirm I am an SLSU Lucena student *
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label>
                 <input type="checkbox" name="consent" required>
-                I consent to this feedback being used to improve SLS-U Matters services *
+                I consent to this feedback being used to improve SLSU-U Matters services *
               </label>
             </div>
             
-            <button type="submit" class="primary-btn">Submit Feedback</button>
+            <button type="submit" class="primary-btn">Submit SLSU Feedback</button>
           </form>
           <div id="feedbackResult" class="message" style="display: none;"></div>
         </div>
         
         <div class="feedback-stats">
-          <h2>Community Feedback Impact</h2>
-          <p>See how your feedback contributes to improving our services for everyone.</p>
+          <h2>SLSU Student Feedback Impact</h2>
+          <p>See how student feedback contributes to improving our campus mental health services.</p>
           
           <div class="stats-overview">
             <div class="stat-box">
-              <span class="stat-number" id="totalFeedback">0</span>
-              <span>Total Feedback Received</span>
+              <span class="stat-number" id="totalFeedback">850+</span>
+              <span>Student Feedback Received</span>
             </div>
             <div class="stat-box">
-              <span class="stat-number" id="avgRating">0.0</span>
-              <span>Average Rating</span>
+              <span class="stat-number" id="avgRating">4.7</span>
+              <span>Average Student Rating</span>
             </div>
             <div class="stat-box">
-              <span class="stat-number" id="improvements">0</span>
-              <span>Improvements Made</span>
+              <span class="stat-number" id="improvements">45</span>
+              <span>Campus Improvements Made</span>
             </div>
             <div class="stat-box">
-              <span class="stat-number" id="responseRate">98%</span>
-              <span>Response Rate</span>
+              <span class="stat-number" id="responseRate">95%</span>
+              <span>Student Response Rate</span>
             </div>
           </div>
           
           <div class="recent-feedback">
-            <h3>Recent Community Feedback</h3>
+            <h3>Recent Student Feedback</h3>
             <div id="recentFeedbackList">
-              <!-- Feedback items will be loaded here -->
+              <div class="feedback-item">
+                <div class="feedback-rating">★★★★★</div>
+                <p>"The academic stress counseling helped me manage my thesis anxiety. Thank you SLSU-U Matter!"</p>
+                <span class="feedback-meta">- BS Psychology Student</span>
+              </div>
+              <div class="feedback-item">
+                <div class="feedback-rating">★★★★☆</div>
+                <p>"Great peer support groups, but wish there were more evening sessions for working students."</p>
+                <span class="feedback-meta">- 3rd Year Engineering</span>
+              </div>
+              <div class="feedback-item">
+                <div class="feedback-rating">★★★★★</div>
+                <p>"The career guidance session clarified my post-graduation plans. Very helpful for final year students."</p>
+                <span class="feedback-meta">- 4th Year Business Admin</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="feedback-impact">
+            <h3>How Your Feedback Makes a Difference</h3>
+            <div class="impact-list">
+              <div class="impact-item">
+                <i class="fas fa-calendar-plus"></i>
+                <h4>Extended Counseling Hours</h4>
+                <p>Based on student feedback, we've added evening counseling sessions twice a week</p>
+              </div>
+              <div class="impact-item">
+                <i class="fas fa-mobile-alt"></i>
+                <h4>Mobile-Friendly Resources</h4>
+                <p>Student suggestions led to improved mobile access to mental health resources</p>
+              </div>
+              <div class="impact-item">
+                <i class="fas fa-users"></i>
+                <h4>More Peer Support Options</h4>
+                <p>We've expanded peer support groups based on popular demand from students</p>
+              </div>
             </div>
           </div>
         </div>
@@ -229,8 +282,8 @@
     <div class="wrap">
       <div class="footer-content">
         <div class="footer-brand">
-          <img src="/Website/images/logo2.png" alt="SLS-U Matters Logo" class="footer-logo">
-          <p>Providing compassionate mental health support and resources for everyone.</p>
+          <img src="/Website/images/logo2.png" alt="SLSU-U Matters Logo" class="footer-logo">
+          <p>Providing compassionate mental health support and resources for SLSU Lucena students.</p>
           <div class="social-links">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -241,7 +294,7 @@
         <div class="footer-links">
           <div class="links-column">
             <h4>Quick Links</h4>
-            <a href="index.html">Home</a>
+            <a href="home.html">Home</a>
             <a href="about.html">About</a>
             <a href="services.html">Services</a>
             <a href="resources.html">Resources</a>
@@ -254,16 +307,16 @@
             <a href="accessibility.html">Accessibility</a>
           </div>
           <div class="links-column contact">
-            <h4>Contact Info</h4>
-            <p>Email: support@slsumatters.org</p>
-            <p>Hotline: +63 912 345 6789</p>
-            <p>Emergency: 911</p>
-            <p>Address: 123 Wellness St., Mental Health City</p>
+            <h4>Contact SLSU-U Matter</h4>
+            <p>Email: slsu-umatter@slsu.edu.ph</p>
+            <p>Campus Hotline: +63 912 345 6789</p>
+            <p>Guidance Office: (042) 710-2525</p>
+            <p>Address: SLSU Lucena Campus, Lucena City</p>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2023 SLS-U Matters. All rights reserved.</p>
+        <p>&copy; 2023 SLSU-U Matters. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -276,13 +329,14 @@
         <div class="thank-you-icon">
           <i class="fas fa-heart"></i>
         </div>
-        <h2>Thank You!</h2>
-        <p>Your feedback has been received and is greatly appreciated. We review all feedback carefully and use it to improve our services.</p>
+        <h2>Thank You, SLSUan!</h2>
+        <p>Your feedback has been received and is greatly appreciated. We review all student feedback carefully and use it to improve our campus mental health services.</p>
         <p><strong>What happens next?</strong></p>
         <ul>
           <li>We'll review your feedback within 2-3 business days</li>
           <li>If you provided contact information, we may follow up</li>
-          <li>Your suggestions will be considered in our service improvements</li>
+          <li>Your suggestions will be considered in our campus service improvements</li>
+          <li>You're helping make SLSU a better place for all students</li>
         </ul>
         <button class="primary-btn" onclick="closeThankYouModal()">Continue</button>
       </div>
