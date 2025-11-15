@@ -107,6 +107,28 @@
   color: var(--accent-2);
 }
 
+/* Checkbox positioning */
+.checkbox-group {
+  margin: 15px 0;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.checkbox-label input[type="checkbox"] {
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.checkbox-text {
+  line-height: 1.5;
+}
+
 .feedback-stats {
   background: white;
   padding: 30px;
@@ -162,6 +184,55 @@
 
 .rating-star {
   color: #ffd700;
+}
+
+/* Enhanced CSS for the "How Your Feedback Makes a Difference" section */
+.feedback-impact {
+  margin-top: 40px;
+  padding: 30px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.impact-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.impact-item {
+  background: white;
+  padding: 25px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  text-align: center;
+  border-top: 4px solid var(--accent-2);
+}
+
+.impact-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.impact-item i {
+  font-size: 2.5rem;
+  color: var(--accent-2);
+  margin-bottom: 15px;
+  display: block;
+}
+
+.impact-item h4 {
+  margin-bottom: 12px;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.impact-item p {
+  color: var(--text-light);
+  line-height: 1.6;
 }
 
 /* Thank You Modal */
@@ -224,6 +295,10 @@
   .thank-you-content ul {
     padding-left: 15px;
   }
+  
+  .impact-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
@@ -233,5 +308,9 @@
   
   .feedback-item {
     padding: 15px;
+  }
+  
+  .impact-item {
+    padding: 20px 15px;
   }
 }
