@@ -302,12 +302,25 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2023 SLSU-U Matters. All rights reserved.</p>
+        <p>&copy; 2023 SLS-U Matters. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <script src="/Website/js/script.js"></script>
-</body>
+  <!-- Page content above -->
 
+  <!-- Firebase SDK (step 2 shows full block) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <!-- Your Firebase wrapper -->
+  <script src="/Website/js/firebase.js"></script>
+
+  <!-- Global behaviors -->
+  <script src="/Website/js/script.js"></script>
+
+  <!-- Page-specific behaviors -->
+  <script src="/Website/js/index.js"></script>
+</body>
 </html>
