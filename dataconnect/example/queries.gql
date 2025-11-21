@@ -1,0 +1,30 @@
+mutation CreateResource($title: String!, $type: String!, $category: String!) @auth(level: USER) {
+  resource_insert(data: { title: $title, type: $type, category: $category, createdAt_expr: "request.time" })
+}
+
+query ListResourcesByCategory($category: String!) @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  resources(where: { category: { eq: $category } }) {
+    id
+    title
+    type
+    author
+    content
+  }
+}
+
+mutation UpdateMoodEntry($id: UUID!, $moodRating: Int!) @auth(level: USER) {
+  moodEntry_update(key: { id: $id }, data: { moodRating: $moodRating })
+}
+
+query GetAppointmentsForStudent @auth(level: USER) {
+  appointments(where: { studentId: { eq_expr: "auth.uid" } }) {
+    id
+    dateTime
+    duration
+    professional {
+      id
+      specialization
+      yearsOfExperience
+    }
+  }
+}

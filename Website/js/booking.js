@@ -417,39 +417,59 @@ document.addEventListener('DOMContentLoaded', function() {
     return isValid;
   }
 
-  function submitBooking() {
-    // Show loading state
-    const confirmBtn = document.getElementById('confirmBooking');
-    const originalText = confirmBtn.textContent;
-    confirmBtn.textContent = 'Processing...';
-    confirmBtn.disabled = true;
+function submitBooking() {
+  // Show loading state
+  const confirmBtn = document.getElementById('confirmBooking');
+  const originalText = confirmBtn.textContent;
+  confirmBtn.textContent = 'Processing...';
+  confirmBtn.disabled = true;
+  
+  // Simulate API call
+  setTimeout(() => {
+    // Store booking in localStorage
+    const bookings = JSON.parse(localStorage.getItem('therapyBookings') || '[]');
+    const bookingData = {
+      id: generateBookingId(),
+      service: bookingState.selectedService,
+      therapist: bookingState.selectedTherapist,
+      date: bookingState.selectedDate.toISOString(),
+      time: bookingState.selectedTime,
+      personalDetails: getPersonalDetails(),
+      status: 'confirmed',
+      bookedAt: new Date().toISOString()
+    };
     
-    // Simulate API call
-    setTimeout(() => {
-      // Store booking in localStorage
-      const bookings = JSON.parse(localStorage.getItem('therapyBookings') || '[]');
-      const bookingData = {
-        id: generateBookingId(),
-        service: bookingState.selectedService,
-        therapist: bookingState.selectedTherapist,
-        date: bookingState.selectedDate.toISOString(),
-        time: bookingState.selectedTime,
-        personalDetails: getPersonalDetails(),
-        status: 'confirmed',
-        bookedAt: new Date().toISOString()
+    bookings.push(bookingData);
+    localStorage.setItem('therapyBookings', JSON.stringify(bookings));
+    
+    // 🔗 Save booking to Firestore if Firebase is available
+    if (window.FirebaseService && FirebaseService.isReady()) {
+      const user = FirebaseService.getCurrentUser();
+      const dataToSave = {
+        ...bookingData,
+        userId: user ? user.uid : null,
+        userEmail: user
+          ? user.email
+          : (bookingData.personalDetails && bookingData.personalDetails.email)
+            ? bookingData.personalDetails.email
+            : null,
+        source: 'booking-page'
       };
-      
-      bookings.push(bookingData);
-      localStorage.setItem('therapyBookings', JSON.stringify(bookings));
-      
-      // Show success modal
-      showSuccessModal(bookingData);
-      
-      // Reset button
-      confirmBtn.textContent = originalText;
-      confirmBtn.disabled = false;
-    }, 2000);
-  }
+
+      FirebaseService.saveDocument('bookings', dataToSave).catch(err => {
+        console.error('Error saving booking to Firestore:', err);
+      });
+    }
+    
+    // Show success modal
+    showSuccessModal(bookingData);
+    
+    // Reset button
+    confirmBtn.textContent = originalText;
+    confirmBtn.disabled = false;
+  }, 2000);
+}
+
 
   function generateBookingId() {
     return 'BK' + Date.now() + Math.random().toString(36).substr(2, 5).toUpperCase();

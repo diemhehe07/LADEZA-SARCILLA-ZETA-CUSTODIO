@@ -12,57 +12,73 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Feedback form submission
   if (feedbackForm) {
-    feedbackForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const formData = new FormData(this);
-      const isAnonymous = document.getElementById('anonymousFeedback').checked;
+  feedbackForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const isAnonymous = document.getElementById('anonymousFeedback').checked;
+    
+    // Show loading state
+    const submitBtn = feedbackForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Submitting...';
+    submitBtn.disabled = true;
+    
+    // Simulate API call
+    setTimeout(() => {
+      // Store feedback locally
+      const feedbacks = JSON.parse(localStorage.getItem('userFeedback') || '[]');
+      const feedbackData = {
+        rating: parseInt(formData.get('rating')),
+        type: formData.get('feedbackType'),
+        service: formData.get('service'),
+        title: formData.get('title'),
+        message: formData.get('message'),
+        improvement: formData.get('improvement'),
+        timestamp: new Date().toISOString(),
+        anonymous: isAnonymous
+      };
       
-      // Show loading state
-      const submitBtn = feedbackForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Submitting...';
-      submitBtn.disabled = true;
+      // Add user info if not anonymous
+      if (!isAnonymous) {
+        feedbackData.name = formData.get('name');
+        feedbackData.email = formData.get('email');
+      }
       
-      // Simulate API call
-      setTimeout(() => {
-        // Store feedback
-        const feedbacks = JSON.parse(localStorage.getItem('userFeedback') || '[]');
-        const feedbackData = {
-          rating: parseInt(formData.get('rating')),
-          type: formData.get('feedbackType'),
-          service: formData.get('service'),
-          title: formData.get('title'),
-          message: formData.get('message'),
-          improvement: formData.get('improvement'),
-          timestamp: new Date().toISOString(),
-          anonymous: isAnonymous
+      feedbacks.push(feedbackData);
+      localStorage.setItem('userFeedback', JSON.stringify(feedbacks));
+      
+      // 🔗 Save feedback to Firestore if Firebase is available
+      if (window.FirebaseService && FirebaseService.isReady()) {
+        const user = FirebaseService.getCurrentUser();
+        const feedbackDoc = {
+          ...feedbackData,
+          userId: user ? user.uid : null,
+          userEmail: user ? user.email : feedbackData.email || null,
+          source: 'feedback-page'
         };
-        
-        // Add user info if not anonymous
-        if (!isAnonymous) {
-          feedbackData.name = formData.get('name');
-          feedbackData.email = formData.get('email');
-        }
-        
-        feedbacks.push(feedbackData);
-        localStorage.setItem('userFeedback', JSON.stringify(feedbacks));
-        
-        // Show thank you modal
-        thankYouModal.style.display = 'block';
-        
-        // Reset form
-        feedbackForm.reset();
-        
-        // Reset button
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-        
-        // Update stats
-        loadFeedbackStats();
-        loadRecentFeedback();
-      }, 1000);
-    });
-  }
+
+        FirebaseService.saveDocument('feedback', feedbackDoc).catch(err => {
+          console.error('Error saving feedback to Firestore:', err);
+        });
+      }
+      
+      // Show thank you modal
+      thankYouModal.style.display = 'block';
+      
+      // Reset form
+      feedbackForm.reset();
+      
+      // Reset button
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+      
+      // Update stats
+      loadFeedbackStats();
+      loadRecentFeedback();
+    }, 1000);
+  });
+}
+
   
   // Close thank you modal
   if (closeThankYou) {
