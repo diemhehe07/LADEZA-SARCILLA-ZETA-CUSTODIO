@@ -81,6 +81,10 @@
   font-size: 0.9rem;
 }
 
+.resource-btn i {
+  font-size: 0.9rem;
+}
+
 .resource-btn:hover {
   background: var(--accent-3);
   transform: translateY(-2px);
@@ -113,6 +117,7 @@
   margin: 5px 0;
 }
 
+/* (Optional) location / local resources form */
 .location-form {
   display: flex;
   gap: 10px;
@@ -144,6 +149,7 @@
   margin-bottom: 5px;
 }
 
+/* Stats / download section */
 .download-stats {
   flex: 1;
   min-width: 250px;
@@ -175,7 +181,25 @@
   color: var(--accent-2);
 }
 
-/* Audio Player Styles */
+.campus-tip {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.campus-tip i {
+  color: var(--accent-2);
+  margin-top: 3px;
+}
+
+/* Audio / article styles inside modal */
 .audio-player {
   margin: 15px 0;
 }
@@ -203,9 +227,153 @@
   margin-bottom: 5px;
 }
 
+/* Resource bullet styles in modal */
+.resource-points,
+.resource-steps {
+  margin: 10px 0 0;
+  padding-left: 20px;
+  font-size: 0.95rem;
+}
+
+.resource-points li,
+.resource-steps li {
+  margin-bottom: 4px;
+}
+
+/* Extra supportive quote from API */
+.resource-extra {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.resource-extra-loading {
+  font-style: italic;
+}
+
+.resource-quote p {
+  margin: 2px 0;
+}
+
+.resource-quote-author {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ------------------------------
+   SLSU Wellness Updates styling
+   ------------------------------ */
+
+.campus-updates {
+  margin-top: 40px;
+}
+
+.campus-updates h3 {
+  margin-bottom: 14px;
+}
+
+.updates-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.update-card {
+  flex: 1;
+  min-width: 240px;
+  background: white;
+  padding: 18px 18px 16px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.update-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.update-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: var(--accent-1);
+  color: var(--accent-2);
+}
+
+.update-card:nth-child(2) .update-badge {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.update-card:nth-child(3) .update-badge {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.update-card h4 {
+  margin-top: 4px;
+  margin-bottom: 6px;
+  font-size: 1rem;
+}
+
+.update-card p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.update-date {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.update-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--accent-2);
+  background: transparent;
+  color: var(--accent-2);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.update-btn:hover {
+  background: var(--accent-2);
+  color: white;
+}
+
+/* Modal base styles (shared with other pages if needed) */
+#resourceModal .modal-content {
+  max-width: 600px;
+}
+
+#resourceModal h2 {
+  margin-bottom: 8px;
+}
+
 /* Responsive Resources Styles */
 @media (max-width: 900px) {
   .resources-content {
+    flex-direction: column;
+  }
+
+  .updates-container {
     flex-direction: column;
   }
 }

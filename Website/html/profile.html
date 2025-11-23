@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Profile | SLS-U Matter</title>
+
   <link rel="stylesheet" href="/Website/css/global.css">
   <link rel="stylesheet" href="/Website/css/profile.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -67,13 +69,13 @@
 
           <!-- Login Form -->
           <div class="auth-form active" id="loginForm">
-            <h2>Welcome Back, Leopard!</h2>
+            <h2>Welcome Back!</h2>
             <p class="auth-subtitle">Sign in to access your personalized dashboard</p>
             
             <form id="loginFormData">
               <div class="form-group">
-                <label for="loginEmail">SLSU Email Address</label>
-                <input type="email" id="loginEmail" name="email" placeholder="yourname@slsu.edu.ph" required>
+                <label for="loginEmail">Email Address</label>
+                <input type="email" id="loginEmail" name="email" placeholder="yourname@gmail.com" required>
                 <i class="fas fa-envelope input-icon"></i>
               </div>
               
@@ -101,21 +103,21 @@
             </div>
 
             <div class="social-auth">
-              <button class="social-btn google-btn">
+              <button class="social-btn google-btn" id="googleLoginBtn">
                 <i class="fab fa-google"></i>
                 Google
               </button>
-              <button class="social-btn microsoft-btn">
-                <i class="fab fa-microsoft"></i>
-                Microsoft
+              <button class="social-btn microsoft-btn" id="facebookLoginBtn">
+                <i class="fab fa-facebook"></i>
+                Facebook
               </button>
             </div>
           </div>
 
           <!-- Register Form -->
           <div class="auth-form" id="registerForm">
-            <h2>Join SLS-U Matter</h2>
-            <p class="auth-subtitle">Create your account to access campus mental health resources</p>
+            <h2>Create Your Account</h2>
+            <p class="auth-subtitle">Access campus mental health resources and tools</p>
             
             <form id="registerFormData">
               <div class="form-row">
@@ -130,14 +132,14 @@
               </div>
 
               <div class="form-group">
-                <label for="studentId">SLSU Student ID</label>
+                <label for="studentId">Student ID</label>
                 <input type="text" id="studentId" name="studentId" placeholder="e.g., 23-000001" required>
                 <i class="fas fa-id-card input-icon"></i>
               </div>
 
               <div class="form-group">
-                <label for="registerEmail">SLSU Email Address</label>
-                <input type="email" id="registerEmail" name="email" placeholder="yourname@slsu.edu.ph" required>
+                <label for="registerEmail">Email Address</label>
+                <input type="email" id="registerEmail" name="email" placeholder="yourname@gmail.com" required>
                 <i class="fas fa-envelope input-icon"></i>
               </div>
 
@@ -186,7 +188,7 @@
               <div class="form-group">
                 <label class="checkbox-label">
                   <input type="checkbox" name="newsletter">
-                  Send me mental health tips and campus updates
+                  Send me mental health tips and updates
                 </label>
               </div>
 
@@ -223,7 +225,7 @@
               <i class="fas fa-users"></i>
               <div>
                 <h4>Join Support Groups</h4>
-                <p>Connect with fellow SLSU students in safe spaces</p>
+                <p>Connect with other students in safe spaces</p>
               </div>
             </div>
           </div>
@@ -239,9 +241,11 @@
               <button class="avatar-edit" id="editAvatar">
                 <i class="fas fa-camera"></i>
               </button>
+              <!-- hidden file input for avatar upload -->
+              <input type="file" id="avatarInput" accept="image/*" style="display:none">
             </div>
             <div class="user-info">
-              <h2 id="userGreeting">Welcome back, Leopard!</h2>
+              <h2 id="userGreeting">Welcome back!</h2>
               <p class="user-status" id="userStatus">You're taking great steps for your mental health</p>
               <div class="user-meta">
                 <span><i class="fas fa-id-card"></i> <span id="userStudentId">-</span></span>
@@ -367,7 +371,7 @@
               <div class="emergency-item">
                 <i class="fas fa-phone emergency-icon"></i>
                 <div>
-                  <strong>SLSU Crisis Hotline</strong>
+                  <strong>Crisis Hotline</strong>
                   <p>0917-899-8727</p>
                 </div>
                 <button class="emergency-btn" onclick="window.location.href='tel:09178998727'">
@@ -462,7 +466,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="editStudentId">SLSU Student ID</label>
+          <label for="editStudentId">Student ID</label>
           <input type="text" id="editStudentId" name="studentId" required>
         </div>
         <div class="form-group">
@@ -485,8 +489,8 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="editEmail">SLSU Email Address</label>
-          <input type="email" id="editEmail" name="email" required>
+          <label for="editEmail">Email Address</label>
+          <input type="email" id="editEmail" name="email" placeholder="yourname@gmail.com" required>
         </div>
         <div class="form-group">
           <label for="editPhone">Phone Number (Optional)</label>
@@ -500,9 +504,7 @@
     </div>
   </div>
 
-  <!-- Page content above -->
-
-  <!-- Firebase SDK (step 2 shows full block) -->
+  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>

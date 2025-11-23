@@ -1,4 +1,5 @@
-// Resources page functionality
+// resources.js - Resources page functionality
+
 document.addEventListener("DOMContentLoaded", () => {
   // -----------------------------
   // Category tab functionality
@@ -51,12 +52,21 @@ document.addEventListener("DOMContentLoaded", () => {
     resourceButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const resourceKey = button.getAttribute("data-resource");
+
+        // Some buttons (like crisis call) don't have data-resource
+        if (!resourceKey) {
+          return; // let their onclick (tel:, etc.) handle behavior
+        }
+
         currentResource = resourceKey;
 
         const resourceData = getResourceData(resourceKey);
         modalTitle.textContent = resourceData.title;
         modalContent.innerHTML = resourceData.content;
         startResourceBtn.textContent = resourceData.buttonText || "Access Resource";
+
+        // Fetch supportive quote from external public API
+        fetchSupportiveQuote();
 
         resourceModal.style.display = "block";
       });
@@ -170,6 +180,47 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // -----------------------------
+  // External API: supportive quote
+  // -----------------------------
+  function fetchSupportiveQuote() {
+    if (!modalContent) return;
+
+    const extraDiv = document.createElement("div");
+    extraDiv.className = "resource-extra";
+    extraDiv.innerHTML =
+      '<p class="resource-extra-loading">Loading a short supportive message...</p>';
+    modalContent.appendChild(extraDiv);
+
+    // Using a known public quote API (no auth needed)
+    // Docs existed before my knowledge cutoff; I can't "look it up" now,
+    // but this URL format is stable in my training:
+    //   https://zenquotes.io/api/random  -> [ { q: "Quote", a: "Author" } ]
+    fetch("https://zenquotes.io/api/random")
+      .then((res) => res.json())
+      .then((data) => {
+        const quoteObj = Array.isArray(data) && data[0] ? data[0] : null;
+        if (!quoteObj || !quoteObj.q) {
+          throw new Error("No quote in response");
+        }
+
+        extraDiv.innerHTML = `
+          <div class="resource-quote">
+            <p>"${quoteObj.q}"</p>
+            <p class="resource-quote-author">– ${quoteObj.a || "Unknown"}</p>
+          </div>
+        `;
+      })
+      .catch((err) => {
+        console.error("Error fetching supportive quote:", err);
+        extraDiv.innerHTML = `
+          <div class="resource-quote">
+            <p>Remember: it's okay to ask for help, and small steps still count as progress.</p>
+          </div>
+        `;
+      });
+  }
+
+  // -----------------------------
   // (Optional) Local resource search
   // -----------------------------
   const locationForm = document.getElementById("locationForm");
@@ -261,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <ul class="resource-points">
             <li>Note your mood (1–10) before and after class</li>
             <li>Record triggers and helpful coping strategies</li>
-            <li>Bring your notes to counseling if you’d like to share patterns</li>
+            <li>Bring your notes to counseling if you'd like to share patterns</li>
           </ul>
         `,
         buttonText: "Use Tracker",
@@ -340,12 +391,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // -----------------------------
-  // (Optional) fake local resource search
+  // Fake local resource search (can be replaced with real API)
   // -----------------------------
   function searchLocalResources(zipCode) {
-    // This is a demo implementation. You can replace with a real API later.
     console.log("Searching local resources near ZIP:", zipCode);
-    // Example: show results in a container if you have one
+
     const resultsContainer = document.getElementById("localResourcesResults");
     if (!resultsContainer) return;
 

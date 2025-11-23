@@ -1,6 +1,7 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// /Website/js/firebase.js
+// Firebase helper for SLS-U Matter (using compat SDK from CDN)
 
+// Your Firebase configuration (from Firebase Console)
 const firebaseConfig = {
   apiKey: "AIzaSyAZl6zJEd8w4NZ6ut0AJAJTOAQmxK80DwQ",
   authDomain: "sls-u-matter.firebaseapp.com",
@@ -12,19 +13,27 @@ const firebaseConfig = {
   measurementId: "G-4F1R3D07D8"
 };
 
-// 2. Initialize Firebase (Compat SDK)
+// 2. Initialize Firebase (Compat SDK – global `firebase` from CDN)
 let firebaseApp = null;
 let firebaseAuth = null;
 let firebaseDb = null;
+let firebaseAnalytics = null;
 
 if (typeof firebase !== "undefined") {
   firebaseApp = firebase.initializeApp(firebaseConfig);
+
+  // Optional Analytics (only works on https + not in some environments)
+  if (firebase.analytics) {
+    firebaseAnalytics = firebase.analytics();
+  }
+
   firebaseAuth = firebase.auth();
   firebaseDb = firebase.firestore();
 
   firebaseDb.settings({ ignoreUndefinedProperties: true });
 }
 
+// 3. Expose a helper object for the rest of the site
 window.FirebaseService = {
   isReady() {
     return !!firebaseApp && !!firebaseAuth && !!firebaseDb;
@@ -68,7 +77,7 @@ window.FirebaseService = {
     const cred = await firebaseAuth.signInWithPopup(provider);
     const user = cred.user;
 
-    // Ensure a user doc exists
+    // Make sure profile exists in Firestore
     const userRef = firebaseDb.collection("users").doc(user.uid);
     const snap = await userRef.get();
     if (!snap.exists) {
