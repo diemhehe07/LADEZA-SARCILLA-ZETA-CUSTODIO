@@ -598,6 +598,238 @@
   }
 }
 
+/* User Type Selector Styles */
+.user-type-selector {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.user-type-option {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 12px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.user-type-option:hover {
+  border-color: #4a90e2;
+  background-color: #f8f9fa;
+}
+
+.user-type-option.active {
+  border-color: #4a90e2;
+  background-color: #e8f2ff;
+}
+
+.option-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #6c757d;
+}
+
+.user-type-option.active .option-icon {
+  color: #4a90e2;
+}
+
+.user-type-option span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #495057;
+}
+
+.user-type-option.active span {
+  color: #4a90e2;
+}
+
+/* Role-specific dashboard elements */
+.therapist-dashboard {
+  background-color: #f8f9fa;
+  border-left: 4px solid #28a745;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 0 8px 8px 0;
+}
+
+.student-dashboard {
+  background-color: #f8f9fa;
+  border-left: 4px solid #007bff;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Role-specific fields - FIXED: Hide by default, show only when active */
+.therapist-fields {
+  display: none;
+}
+
+.therapist-fields.active {
+  display: block;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.student-fields {
+  display: none;
+}
+
+.student-fields.active {
+  display: block;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Status labels */
+.status-label {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.status-confirmed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* Appointment and activity items */
+.appointment-item {
+  padding: 15px;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: #f8f9fa;
+}
+
+.appointment-main h4 {
+  margin: 0 0 5px 0;
+  color: #2c3e50;
+}
+
+.appointment-meta {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.appointment-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.saved-resource-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  background: white;
+}
+
+.saved-resource-main strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.saved-date {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin: 0;
+}
+
+.activity-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.activity-icon {
+  width: 32px;
+  height: 32px;
+  background: #e8f2ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4a90e2;
+}
+
+.activity-info {
+  flex: 1;
+}
+
+.activity-label {
+  margin: 0 0 4px 0;
+  font-weight: 500;
+}
+
+.activity-detail {
+  margin: 0 0 4px 0;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.activity-date {
+  font-size: 0.8rem;
+  color: #adb5bd;
+}
+
+/* User messages */
+.user-message {
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.user-message-success {
+  background: #d4edda !important;
+  color: #155724 !important;
+  border-left-color: #28a745 !important;
+}
+
+.user-message-error {
+  background: #f8d7da !important;
+  color: #721c24 !important;
+  border-left-color: #dc3545 !important;
+}
+
+.user-message-info {
+  background: #d1ecf1 !important;
+  color: #0c5460 !important;
+  border-left-color: #17a2b8 !important;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .auth-section {
@@ -653,6 +885,10 @@
     flex-direction: column;
     gap: 0;
   }
+  
+  .user-type-selector {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 480px) {
@@ -673,38 +909,4 @@
     flex-direction: column;
     text-align: center;
   }
-}
-
-/* User Messages */
-.user-message {
-    animation: slideInRight 0.3s ease-out;
-}
-
-@keyframes slideInRight {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-.user-message-success {
-    background: #d4edda !important;
-    color: #155724 !important;
-    border-left-color: #28a745 !important;
-}
-
-.user-message-error {
-    background: #f8d7da !important;
-    color: #721c24 !important;
-    border-left-color: #dc3545 !important;
-}
-
-.user-message-info {
-    background: #d1ecf1 !important;
-    color: #0c5460 !important;
-    border-left-color: #17a2b8 !important;
 }

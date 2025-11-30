@@ -56,6 +56,32 @@ document.addEventListener('DOMContentLoaded', function () {
     initFormValidation();
     initBookingConfirmation();
     updateSidebar();
+    checkUserRole();
+  }
+
+  // ---------------------------
+  // Check User Role
+  // ---------------------------
+  function checkUserRole() {
+    const therapistActionsCard = document.getElementById('therapistActionsCard');
+    if (!therapistActionsCard) return;
+
+    // Check if user is logged in and is a therapist/counselor
+    const userDataStr = localStorage.getItem('slsuUser');
+    if (!userDataStr) {
+      return; // User not logged in
+    }
+
+    try {
+      const userData = JSON.parse(userDataStr);
+      
+      // Show therapist actions only for therapists/counselors
+      if (userData.userType === 'therapist') {
+        therapistActionsCard.style.display = 'block';
+      }
+    } catch (e) {
+      console.error('Error parsing user data:', e);
+    }
   }
 
   // ---------------------------

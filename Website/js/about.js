@@ -1,9 +1,139 @@
-// about.js - Newsletter + team contact modal + Firebase
+// about.js - Newsletter + team contact modal + Firebase + Therapist Dashboard
 
 document.addEventListener('DOMContentLoaded', function () {
   initNewsletter();
   initTeamContactModal();
+  initTherapistDashboard();
 });
+
+// ---------------------------
+// Therapist Dashboard
+// ---------------------------
+function initTherapistDashboard() {
+  const therapistSection = document.getElementById('therapistDashboardSection');
+  if (!therapistSection) return;
+
+  // Check if user is logged in and is a therapist/counselor
+  const userDataStr = localStorage.getItem('slsuUser');
+  if (!userDataStr) {
+    return; // User not logged in
+  }
+
+  try {
+    const userData = JSON.parse(userDataStr);
+    
+    // Show therapist section only for therapists/counselors
+    if (userData.userType === 'therapist') {
+      therapistSection.style.display = 'block';
+      loadTherapistStats();
+    }
+  } catch (e) {
+    console.error('Error parsing user data:', e);
+  }
+}
+
+// ---------------------------
+// Load Therapist Statistics
+// ---------------------------
+function loadTherapistStats() {
+  // Load upcoming sessions count
+  const upcomingSessionsEl = document.getElementById('upcomingSessions');
+  const activeClientsEl = document.getElementById('activeClients');
+  const pendingNotesEl = document.getElementById('pendingNotes');
+
+  if (upcomingSessionsEl) {
+    const bookings = JSON.parse(localStorage.getItem('therapyBookings') || '[]');
+    const now = new Date();
+    const upcoming = bookings.filter(b => {
+      if (!b.date) return false;
+      try {
+        const d = new Date(b.date);
+        if (b.time) {
+          const [h, m] = b.time.split(':');
+          d.setHours(parseInt(h, 10), parseInt(m, 10), 0, 0);
+        }
+        return d >= now && (b.status === 'confirmed' || !b.status);
+      } catch (e) {
+        return false;
+      }
+    }).length;
+    upcomingSessionsEl.textContent = upcoming;
+  }
+
+  if (activeClientsEl) {
+    // For demo purposes - in real app, this would come from your data
+    const activeClients = JSON.parse(localStorage.getItem('activeClients') || '[]').length;
+    activeClientsEl.textContent = activeClients || '12'; // Fallback demo number
+  }
+
+  if (pendingNotesEl) {
+    // For demo purposes - in real app, this would come from your data
+    const pendingNotes = JSON.parse(localStorage.getItem('pendingSessionNotes') || '[]').length;
+    pendingNotesEl.textContent = pendingNotes || '3'; // Fallback demo number
+  }
+
+  // If using Firebase, load real data
+  if (window.FirebaseService && FirebaseService.isReady()) {
+    loadTherapistStatsFromFirebase();
+  }
+}
+
+// ---------------------------
+// Load Therapist Stats from Firebase
+// ---------------------------
+async function loadTherapistStatsFromFirebase() {
+  try {
+    const db = firebase.firestore();
+    const user = FirebaseService.getCurrentUser();
+    
+    if (!user) return;
+
+    // Load upcoming sessions
+    const sessionsSnapshot = await db.collection('therapySessions')
+      .where('therapistId', '==', user.uid)
+      .where('date', '>=', new Date())
+      .where('status', 'in', ['confirmed', 'scheduled'])
+      .get();
+    
+    const upcomingSessionsEl = document.getElementById('upcomingSessions');
+    if (upcomingSessionsEl) {
+      upcomingSessionsEl.textContent = sessionsSnapshot.size;
+    }
+
+    // Load active clients (students with active sessions)
+    const clientsSnapshot = await db.collection('therapySessions')
+      .where('therapistId', '==', user.uid)
+      .where('status', 'in', ['confirmed', 'scheduled', 'in-progress'])
+      .get();
+    
+    const uniqueClients = new Set();
+    clientsSnapshot.forEach(doc => {
+      const session = doc.data();
+      if (session.studentId) {
+        uniqueClients.add(session.studentId);
+      }
+    });
+    
+    const activeClientsEl = document.getElementById('activeClients');
+    if (activeClientsEl) {
+      activeClientsEl.textContent = uniqueClients.size;
+    }
+
+    // Load pending session notes
+    const notesSnapshot = await db.collection('sessionNotes')
+      .where('therapistId', '==', user.uid)
+      .where('status', '==', 'pending')
+      .get();
+    
+    const pendingNotesEl = document.getElementById('pendingNotes');
+    if (pendingNotesEl) {
+      pendingNotesEl.textContent = notesSnapshot.size;
+    }
+
+  } catch (error) {
+    console.error('Error loading therapist stats from Firebase:', error);
+  }
+}
 
 // ---------------------------
 // Newsletter subscription
@@ -55,7 +185,7 @@ function initNewsletter() {
       }
     }
 
-    showNewsletterMessage('Thank you for subscribing! You’ll receive updates soon.', 'success');
+    showNewsletterMessage('Thank you for subscribing! You\'ll receive updates soon.', 'success');
     form.reset();
   });
 

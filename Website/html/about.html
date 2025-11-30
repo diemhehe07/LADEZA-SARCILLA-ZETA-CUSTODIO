@@ -9,42 +9,54 @@
   <link rel="stylesheet" href="/Website/css/global.css">
   <link rel="stylesheet" href="/Website/css/about.css">
 
+  <!-- Add chat/nav stylesheet so the header matches student-chat -->
+  <link rel="stylesheet" href="/Website/css/therapist-chat.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <!-- Header with responsive navigation -->
+  <!-- Standardized Header -->
   <header class="site-header">
     <div class="wrap nav-row">
       <div class="brand">
-        <img src="/Website/images/logo2.png" alt="SLSU-U Matters Logo" class="brand-logo">
+        <a href="/Website/html/index.html">
+          <img src="/Website/images/logo2.png"
+               alt="SLSU-U Matters Logo"
+               class="brand-logo" />
+        </a>
       </div>
+
       <nav class="main-nav">
         <button class="mobile-menu-toggle" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </button>
         <div class="nav-links">
-          <a href="/Website/html/index.html" data-section="index.html">Home</a>
-          <a href="/Website/html/about.html" data-section="about.html">About</a>
-          <a href="/Website/html/resources.html" data-section="resources.html">Resources</a>
-          <a href="/Website/html/services.html" data-section="services.html">Services</a>
-          <a href="/Website/html/feedback.html" data-section="feedback.html">Feedback</a>
-          <a href="/Website/html/contact.html" data-section="contact.html">Contact</a>
+          <a href="/Website/html/index.html">Home</a>
+          <a href="/Website/html/about.html">About</a>
+          <a href="/Website/html/services.html">Services</a>
+          <a href="/Website/html/resources.html">Resources</a>
         </div>
       </nav>
+
       <div class="nav-cta">
-        <a class="btn btn-ghost" href="booking.html">Book Session</a>
-        <!-- Profile icon for login -->
-        <a href="/Website/html/profile.html" class="profile-icon active" aria-label="View your profile" id="profileNavIcon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke="currentColor" stroke-width="2"/>
-            <path d="M20 21C20 19.6044 20 18.9067 19.8278 18.3389C19.44 17.0605 18.4395 16.06 17.1611 15.6722C16.5933 15.5 15.8956 15.5 14.5 15.5H9.5C8.10444 15.5 7.40665 15.5 6.83886 15.6722C5.56045 16.06 4.56004 17.0605 4.17224 18.3389C4 18.9067 4 19.6044 4 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </a>
+        <a class="btn btn-ghost" href="/Website/html/booking.html">Book Session</a>
+
+        <div id="authButtons">
+          <!-- Shown when logged OUT -->
+          <button id="loginNavBtn" class="login-btn btn">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </button>
+
+          <!-- Shown when logged IN (updated by auth.js) -->
+          <div id="userMenu" style="display:none;">
+            <button class="profile-icon" id="profileNavIcon" aria-label="Your dashboard">
+              <i class="fas fa-user"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -52,7 +64,7 @@
   <!-- Page Header -->
   <section class="page-header">
     <div class="wrap">
-      <h1>About SLSU-U Matter</h1>
+      <h1>About SLS-U Matter</h1>
       <p>Learn about our mission to support the mental well-being of SLSU Lucena students and our dedicated campus team</p>
     </div>
   </section>
@@ -205,6 +217,100 @@
           </div>
         </section>
 
+        <!-- Section 7 – Therapist/Counselor Dashboard (Visible only to therapists/counselors) -->
+        <section class="about-section therapist-only-section" id="therapistDashboardSection" style="display: none;">
+          <div class="about-section-card">
+            <div class="about-section-text">
+              <h2><i class="fas fa-user-md"></i> Therapist & Counselor Dashboard</h2>
+              <p class="role-badge">This section is only visible to SLSU-U Matter team members</p>
+              
+              <div class="therapist-dashboard-grid">
+                <div class="therapist-feature">
+                  <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                  </div>
+                  <h3>Client Management</h3>
+                  <p>Access student client profiles, session history, and progress tracking</p>
+                  <button class="feature-btn" onclick="window.location.href='/Website/html/therapist-clients.html'">
+                    Manage Clients
+                  </button>
+                </div>
+                
+                <div class="therapist-feature">
+                  <div class="feature-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                  </div>
+                  <h3>Session Scheduling</h3>
+                  <p>View and manage your counseling sessions and appointments</p>
+                  <button class="feature-btn" onclick="window.location.href='/Website/html/therapist-schedule.html'">
+                    View Schedule
+                  </button>
+                </div>
+                
+                <div class="therapist-feature">
+                  <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <h3>Progress Analytics</h3>
+                  <p>Track student progress and generate reports for campus administration</p>
+                  <button class="feature-btn" onclick="window.location.href='/Website/html/therapist-analytics.html'">
+                    View Analytics
+                  </button>
+                </div>
+                
+                <div class="therapist-feature">
+                  <div class="feature-icon">
+                    <i class="fas fa-file-medical"></i>
+                  </div>
+                  <h3>Session Notes</h3>
+                  <p>Document session details and maintain confidential student records</p>
+                  <button class="feature-btn" onclick="window.location.href='/Website/html/therapist-notes.html'">
+                    Session Notes
+                  </button>
+                </div>
+              </div>
+              
+              <div class="therapist-quick-stats">
+                <h4>Quick Overview</h4>
+                <div class="stats-grid">
+                  <div class="stat-item">
+                    <span class="stat-number" id="upcomingSessions">0</span>
+                    <span class="stat-label">Upcoming Sessions</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-number" id="activeClients">0</span>
+                    <span class="stat-label">Active Clients</span>
+                  </div>
+                  <div class="stat-item">
+                    <span class="stat-number" id="pendingNotes">0</span>
+                    <span class="stat-label">Pending Notes</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="about-section-media therapist-media">
+              <div class="therapist-media-content">
+                <h3><i class="fas fa-lock"></i> Secure Team Portal</h3>
+                <p>This area provides SLSU-U Matter team members with tools to effectively support student mental health while maintaining confidentiality and professional standards.</p>
+                <div class="team-features">
+                  <div class="team-feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>FERPA Compliant</span>
+                  </div>
+                  <div class="team-feature">
+                    <i class="fas fa-clock"></i>
+                    <span>Real-time Updates</span>
+                  </div>
+                  <div class="team-feature">
+                    <i class="fas fa-sync"></i>
+                    <span>Synchronized Data</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Campus Updates Signup -->
         <div class="newsletter-section">
           <h2>Stay Connected with SLSU-U Matter</h2>
@@ -241,10 +347,15 @@
         <div class="footer-links">
           <div class="links-column">
             <h4>Quick Links</h4>
-            <a href="home.html">Home</a>
-            <a href="services.html">Services</a>
-            <a href="resources.html">Resources</a>
-            <a href="feedback.html">Feedback</a>
+            <a href="/Website/html/about.html">About Us</a>
+            <a href="/Website/html/services.html">Services</a>
+            <a href="/Website/html/resources.html">Resources</a>
+            <a href="/Website/html/feedback.html">Feedback</a>
+            <!-- Quick Links: add Live Chat -->
+<a href="/Website/html/student-chat.html" class="footer-chat-link" aria-label="Live chat with counselor">
+  <i class="fas fa-comments"></i> Live Chat
+</a>
+
           </div>
           <div class="links-column">
             <h4>Support</h4>
@@ -302,10 +413,9 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
   <!-- Your Firebase wrapper -->
-  <script src="/Website/js/firebase.js"></script>
-
-  <!-- Global behaviors -->
-  <script src="/Website/js/script.js"></script>
+<script src="/Website/js/firebase.js"></script>
+<script src="/Website/js/auth.js"></script>
+<script src="/Website/js/script.js"></script>
 
   <!-- Page-specific behaviors -->
   <script src="/Website/js/about.js"></script>

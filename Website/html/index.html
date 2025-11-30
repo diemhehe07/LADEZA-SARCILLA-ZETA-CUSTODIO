@@ -5,81 +5,100 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SLS-U Matter | Mental Health Support for SLSU Lucena Students</title>
-  <head>
+
+  <!-- Core styles -->
   <link rel="stylesheet" href="/Website/css/global.css">
   <link rel="stylesheet" href="/Website/css/index.css">
-  </head>
+  <link rel="stylesheet" href="/Website/css/login.css">
+  <link rel="stylesheet" href="/Website/css/auth.css">
+  <link rel="stylesheet" href="/Website/css/profile.css">
+
+  <!-- Add chat/nav stylesheet so the header matches student-chat -->
+  <link rel="stylesheet" href="/Website/css/therapist-chat.css">
+
+  <!-- Fonts & icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    /* small in-file fixes so overlay looks perfect without extra edits */
+    html.auth-open, body.auth-open { overflow: hidden; height: 100%; }
+  </style>
 </head>
 
 <body>
-  <!-- Header with responsive navigation -->
-<header class="site-header">
-  <div class="wrap nav-row">
-    <div class="brand">
-      <img src="/Website/images/logo2.png" alt="SLSU-U Matters Logo" class="brand-logo">
-    </div>
-    <nav class="main-nav">
-      <button class="mobile-menu-toggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <div class="nav-links">
-        <a href="/Website/html/index.html" data-section="index.html">Home</a>
-        <a href="/Website/html/about.html" data-section="about.html">About</a>
-        <a href="/Website/html/resources.html" data-section="resources.html">Resources</a>
-        <a href="/Website/html/services.html" data-section="services.html">Services</a>
-        <a href="/Website/html/feedback.html" data-section="feedback.html">Feedback</a>
-        <a href="/Website/html/contact.html" data-section="contact.html">Contact</a>
+  <!-- Standardized Header (copied from student-chat) -->
+  <header class="site-header">
+    <div class="wrap nav-row">
+      <div class="brand">
+        <a href="/Website/html/index.html">
+          <img src="/Website/images/logo2.png"
+               alt="SLS-U Matters Logo"
+               class="brand-logo" />
+        </a>
       </div>
-    </nav>
-    <div class="nav-cta">
-      <a class="btn btn-ghost" href="booking.html">Book Session</a>
-      <!-- Profile icon for login -->
-        <a href="/Website/html/profile.html" class="profile-icon active" aria-label="View your profile" id="profileNavIcon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke="currentColor" stroke-width="2"/>
-          <path d="M20 21C20 19.6044 20 18.9067 19.8278 18.3389C19.44 17.0605 18.4395 16.06 17.1611 15.6722C16.5933 15.5 15.8956 15.5 14.5 15.5H9.5C8.10444 15.5 7.40665 15.5 6.83886 15.6722C5.56045 16.06 4.56004 17.0605 4.17224 18.3389C4 18.9067 4 19.6044 4 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </a>
-    </div>
-  </div>
-        </header>
 
- <!-- Keep your existing hero section, the CSS will handle the effects -->
-<section class="hero" id="home">
-  <div class="overlay">
-    <h1>Your Mental Well-being Matters, SLSUan!</h1>
-    <p>SLSU-U Matter provides dedicated mental health support for SLSU Lucena students. We're here to help you navigate academic stress, personal challenges, and everything in between.</p>
-    <div class="hero-buttons">
-      <a href="/Website/html/about.html" class="primary-btn">Get Started</a>
-      <a href="/Website/html/services.html" class="secondary-btn">Our Services</a>
+      <nav class="main-nav">
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+          <a href="/Website/html/index.html">Home</a>
+          <a href="/Website/html/about.html">About</a>
+          <a href="/Website/html/services.html">Services</a>
+          <a href="/Website/html/resources.html">Resources</a>
+        </div>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="/Website/html/booking.html">Book Session</a>
+
+        <div id="authButtons">
+          <!-- Shown when logged OUT — changed to open overlay -->
+          <button id="loginNavBtn" class="login-btn btn" aria-label="Open login">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </button>
+
+          <!-- Shown when logged IN (updated by auth code) -->
+          <div id="userMenu" style="display:none;">
+            <button class="profile-icon" id="profileNavIcon" aria-label="Your dashboard">
+              <i class="fas fa-user"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="overlay">
+      <h1>Your Mental Well-being Matters, SLSUan!</h1>
+      <p>SLS-U Matter provides dedicated mental health support for SLSU Lucena students. We're here to help you navigate academic stress, personal challenges, and everything in between.</p>
+      <div class="hero-buttons">
+        <a href="/Website/html/about.html" class="primary-btn">Get Started</a>
+        <a href="/Website/html/services.html" class="secondary-btn">Our Services</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Stats Section -->
   <section class="stats-section">
     <div class="wrap">
       <div class="stats-grid">
         <div class="stat-item">
-          <h3>1,200+</h3>
-          <p>SLSU Students Helped</p>
+          <h3>1,000+</h3>
+          <p>Students helped</p>
         </div>
         <div class="stat-item">
-          <h3>24/7</h3>
-          <p>Campus Support Available</p>
+          <h3>50+</h3>
+          <p>Qualified counselors</p>
         </div>
         <div class="stat-item">
-          <h3>10+</h3>
-          <p>Licensed Counselors</p>
-        </div>
-        <div class="stat-item">
-          <h3>95%</h3>
-          <p>Student Satisfaction</p>
+          <h3>4.8</h3>
+          <p>Average session rating</p>
         </div>
       </div>
     </div>
@@ -284,6 +303,11 @@
             <a href="/Website/html/services.html">Services</a>
             <a href="/Website/html/resources.html">Resources</a>
             <a href="/Website/html/feedback.html">Feedback</a>
+            <!-- Quick Links: add Live Chat -->
+<a href="/Website/html/student-chat.html" class="footer-chat-link" aria-label="Live chat with counselor">
+  <i class="fas fa-comments"></i> Live Chat
+</a>
+
           </div>
           <div class="links-column">
             <h4>Support</h4>
@@ -307,20 +331,119 @@
     </div>
   </footer>
 
-  <!-- Page content above -->
+ <div id="authOverlay" class="auth-overlay" aria-hidden="true">
+    <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <div class="auth-top">
+        <img src="/Website/images/logo2.png" alt="SLSU-U Matters Logo" class="auth-logo">
+        <button id="authClose" class="auth-close" aria-label="Close auth overlay">&times;</button>
+      </div>
 
-  <!-- Firebase SDK (step 2 shows full block) -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Login</button>
+        <button class="auth-tab" data-tab="register">Register</button>
+      </div>
+
+      <div class="auth-forms">
+        <!-- LOGIN -->
+        <form id="overlayLoginForm" class="overlay-auth-form active" autocomplete="on">
+          <div class="form-group">
+            <label>Select Role</label>
+            <div class="role-select">
+              <label><input type="radio" name="loginRole" value="student" checked> Student</label>
+              <label><input type="radio" name="loginRole" value="therapist"> Counselor</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="overlayLoginEmail">Email</label>
+            <input id="overlayLoginEmail" type="email" required placeholder="you@student.slsu.edu.ph" />
+          </div>
+          <div class="form-group">
+            <label for="overlayLoginPassword">Password</label>
+            <input id="overlayLoginPassword" type="password" required placeholder="Password" />
+          </div>
+          <div class="form-row">
+            <label class="checkbox-label"><input type="checkbox" id="rememberMe" /> Remember me</label>
+            <a class="forgot-password small" href="#">Forgot?</a>
+          </div>
+          <button class="primary-btn" type="submit">Sign in</button>
+        </form>
+
+        <!-- REGISTER -->
+        <form id="overlayRegisterForm" class="overlay-auth-form" autocomplete="on">
+          <div class="form-group">
+            <label>Select Role</label>
+            <div class="role-select">
+              <label><input type="radio" name="registerRole" value="student" checked> Student</label>
+              <label><input type="radio" name="registerRole" value="therapist"> Counselor</label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group"><label for="ovFirst">First</label><input id="ovFirst" required/></div>
+            <div class="form-group"><label for="ovLast">Last</label><input id="ovLast" required/></div>
+          </div>
+          <div class="form-group"><label for="ovEmail">Email</label><input id="ovEmail" type="email" required/></div>
+          <div class="form-group"><label for="ovPassword">Password</label><input id="ovPassword" type="password" required/></div>
+
+          <div id="ovStudentFields" class="role-fields active">
+            <div class="form-group"><label for="ovStudentId">Student ID</label><input id="ovStudentId" /></div>
+            <div class="form-group"><label for="ovCourse">Course & year</label><input id="ovCourse" /></div>
+          </div>
+
+          <div id="ovTherapistFields" class="role-fields" style="display:none;">
+            <div class="form-group"><label for="ovTherId">Counselor ID</label><input id="ovTherId" /></div>
+            <div class="form-group"><label for="ovSpec">Specialization</label><input id="ovSpec" /></div>
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-label"><input type="checkbox" id="ovTerms" required/> I agree to terms</label>
+          </div>
+          <button class="primary-btn" type="submit">Create account</button>
+        </form>
+      </div>
+
+      <div class="auth-footer">
+        <small>By creating an account you can access protected pages & book sessions.</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFILE SLIDE-OUT -->
+  <aside id="profilePanel" class="profile-panel" aria-hidden="true">
+    <button id="closeProfilePanel" class="close-profile" aria-label="Close profile">&times;</button>
+    <div class="profile-content">
+      <div class="user-avatar-large"><img id="profileAvatar" src="/Website/images/default-avatar.png" alt="avatar"></div>
+      <h3 id="profileName">User Name</h3>
+      <p id="profileRole">Role</p>
+
+      <div class="profile-info-grid">
+        <div><strong>ID</strong><div id="profileId">—</div></div>
+        <div><strong>Course / Spec</strong><div id="profileCourse">—</div></div>
+        <div><strong>Email</strong><div id="profileEmail">—</div></div>
+        <div><strong>Phone</strong><div id="profilePhone">—</div></div>
+      </div>
+
+      <div class="profile-actions">
+        <button id="editProfile" class="secondary-btn">Edit Profile</button>
+        <button id="logoutBtn" class="primary-btn">Log out</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
-  <!-- Your Firebase wrapper -->
+  <!-- Firebase wrapper + site scripts -->
   <script src="/Website/js/firebase.js"></script>
-
-  <!-- Global behaviors -->
   <script src="/Website/js/script.js"></script>
 
-  <!-- Page-specific behaviors -->
-  <script src="/Website/js/index.js"></script>
+  <!-- overlay auth script + updated profile logic -->
+  <script src="/Website/js/overlay-auth.js"></script>
+  <script src="/Website/js/profile-dashboard.js"></script>
+
 </body>
+
 </html>

@@ -1,307 +1,306 @@
-// Website/js/login.js
-// Handles login/register UI + Firebase (email/password + Google + Facebook)
+// /Website/js/login.js
+document.addEventListener('DOMContentLoaded', function() {
+  // Check if user is already logged in
+  const currentUser = FirebaseService.getCurrentUser();
+  if (currentUser) {
+    redirectBasedOnRole(currentUser.uid);
+    return;
+  }
 
-document.addEventListener("DOMContentLoaded", () => {
-  // ----- Tabs -----
-  const authTabs = document.querySelectorAll(".auth-tab");
-  const authForms = document.querySelectorAll(".auth-form");
+  // Initialize the authentication system
+  initializeAuth();
+});
 
-  authTabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      const targetTab = tab.getAttribute("data-tab");
+function initializeAuth() {
+  // Tab switching
+  setupTabSwitching();
+  
+  // User type selection
+  setupUserTypeSelection();
+  
+  // Password toggle
+  setupPasswordToggle();
+  
+  // Form submissions
+  setupFormSubmissions();
+}
 
-      authTabs.forEach((t) => t.classList.remove("active"));
-      authForms.forEach((f) => f.classList.remove("active"));
-
-      tab.classList.add("active");
-      const targetForm = document.querySelector(`.auth-form[data-tab="${targetTab}"]`);
-      if (targetForm) targetForm.classList.add("active");
+function setupTabSwitching() {
+  const authTabs = document.querySelectorAll('.auth-tab');
+  const authForms = document.querySelectorAll('.auth-form');
+  
+  authTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetTab = tab.getAttribute('data-tab');
+      
+      // Update active tab
+      authTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      
+      // Show corresponding form
+      authForms.forEach(form => {
+        form.classList.remove('active');
+        if (form.id === `${targetTab}Form`) {
+          form.classList.add('active');
+        }
+      });
+      
+      // Clear messages when switching tabs
+      clearMessages();
     });
   });
+}
 
-  // ----- Forms -----
-  const loginForm = document.getElementById("loginFormElement");
-  const registerForm = document.getElementById("registerFormElement");
-
-  if (loginForm) loginForm.addEventListener("submit", handleLogin);
-  if (registerForm) registerForm.addEventListener("submit", handleRegister);
-
-  // ----- Password toggles -----
-  const loginPassword = document.getElementById("loginPassword");
-  const loginPasswordToggle = document.getElementById("loginPasswordToggle");
-  const registerPassword = document.getElementById("registerPassword");
-  const registerPasswordToggle = document.getElementById("registerPasswordToggle");
-  const registerConfirmPassword = document.getElementById("registerConfirmPassword");
-  const registerConfirmToggle = document.getElementById("registerConfirmPasswordToggle");
-
-  setupPasswordToggle(loginPassword, loginPasswordToggle);
-  setupPasswordToggle(registerPassword, registerPasswordToggle);
-  setupPasswordToggle(registerConfirmPassword, registerConfirmToggle);
-
-  // ----- Password strength meter -----
-  const strengthFill = document.getElementById("strengthFill");
-  const strengthText = document.getElementById("strengthText");
-
-  if (registerPassword) {
-    registerPassword.addEventListener("input", () => {
-      const { score, label } = evaluatePassword(registerPassword.value);
-      if (!strengthFill || !strengthText) return;
-
-      strengthFill.style.width = `${score}%`;
-      strengthText.textContent = label;
+function setupUserTypeSelection() {
+  const userTypeOptions = document.querySelectorAll('.user-type-option');
+  
+  userTypeOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      const userType = option.getAttribute('data-type');
+      
+      // Update active option
+      userTypeOptions.forEach(opt => opt.classList.remove('active'));
+      option.classList.add('active');
+      
+      // Update hidden input
+      document.getElementById('registerUserType').value = userType;
+      
+      // Show/hide role-specific fields
+      toggleRoleFields(userType);
     });
+  });
+}
+
+function toggleRoleFields(userType) {
+  const studentFields = document.getElementById('studentFields');
+  const therapistFields = document.getElementById('therapistFields');
+  
+  // Hide all fields first
+  studentFields.classList.remove('active');
+  therapistFields.classList.remove('active');
+  
+  // Show relevant fields
+  if (userType === 'student') {
+    studentFields.classList.add('active');
+  } else {
+    therapistFields.classList.add('active');
   }
+}
 
-  // ----- Social login buttons -----
-  const googleBtn = document.getElementById("googleLoginBtn");
-  const facebookBtn = document.getElementById("facebookLoginBtn");
-
-  if (googleBtn) {
-    googleBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      handleProviderLogin("google");
-    });
-  }
-
-  if (facebookBtn) {
-    facebookBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      handleProviderLogin("facebook");
-    });
-  }
-
-  // ----- Notifications -----
-  function showNotification(message, type = "info") {
-    const existing = document.querySelector(".toast-notification");
-    if (existing) existing.remove();
-
-    const toast = document.createElement("div");
-    toast.className = `toast-notification ${type}`;
-    toast.textContent = message;
-    document.body.appendChild(toast);
-
-    setTimeout(() => toast.classList.add("show"), 10);
-    setTimeout(() => toast.classList.remove("show"), 3000);
-    setTimeout(() => toast.remove(), 3400);
-  }
-
-  // ----- Email/password LOGIN handler -----
-  async function handleLogin(e) {
-    e.preventDefault();
-    if (!loginForm) return;
-
-    const formData = new FormData(loginForm);
-    const email = formData.get("email");
-    const password = formData.get("password");
-    const rememberMe = formData.get("rememberMe");
-
-    if (!email || !password) {
-      showNotification("Please fill in all required fields", "error");
-      return;
-    }
-
-    const submitBtn = loginForm.querySelector(".auth-btn");
-    const originalText = submitBtn ? submitBtn.textContent : "";
-    if (submitBtn) {
-      submitBtn.textContent = "Signing in...";
-      submitBtn.disabled = true;
-    }
-
-    try {
-      if (window.FirebaseService && typeof FirebaseService.isReady === "function" && FirebaseService.isReady()) {
-        await FirebaseService.loginWithEmail(email, password);
-        showNotification("Login successful! Redirecting...", "success");
+function setupPasswordToggle() {
+  const passwordToggles = document.querySelectorAll('.password-toggle');
+  
+  passwordToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const input = toggle.parentElement.querySelector('input');
+      const icon = toggle.querySelector('i');
+      
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
       } else {
-        // Fallback to localStorage-only login
-        const users = JSON.parse(localStorage.getItem("slsUsers") || "[]");
-        const user = users.find((u) => u.email === email && u.password === password);
-
-        if (!user) {
-          showNotification("Invalid email or password", "error");
-          resetButton();
-          return;
-        }
-
-        const sessionData = {
-          firstName: user.firstName,
-          lastName: user.lastName,
-          email: user.email,
-          isLoggedIn: true
-        };
-
-        if (rememberMe) {
-          localStorage.setItem("slsUserSession", JSON.stringify(sessionData));
-        } else {
-          sessionStorage.setItem("slsUserSession", JSON.stringify(sessionData));
-        }
-        showNotification("Login successful! Redirecting...", "success");
-      }
-
-      setTimeout(() => {
-        window.location.href = "/Website/html/profile.html";
-      }, 1200);
-    } catch (err) {
-      console.error("Login error:", err);
-      showNotification(err.message || "Login failed. Please try again.", "error");
-    } finally {
-      resetButton();
-    }
-
-    function resetButton() {
-      if (!submitBtn) return;
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-    }
-  }
-
-  // ----- Email/password REGISTER handler -----
-  async function handleRegister(e) {
-    e.preventDefault();
-    if (!registerForm) return;
-
-    const formData = new FormData(registerForm);
-    const firstName = formData.get("firstName");
-    const lastName = formData.get("lastName");
-    const email = formData.get("email");
-    const phone = formData.get("phone");
-    const password = formData.get("password");
-    const confirmPassword = formData.get("confirmPassword");
-    const userType = formData.get("userType");
-    const termsAgreement = formData.get("termsAgreement");
-
-    if (!firstName || !lastName || !email || !password || !confirmPassword) {
-      showNotification("Please fill in all required fields", "error");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      showNotification("Passwords do not match", "error");
-      return;
-    }
-
-    if (!termsAgreement) {
-      showNotification("Please agree to the terms and conditions", "error");
-      return;
-    }
-
-    const submitBtn = registerForm.querySelector(".auth-btn");
-    const originalText = submitBtn ? submitBtn.textContent : "";
-    if (submitBtn) {
-      submitBtn.textContent = "Creating account...";
-      submitBtn.disabled = true;
-    }
-
-    try {
-      // Local fallback user store
-      const users = JSON.parse(localStorage.getItem("slsUsers") || "[]");
-      const existingUser = users.find((u) => u.email === email);
-
-      if (existingUser) {
-        showNotification("An account with this email already exists", "error");
-        resetButton();
-        return;
-      }
-
-      const newUser = {
-        id: `U${Date.now()}`,
-        firstName,
-        lastName,
-        email,
-        phone,
-        password, // plain text only for fallback
-        userType,
-        createdAt: new Date().toISOString()
-      };
-
-      users.push(newUser);
-      localStorage.setItem("slsUsers", JSON.stringify(users));
-
-      // Also register with Firebase if available
-      if (window.FirebaseService && typeof FirebaseService.isReady === "function" && FirebaseService.isReady()) {
-        await FirebaseService.registerWithEmail(email, password, {
-          firstName,
-          lastName,
-          phone,
-          userType
-        });
-      }
-
-      showNotification("Account created! You can now log in.", "success");
-
-      // Switch to Login tab after a brief delay
-      setTimeout(() => {
-        authTabs.forEach((t) => t.classList.remove("active"));
-        authForms.forEach((f) => f.classList.remove("active"));
-
-        const loginTab = document.querySelector('.auth-tab[data-tab="login"]');
-        const loginFormContainer = document.querySelector('.auth-form[data-tab="login"]');
-
-        if (loginTab) loginTab.classList.add("active");
-        if (loginFormContainer) loginFormContainer.classList.add("active");
-      }, 800);
-
-      registerForm.reset();
-    } catch (err) {
-      console.error("Registration error:", err);
-      showNotification(err.message || "Registration failed. Please try again.", "error");
-    } finally {
-      resetButton();
-    }
-
-    function resetButton() {
-      if (!submitBtn) return;
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-    }
-  }
-
-  // ----- Social login handler -----
-  async function handleProviderLogin(providerName) {
-    try {
-      if (!(window.FirebaseService && typeof FirebaseService.isReady === "function" && FirebaseService.isReady())) {
-        alert("Social login is not available right now. Please try email/password.");
-        return;
-      }
-
-      const user = await FirebaseService.loginWithProvider(providerName);
-      console.log("Logged in with provider:", providerName, user.uid);
-      showNotification("Login successful! Redirecting...", "success");
-
-      setTimeout(() => {
-        window.location.href = "/Website/html/profile.html";
-      }, 1000);
-    } catch (err) {
-      console.error(`Error with ${providerName} login:`, err);
-      showNotification(err.message || "Social login failed. Please try again.", "error");
-    }
-  }
-
-  // ----- Helpers -----
-  function setupPasswordToggle(input, button) {
-    if (!input || !button) return;
-    button.addEventListener("click", () => {
-      const isPassword = input.type === "password";
-      input.type = isPassword ? "text" : "password";
-      const icon = button.querySelector("i");
-      if (icon) {
-        icon.classList.toggle("fa-eye");
-        icon.classList.toggle("fa-eye-slash");
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
       }
     });
+  });
+}
+
+function setupFormSubmissions() {
+  // Registration form
+  const registerForm = document.getElementById('registerForm');
+  if (registerForm) {
+    registerForm.addEventListener('submit', handleRegistration);
   }
 
-  function evaluatePassword(password) {
-    if (!password) return { score: 0, label: "Password strength" };
-    let score = 0;
-    if (password.length >= 8) score += 25;
-    if (/[A-Z]/.test(password)) score += 25;
-    if (/[0-9]/.test(password)) score += 25;
-    if (/[^A-Za-z0-9]/.test(password)) score += 25;
+  // Login form
+  const loginForm = document.getElementById('loginForm');
+  if (loginForm) {
+    loginForm.addEventListener('submit', handleLogin);
+  }
 
-    let label = "Weak";
-    if (score >= 75) label = "Strong";
-    else if (score >= 50) label = "Medium";
+  // Social login
+  const googleLoginBtn = document.getElementById('googleLoginBtn');
+  if (googleLoginBtn) {
+    googleLoginBtn.addEventListener('click', handleGoogleLogin);
+  }
 
-    return { score, label };
+  const facebookLoginBtn = document.getElementById('facebookLoginBtn');
+  if (facebookLoginBtn) {
+    facebookLoginBtn.addEventListener('click', handleFacebookLogin);
+  }
+}
+
+async function handleRegistration(e) {
+  e.preventDefault();
+  
+  const formData = new FormData(e.target);
+  const submitBtn = e.target.querySelector('.primary-btn');
+  
+  // Validate terms agreement
+  if (!formData.get('terms')) {
+    showMessage('Please agree to the Terms of Service and Privacy Policy', 'error');
+    return;
+  }
+  
+  const userData = {
+    firstName: formData.get('firstName'),
+    lastName: formData.get('lastName'),
+    email: formData.get('email'),
+    password: formData.get('password'),
+    role: document.getElementById('registerUserType').value,
+    newsletter: formData.get('newsletter') === 'on'
+  };
+  
+  // Add role-specific fields
+  if (userData.role === 'student') {
+    userData.studentId = formData.get('studentId');
+    userData.courseYear = formData.get('courseYear');
+  } else {
+    userData.therapistId = formData.get('therapistId');
+    userData.specialization = formData.get('specialization');
+    userData.licenseNumber = formData.get('licenseNumber');
+  }
+  
+  try {
+    // Show loading state
+    setButtonLoading(submitBtn, true);
+    
+    const user = await FirebaseService.registerWithEmail(
+      userData.email, 
+      userData.password, 
+      userData
+    );
+    
+    if (user) {
+      showMessage('Registration successful! Welcome to SLS U Matter.', 'success');
+      // The auth state change will handle redirection
+    }
+  } catch (error) {
+    showMessage(getErrorMessage(error), 'error');
+  } finally {
+    setButtonLoading(submitBtn, false);
+  }
+}
+
+async function handleLogin(e) {
+  e.preventDefault();
+  
+  const formData = new FormData(e.target);
+  const submitBtn = e.target.querySelector('.primary-btn');
+  const email = formData.get('email');
+  const password = formData.get('password');
+  
+  try {
+    // Show loading state
+    setButtonLoading(submitBtn, true);
+    
+    const user = await FirebaseService.loginWithEmail(email, password);
+    
+    if (user) {
+      showMessage('Login successful! Redirecting...', 'success');
+    }
+  } catch (error) {
+    showMessage(getErrorMessage(error), 'error');
+  } finally {
+    setButtonLoading(submitBtn, false);
+  }
+}
+
+async function handleGoogleLogin() {
+  try {
+    await FirebaseService.loginWithProvider('google');
+  } catch (error) {
+    showMessage(getErrorMessage(error), 'error');
+  }
+}
+
+async function handleFacebookLogin() {
+  try {
+    await FirebaseService.loginWithProvider('facebook');
+  } catch (error) {
+    showMessage(getErrorMessage(error), 'error');
+  }
+}
+
+function setButtonLoading(button, isLoading) {
+  if (isLoading) {
+    button.disabled = true;
+    button.classList.add('loading');
+  } else {
+    button.disabled = false;
+    button.classList.remove('loading');
+  }
+}
+
+function showMessage(message, type) {
+  // Remove existing messages
+  clearMessages();
+  
+  // Create message element
+  const messageEl = document.createElement('div');
+  messageEl.className = `auth-message ${type}`;
+  messageEl.textContent = message;
+  
+  // Insert at the top of the active form
+  const activeForm = document.querySelector('.auth-form.active');
+  const formContainer = activeForm.querySelector('.form-scroll-container');
+  formContainer.insertBefore(messageEl, formContainer.firstChild);
+  
+  // Auto-remove success messages after 3 seconds
+  if (type === 'success') {
+    setTimeout(() => {
+      messageEl.remove();
+    }, 3000);
+  }
+}
+
+function clearMessages() {
+  const messages = document.querySelectorAll('.auth-message');
+  messages.forEach(msg => msg.remove());
+}
+
+function getErrorMessage(error) {
+  switch (error.code) {
+    case 'auth/invalid-email':
+      return 'Please enter a valid email address.';
+    case 'auth/user-disabled':
+      return 'This account has been disabled.';
+    case 'auth/user-not-found':
+      return 'No account found with this email.';
+    case 'auth/wrong-password':
+      return 'Incorrect password. Please try again.';
+    case 'auth/email-already-in-use':
+      return 'An account with this email already exists.';
+    case 'auth/weak-password':
+      return 'Password should be at least 6 characters long.';
+    case 'auth/popup-closed-by-user':
+      return 'Login was cancelled. Please try again.';
+    case 'auth/account-exists-with-different-credential':
+      return 'An account already exists with the same email but different sign-in method.';
+    default:
+      return error.message || 'An unexpected error occurred. Please try again.';
+  }
+}
+
+async function redirectBasedOnRole(uid) {
+  try {
+    const profile = await FirebaseService.getUserProfile(uid);
+    if (profile?.role === 'therapist') {
+      window.location.href = '../html/therapist-dashboard.html';
+    } else {
+      window.location.href = '../html/index.html';
+    }
+  } catch (error) {
+    console.error('Error redirecting:', error);
+  }
+}
+
+// Listen for auth state changes
+FirebaseService.onAuthChange((user) => {
+  if (user) {
+    redirectBasedOnRole(user.uid);
   }
 });

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Live Chat | SLSU-U Matters</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="/Website/css/global.css">
+  <link rel="stylesheet" href="/Website/css/therapist-chat.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+
+  <!-- Header (already matches) -->
+  <header class="site-header">
+    <div class="wrap nav-row">
+      <div class="brand">
+        <a href="/Website/html/index.html">
+          <img src="/Website/images/logo2.png"
+               alt="SLSU-U Matters Logo"
+               class="brand-logo" />
+        </a>
+      </div>
+
+      <nav class="main-nav">
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links">
+          <a href="/Website/html/index.html">Home</a>
+          <a href="/Website/html/resources.html">Resources</a>
+          <a href="/Website/html/services.html">Services</a>
+          <a href="/Website/html/booking.html">Book Session</a>
+        </div>
+      </nav>
+
+      <div class="nav-cta">
+
+        <a class="btn btn-ghost" href="/Website/html/booking.html">Book Session</a>
+
+        <div id="authButtons">
+
+          <!-- FIXED: replaced <a href="login.html"> with overlay button -->
+          <button id="loginNavBtn" class="login-btn btn">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </button>
+
+          <!-- Visible when logged in -->
+          <div id="userMenu" style="display:none;">
+            <button class="profile-icon" id="profileNavIcon" aria-label="Your dashboard">
+              <i class="fas fa-user"></i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="wrap">
+      <h1>Live Chat with Your Counselor</h1>
+      <p>Message your assigned counselor in real time.</p>
+    </div>
+  </section>
+
+  <!-- Chat Content -->
+  <section class="page-content">
+    <div class="wrap">
+      <div class="chat-container">
+        <div class="chat-main" style="flex:1;">
+          <div class="chat-header">
+            <div class="chat-user-info">
+              <div class="user-avatar"><i class="fas fa-user-md"></i></div>
+              <div class="user-details">
+                <h4 id="counselorName">Your Counselor</h4>
+                <p id="chatStatus">Online</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-messages" id="chatMessages">
+            <div class="welcome-message">
+              <i class="fas fa-comments"></i>
+              <h3>Start the conversation</h3>
+              <p>You can share what you're going through. Your counselor will respond here.</p>
+            </div>
+          </div>
+
+          <div class="chat-input-container" id="chatInputContainer" style="display:flex;">
+            <div class="chat-input">
+              <textarea id="messageInput"
+                        placeholder="Type your message..."
+                        rows="1"></textarea>
+              <button id="sendMessageBtn" class="send-btn">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTH OVERLAY (MODAL LOGIN/REGISTER) -->
+  <div id="authOverlay" class="auth-overlay" aria-hidden="true">
+    <div class="auth-modal">
+      <div class="auth-top">
+        <img src="/Website/images/logo2.png" class="auth-logo">
+        <button id="authClose" class="auth-close">&times;</button>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Login</button>
+        <button class="auth-tab" data-tab="register">Register</button>
+      </div>
+
+      <div class="auth-forms">
+
+        <!-- LOGIN -->
+        <form id="overlayLoginForm" class="overlay-auth-form active">
+          <div class="form-group">
+            <label>Select Role</label>
+            <div class="role-select">
+              <label><input type="radio" name="loginRole" value="student" checked> Student</label>
+              <label><input type="radio" name="loginRole" value="therapist"> Counselor</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input id="overlayLoginEmail" type="email" required>
+          </div>
+
+          <div class="form-group">
+            <label>Password</label>
+            <input id="overlayLoginPassword" type="password" required>
+          </div>
+
+          <button class="primary-btn" type="submit">Sign in</button>
+        </form>
+
+        <!-- REGISTER -->
+        <form id="overlayRegisterForm" class="overlay-auth-form">
+
+          <div class="form-group">
+            <label>Select Role</label>
+            <div class="role-select">
+              <label><input type="radio" name="registerRole" value="student" checked> Student</label>
+              <label><input type="radio" name="registerRole" value="therapist"> Counselor</label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group"><label>First</label><input id="ovFirst" required></div>
+            <div class="form-group"><label>Last</label><input id="ovLast" required></div>
+          </div>
+
+          <div class="form-group"><label>Email</label><input id="ovEmail" type="email" required></div>
+          <div class="form-group"><label>Password</label><input id="ovPassword" type="password" required></div>
+
+          <div id="ovStudentFields" class="role-fields active">
+            <div class="form-group"><label>Student ID</label><input id="ovStudentId"></div>
+            <div class="form-group"><label>Course & Year</label><input id="ovCourse"></div>
+          </div>
+
+          <div id="ovTherapistFields" class="role-fields" style="display:none;">
+            <div class="form-group"><label>Counselor ID</label><input id="ovTherId"></div>
+            <div class="form-group"><label>Specialization</label><input id="ovSpec"></div>
+          </div>
+
+          <button class="primary-btn" type="submit">Create account</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PROFILE PANEL -->
+  <aside id="profilePanel" class="profile-panel" aria-hidden="true">
+    <button id="closeProfilePanel" class="close-profile">&times;</button>
+    <div class="profile-content">
+      <div class="user-avatar-large"><img id="profileAvatar" src="/Website/images/default-avatar.png"></div>
+      <h3 id="profileName">User Name</h3>
+      <p id="profileRole">Role</p>
+      <div class="profile-info-grid">
+        <div><strong>ID</strong><div id="profileId">—</div></div>
+        <div><strong>Course / Spec</strong><div id="profileCourse">—</div></div>
+        <div><strong>Email</strong><div id="profileEmail">—</div></div>
+        <div><strong>Phone</strong><div id="profilePhone">—</div></div>
+      </div>
+      <div class="profile-actions">
+        <button id="logoutBtn" class="primary-btn">Log out</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <!-- Firebase wrapper + overlay auth + global behavior -->
+  <script src="/Website/js/firebase.js"></script>
+  <script src="/Website/js/login.js"></script>
+  <script src="/Website/js/overlay-auth.js"></script>
+  <script src="/Website/js/script.js"></script>
+
+  <!-- Student chat logic -->
+  <script src="/Website/js/student-chat.js"></script>
+
+</body>
+</html>

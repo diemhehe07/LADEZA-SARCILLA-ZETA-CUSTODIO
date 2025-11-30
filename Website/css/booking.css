@@ -595,6 +595,38 @@
   color: var(--muted);
 }
 
+/* Therapist Actions Card */
+.therapist-actions-card {
+  background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+  border-left: 4px solid var(--accent-2);
+}
+
+.therapist-actions-card h3 {
+  color: var(--accent-2);
+}
+
+.therapist-actions-card h3 i {
+  margin-right: 8px;
+}
+
+.therapist-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.therapist-actions .support-btn {
+  background: white;
+  border: 1px solid var(--accent-2);
+  color: var(--accent-2);
+  font-weight: 500;
+}
+
+.therapist-actions .support-btn:hover {
+  background: var(--accent-2);
+  color: white;
+}
+
 /* Success modal styling */
 .success-content {
   text-align: center;

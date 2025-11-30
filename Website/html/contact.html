@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us | SLS-U Matter</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact | SLS-U Matter</title>
 
   <link rel="stylesheet" href="/Website/css/global.css">
   <link rel="stylesheet" href="/Website/css/contact.css">
+  <link rel="stylesheet" href="/Website/css/therapist-chat.css"> <!-- added -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,36 +15,34 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <!-- Header with responsive navigation -->
+  <!-- Standardized Header -->
   <header class="site-header">
     <div class="wrap nav-row">
       <div class="brand">
-        <img src="/Website/images/logo2.png" alt="SLSU-U Matters Logo" class="brand-logo">
+        <a href="/Website/html/index.html">
+          <img src="/Website/images/logo2.png" alt="SLSU-U Matters Logo" class="brand-logo" />
+        </a>
       </div>
+
       <nav class="main-nav">
         <button class="mobile-menu-toggle" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </button>
         <div class="nav-links">
-          <a href="/Website/html/index.html" data-section="index.html">Home</a>
-          <a href="/Website/html/about.html" data-section="about.html">About</a>
-          <a href="/Website/html/resources.html" data-section="resources.html">Resources</a>
-          <a href="/Website/html/services.html" data-section="services.html">Services</a>
-          <a href="/Website/html/feedback.html" data-section="feedback.html">Feedback</a>
-          <a href="/Website/html/contact.html" data-section="contact.html">Contact</a>
+          <a href="/Website/html/index.html">Home</a>
+          <a href="/Website/html/about.html">About</a>
+          <a href="/Website/html/services.html">Services</a>
+          <a href="/Website/html/resources.html">Resources</a>
         </div>
       </nav>
+
       <div class="nav-cta">
-        <a class="btn btn-ghost" href="booking.html">Book Session</a>
-        <!-- Profile icon for login -->
-        <a href="/Website/html/profile.html" class="profile-icon active" aria-label="View your profile" id="profileNavIcon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" stroke="currentColor" stroke-width="2"/>
-            <path d="M20 21C20 19.6044 20 18.9067 19.8278 18.3389C19.44 17.0605 18.4395 16.06 17.1611 15.6722C16.5933 15.5 15.8956 15.5 14.5 15.5H9.5C8.10444 15.5 7.40665 15.5 6.83886 15.6722C5.56045 16.06 4.56004 17.0605 4.17224 18.3389C4 18.9067 4 19.6044 4 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </a>
+        <a class="btn btn-ghost" href="/Website/html/booking.html">Book Session</a>
+
+        <div id="authButtons">
+          <button id="loginNavBtn" class="login-btn btn"><i class="fas fa-sign-in-alt"></i> Login</button>
+          <div id="userMenu" style="display:none;"><button class="profile-icon" id="profileNavIcon"><i class="fas fa-user"></i></button></div>
+        </div>
       </div>
     </div>
   </header>
@@ -59,6 +58,26 @@
   <!-- Contact Content -->
   <section class="page-content">
     <div class="wrap">
+      <!-- User Type Selection -->
+      <div class="user-type-section">
+        <h2>I am a:</h2>
+        <div class="user-type-selector">
+          <div class="user-type-option active" data-type="student">
+            <div class="option-icon">
+              <i class="fas fa-user-graduate"></i>
+            </div>
+            <span>Student</span>
+          </div>
+          <div class="user-type-option" data-type="therapist">
+            <div class="option-icon">
+              <i class="fas fa-user-md"></i>
+            </div>
+            <span>Therapist</span>
+          </div>
+        </div>
+        <input type="hidden" id="contactUserType" name="userType" value="student">
+      </div>
+
       <div class="contact-content">
         <div class="contact-info">
           <h2>Support Channels</h2>
@@ -114,40 +133,114 @@
             </div>
           </div>
 
-          <div class="office-hours">
-            <h3>Office Hours</h3>
-            <table class="hours-table">
-              <tr>
-                <td class="day">Monday - Friday</td>
-                <td>8:00 AM - 5:00 PM</td>
-              </tr>
-              <tr>
-                <td class="day">Saturday</td>
-                <td>By Appointment Only</td>
-              </tr>
-              <tr>
-                <td class="day">Sunday</td>
-                <td>Closed</td>
-              </tr>
-              <tr>
-                <td class="day">24/7 Crisis Line</td>
-                <td>0917-899-8727</td>
-              </tr>
-            </table>
+          <!-- Student Support Section -->
+          <div class="student-support active" id="studentSupport">
+            <div class="office-hours">
+              <h3>Office Hours</h3>
+              <table class="hours-table">
+                <tr>
+                  <td class="day">Monday - Friday</td>
+                  <td>8:00 AM - 5:00 PM</td>
+                </tr>
+                <tr>
+                  <td class="day">Saturday</td>
+                  <td>By Appointment Only</td>
+                </tr>
+                <tr>
+                  <td class="day">Sunday</td>
+                  <td>Closed</td>
+                </tr>
+                <tr>
+                  <td class="day">24/7 Crisis Line</td>
+                  <td>0917-899-8727</td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="campus-departments">
+              <h3>Related Campus Departments</h3>
+              <div class="department-list">
+                <div class="department">
+                  <h4>Office of Student Affairs</h4>
+                  <p>Email: osa@slsu.edu.ph</p>
+                  <p>Phone: (042) 710-2510</p>
+                </div>
+                <div class="department">
+                  <h4>University Health Services</h4>
+                  <p>Email: health@slsu.edu.ph</p>
+                  <p>Phone: (042) 710-2520</p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="campus-departments">
-            <h3>Related Campus Departments</h3>
-            <div class="department-list">
-              <div class="department">
-                <h4>Office of Student Affairs</h4>
-                <p>Email: osa@slsu.edu.ph</p>
-                <p>Phone: (042) 710-2510</p>
+          <!-- Therapist Support Section -->
+          <div class="therapist-support" id="therapistSupport" style="display: none;">
+            <div class="therapist-resources">
+              <h3>Therapist Resources & Support</h3>
+              
+              <div class="resource-grid">
+                <div class="resource-item">
+                  <div class="resource-icon">
+                    <i class="fas fa-calendar-check"></i>
+                  </div>
+                  <div class="resource-content">
+                    <h4>Schedule Management</h4>
+                    <p>Access your appointment calendar and manage your availability</p>
+                    <a href="/Website/html/therapist-schedule.html" class="secondary-btn">View Schedule</a>
+                  </div>
+                </div>
+                
+                <div class="resource-item">
+                  <div class="resource-icon">
+                    <i class="fas fa-file-medical"></i>
+                  </div>
+                  <div class="resource-content">
+                    <h4>Case Management</h4>
+                    <p>Access client records and session notes (secure access required)</p>
+                    <a href="/Website/html/case-management.html" class="secondary-btn">Case Portal</a>
+                  </div>
+                </div>
+                
+                <div class="resource-item">
+                  <div class="resource-icon">
+                    <i class="fas fa-users"></i>
+                  </div>
+                  <div class="resource-content">
+                    <h4>Peer Consultation</h4>
+                    <p>Connect with fellow therapists for case discussions and support</p>
+                    <a href="/Website/html/peer-consultation.html" class="secondary-btn">Join Discussion</a>
+                  </div>
+                </div>
+                
+                <div class="resource-item">
+                  <div class="resource-icon">
+                    <i class="fas fa-book-medical"></i>
+                  </div>
+                  <div class="resource-content">
+                    <h4>Professional Resources</h4>
+                    <p>Access therapy materials, assessments, and treatment guides</p>
+                    <a href="/Website/html/therapist-resources.html" class="secondary-btn">Resources</a>
+                  </div>
+                </div>
               </div>
-              <div class="department">
-                <h4>University Health Services</h4>
-                <p>Email: health@slsu.edu.ph</p>
-                <p>Phone: (042) 710-2520</p>
+            </div>
+
+            <div class="therapist-contact">
+              <h3>Therapist Support Team</h3>
+              <div class="support-contacts">
+                <div class="support-contact">
+                  <h4>Clinical Supervisor</h4>
+                  <p>Dr. Maria Santos</p>
+                  <p>Email: msantos@slsu.edu.ph</p>
+                  <p>Phone: (042) 710-2530</p>
+                </div>
+                <div class="support-contact">
+                  <h4>Technical Support</h4>
+                  <p>IT Help Desk</p>
+                  <p>Email: itsupport@slsu.edu.ph</p>
+                  <p>Phone: (042) 710-2540</p>
+                </div>
               </div>
             </div>
           </div>
@@ -162,9 +255,38 @@
                 <input type="text" id="contactName" name="name" required>
               </div>
               
-              <div class="form-group">
-                <label for="studentId">Student ID</label>
-                <input type="text" id="studentId" name="studentId" placeholder="e.g., 2023-00123">
+              <!-- Student-specific fields -->
+              <div class="student-fields active" id="contactStudentFields">
+                <div class="form-group">
+                  <label for="studentId">Student ID</label>
+                  <input type="text" id="studentId" name="studentId" placeholder="e.g., 2023-00123">
+                </div>
+                
+                <div class="form-group">
+                  <label for="courseYear">Course & Year Level</label>
+                  <input type="text" id="courseYear" name="courseYear" placeholder="e.g., BS Psychology, 2nd Year">
+                </div>
+              </div>
+              
+              <!-- Therapist-specific fields -->
+              <div class="therapist-fields" id="contactTherapistFields" style="display: none;">
+                <div class="form-group">
+                  <label for="therapistId">Therapist ID *</label>
+                  <input type="text" id="therapistId" name="therapistId" placeholder="e.g., TH-001">
+                </div>
+                
+                <div class="form-group">
+                  <label for="specialization">Specialization *</label>
+                  <select id="specialization" name="specialization">
+                    <option value="">Select your specialization</option>
+                    <option value="clinical">Clinical Psychology</option>
+                    <option value="counseling">Counseling Psychology</option>
+                    <option value="school">School Psychology</option>
+                    <option value="forensic">Forensic Psychology</option>
+                    <option value="health">Health Psychology</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
               </div>
               
               <div class="form-group">
@@ -178,11 +300,6 @@
               </div>
               
               <div class="form-group">
-                <label for="courseYear">Course & Year Level</label>
-                <input type="text" id="courseYear" name="courseYear" placeholder="e.g., BS Psychology, 2nd Year">
-              </div>
-              
-              <div class="form-group">
                 <label for="contactSubject">Subject *</label>
                 <select id="contactSubject" name="subject" required>
                   <option value="">Select a subject</option>
@@ -193,6 +310,8 @@
                   <option value="crisis">Crisis Support</option>
                   <option value="general">General Inquiry</option>
                   <option value="feedback">Feedback</option>
+                  <option value="technical">Technical Support</option>
+                  <option value="clinical">Clinical Consultation</option>
                   <option value="other">Other</option>
                 </select>
               </div>
@@ -214,8 +333,8 @@
               
               <div class="form-group">
                 <label>
-                  <input type="checkbox" name="studentConsent" required>
-                  I confirm I am a student *
+                  <input type="checkbox" name="studentConsent" id="studentConsent" required>
+                  <span id="consentText">I confirm I am a student *</span>
                 </label>
               </div>
 

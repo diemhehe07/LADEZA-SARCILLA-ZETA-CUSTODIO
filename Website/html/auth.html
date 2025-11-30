@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | SLS-U Matter</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/Website/images/slsu-campus.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: blur(8px);
+      z-index: -1;
+    }
+    
+    /* Auth Container */
+    .auth-container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      width: 90%;
+      max-width: 450px;
+      max-height: 90vh;
+      position: relative;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .auth-header {
+      padding: 25px 30px 0;
+      flex-shrink: 0;
+    }
+    
+    .brand-header {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    
+    .brand-logo {
+      height: 60px;
+      margin-bottom: 10px;
+    }
+    
+    .brand-text {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a2a6c;
+      display: block;
+    }
+    
+    .auth-tabs {
+      display: flex;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .auth-tab {
+      flex: 1;
+      padding: 12px;
+      background: none;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .auth-tab.active {
+      color: #1a2a6c;
+    }
+    
+    .auth-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #1a2a6c;
+      border-radius: 3px 3px 0 0;
+    }
+    
+    .auth-content {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .auth-form {
+      display: none;
+      flex: 1;
+      overflow: hidden;
+      padding: 0 30px 30px;
+    }
+    
+    .auth-form.active {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .form-scroll-container {
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 5px;
+    }
+    
+    /* Custom scrollbar */
+    .form-scroll-container::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    .form-scroll-container::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+    
+    .form-scroll-container::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 10px;
+    }
+    
+    .form-scroll-container::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #333;
+    }
+    
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #1a2a6c;
+      box-shadow: 0 0 0 2px rgba(26, 42, 108, 0.2);
+      outline: none;
+    }
+    
+    .user-type-selector {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .user-type-option {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .user-type-option.active {
+      border-color: #1a2a6c;
+      background-color: rgba(26, 42, 108, 0.05);
+    }
+    
+    .option-icon {
+      font-size: 24px;
+      margin-bottom: 5px;
+      color: #666;
+    }
+    
+    .user-type-option.active .option-icon {
+      color: #1a2a6c;
+    }
+    
+    .user-type-option span {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    .form-row {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .form-row .form-group {
+      flex: 1;
+    }
+    
+    .password-toggle {
+      position: absolute;
+      right: 15px;
+      top: 40px;
+      background: none;
+      border: none;
+      color: #666;
+      cursor: pointer;
+    }
+    
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    
+    .checkbox-label input {
+      margin-right: 8px;
+    }
+    
+    .forgot-password {
+      color: #1a2a6c;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    
+    .primary-btn {
+      background: #1a2a6c;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 10px;
+    }
+    
+    .primary-btn:hover {
+      background: #152258;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(26, 42, 108, 0.3);
+    }
+    
+    .auth-divider {
+      text-align: center;
+      margin: 20px 0;
+      position: relative;
+    }
+    
+    .auth-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #e0e0e0;
+    }
+    
+    .auth-divider span {
+      background: white;
+      padding: 0 15px;
+      color: #666;
+      font-size: 14px;
+    }
+    
+    .social-auth {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .social-btn {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .social-btn:hover {
+      background: #f5f5f5;
+    }
+    
+    .google-btn {
+      color: #DB4437;
+    }
+    
+    .facebook-btn {
+      color: #4267B2;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      .auth-container {
+        width: 95%;
+        max-height: 95vh;
+      }
+      
+      .auth-header {
+        padding: 20px 20px 0;
+      }
+      
+      .auth-form {
+        padding: 0 20px 20px;
+      }
+      
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+      
+      .social-auth {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Auth Container -->
+  <div class="auth-container">
+    <div class="auth-header">
+      <div class="brand-header">
+        <img src="/Website/images/logo2.png" alt="SLSU-U Matters Logo" class="brand-logo">
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Login</button>
+        <button class="auth-tab" data-tab="register">Register</button>
+      </div>
+    </div>
+
+    <div class="auth-content">
+      <!-- Login Form -->
+      <div class="auth-form active" id="loginForm">
+        <div class="form-scroll-container">
+          <form id="loginFormData">
+            <!-- User Type Selection -->
+            <div class="form-group">
+              <label for="loginUserType">I am a</label>
+              <div class="user-type-selector">
+                <div class="user-type-option active" data-type="student">
+                  <div class="option-icon">
+                    <i class="fas fa-user-graduate"></i>
+                  </div>
+                  <span>Student</span>
+                </div>
+                <div class="user-type-option" data-type="therapist">
+                  <div class="option-icon">
+                    <i class="fas fa-user-md"></i>
+                  </div>
+                  <span>Therapist</span>
+                </div>
+              </div>
+              <input type="hidden" id="loginUserType" name="userType" value="student" required>
+            </div>
+
+            <div class="form-group">
+              <label for="loginEmail">Email Address</label>
+              <input type="email" id="loginEmail" name="email" placeholder="yourname@gmail.com" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="loginPassword">Password</label>
+              <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+              <button type="button" class="password-toggle" id="loginPasswordToggle">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+
+            <div class="form-options">
+              <label class="checkbox-label">
+                <input type="checkbox" name="remember"> Remember me
+              </label>
+              <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="primary-btn">Sign In</button>
+          </form>
+
+          <div class="auth-divider">
+            <span>or continue with</span>
+          </div>
+
+          <div class="social-auth">
+            <button class="social-btn google-btn" id="googleLoginBtn">
+              <i class="fab fa-google"></i>
+              Google
+            </button>
+            <button class="social-btn facebook-btn" id="facebookLoginBtn">
+              <i class="fab fa-facebook"></i>
+              Facebook
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Register Form -->
+      <div class="auth-form" id="registerForm">
+        <div class="form-scroll-container">
+          <form id="registerFormData">
+            <!-- User Type Selection -->
+            <div class="form-group">
+              <label for="registerUserType">I am a</label>
+              <div class="user-type-selector">
+                <div class="user-type-option active" data-type="student">
+                  <div class="option-icon">
+                    <i class="fas fa-user-graduate"></i>
+                  </div>
+                  <span>Student</span>
+                </div>
+                <div class="user-type-option" data-type="therapist">
+                  <div class="option-icon">
+                    <i class="fas fa-user-md"></i>
+                  </div>
+                  <span>Therapist</span>
+                </div>
+              </div>
+              <input type="hidden" id="registerUserType" name="userType" value="student" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required>
+              </div>
+            </div>
+
+            <!-- Student-specific fields -->
+            <div class="student-fields active" id="studentFields">
+              <div class="form-group">
+                <label for="studentId">Student ID</label>
+                <input type="text" id="studentId" name="studentId" placeholder="e.g., 23-000001" required>
+              </div>
+
+              <div class="form-group">
+                <label for="courseYear">Course & Year Level</label>
+                <select id="courseYear" name="courseYear" required>
+                  <option value="">Select your course and year</option>
+                  <option value="bs-psych-1">BS Psychology - 1st Year</option>
+                  <option value="bs-psych-2">BS Psychology - 2nd Year</option>
+                  <option value="bs-psych-3">BS Psychology - 3rd Year</option>
+                  <option value="bs-psych-4">BS Psychology - 4th Year</option>
+                  <option value="bs-eng-1">BS Engineering - 1st Year</option>
+                  <option value="bs-eng-2">BS Engineering - 2nd Year</option>
+                  <option value="bs-eng-3">BS Engineering - 3rd Year</option>
+                  <option value="bs-eng-4">BS Engineering - 4th Year</option>
+                  <option value="bs-ba-1">BS Business Admin - 1st Year</option>
+                  <option value="bs-ba-2">BS Business Admin - 2nd Year</option>
+                  <option value="bs-ba-3">BS Business Admin - 3rd Year</option>
+                  <option value="bs-ba-4">BS Business Admin - 4th Year</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Therapist-specific fields -->
+            <div class="therapist-fields" id="therapistFields">
+              <div class="form-group">
+                <label for="therapistId">Therapist ID</label>
+                <input type="text" id="therapistId" name="therapistId" placeholder="e.g., TH-001" required>
+              </div>
+
+              <div class="form-group">
+                <label for="specialization">Specialization</label>
+                <select id="specialization" name="specialization" required>
+                  <option value="">Select your specialization</option>
+                  <option value="clinical">Clinical Psychology</option>
+                  <option value="counseling">Counseling Psychology</option>
+                  <option value="school">School Psychology</option>
+                  <option value="forensic">Forensic Psychology</option>
+                  <option value="health">Health Psychology</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="licenseNumber">License Number</label>
+                <input type="text" id="licenseNumber" name="licenseNumber" placeholder="Your professional license number">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="registerEmail">Email Address</label>
+              <input type="email" id="registerEmail" name="email" placeholder="yourname@gmail.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="registerPassword">Password</label>
+              <input type="password" id="registerPassword" name="password" placeholder="Create a strong password" required>
+              <button type="button" class="password-toggle" id="registerPasswordToggle">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+
+            <div class="form-group">
+              <label for="confirmPassword">Confirm Password</label>
+              <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+            </div>
+
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="terms" required>
+                I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+              </label>
+            </div>
+
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="newsletter">
+                Send me mental health tips and updates
+              </label>
+            </div>
+
+            <button type="submit" class="primary-btn">Create Account</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Tab switching functionality
+    document.querySelectorAll('.auth-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update active tab
+        document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        // Show corresponding form
+        const tabId = tab.getAttribute('data-tab');
+        document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
+        document.getElementById(`${tabId}Form`).classList.add('active');
+      });
+    });
+    
+    // User type selection
+    document.querySelectorAll('.user-type-option').forEach(option => {
+      option.addEventListener('click', () => {
+        const container = option.closest('.form-group');
+        const userType = option.getAttribute('data-type');
+        
+        // Update active option
+        container.querySelectorAll('.user-type-option').forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active');
+        
+        // Update hidden input
+        container.querySelector('input[type="hidden"]').value = userType;
+        
+        // Show/hide appropriate fields
+        const isStudent = userType === 'student';
+        const studentFields = container.parentElement.querySelector('.student-fields');
+        const therapistFields = container.parentElement.querySelector('.therapist-fields');
+        
+        if (studentFields) {
+          studentFields.classList.toggle('active', isStudent);
+          studentFields.style.display = isStudent ? 'block' : 'none';
+        }
+        
+        if (therapistFields) {
+          therapistFields.classList.toggle('active', !isStudent);
+          therapistFields.style.display = isStudent ? 'none' : 'block';
+        }
+      });
+    });
+    
+    // Password toggle functionality
+    document.querySelectorAll('.password-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const passwordInput = toggle.parentElement.querySelector('input[type="password"]');
+        const isPassword = passwordInput.type === 'password';
+        
+        passwordInput.type = isPassword ? 'text' : 'password';
+        toggle.innerHTML = isPassword ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
+      });
+    });
+    
+    // Form submission
+    document.getElementById('loginFormData').addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Add login logic here
+      console.log('Login form submitted');
+    });
+    
+    document.getElementById('registerFormData').addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Add registration logic here
+      console.log('Register form submitted');
+    });
+  </script>
+  
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
