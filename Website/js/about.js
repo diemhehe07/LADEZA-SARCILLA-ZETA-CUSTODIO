@@ -1,9 +1,22 @@
-// about.js - Newsletter + team contact modal + Firebase + Therapist Dashboard
+// about.js - Newsletter + team contact modal + Therapist Dashboard
+// Updated: Fixed authentication check to use Firebase instead of localStorage
 
 document.addEventListener('DOMContentLoaded', function () {
   initNewsletter();
   initTeamContactModal();
-  initTherapistDashboard();
+  
+  // Wait for Firebase to initialize before checking auth state
+  if (window.FirebaseService && FirebaseService.isReady()) {
+    // Listen for auth state changes to show/hide therapist dashboard
+    FirebaseService.onAuthChange((user) => {
+      initTherapistDashboard();
+    });
+    // Also check initial state
+    initTherapistDashboard();
+  } else {
+    // If Firebase isn't ready, still try to initialize therapist dashboard
+    initTherapistDashboard();
+  }
 });
 
 // ---------------------------
@@ -13,23 +26,31 @@ function initTherapistDashboard() {
   const therapistSection = document.getElementById('therapistDashboardSection');
   if (!therapistSection) return;
 
-  // Check if user is logged in and is a therapist/counselor
-  const userDataStr = localStorage.getItem('slsuUser');
-  if (!userDataStr) {
-    return; // User not logged in
+  // Check if user is logged in using Firebase
+  const currentUser = FirebaseService.getCurrentUser();
+  
+  if (!currentUser) {
+    therapistSection.style.display = 'none';
+    return;
   }
 
-  try {
-    const userData = JSON.parse(userDataStr);
-    
-    // Show therapist section only for therapists/counselors
-    if (userData.userType === 'therapist') {
-      therapistSection.style.display = 'block';
-      loadTherapistStats();
-    }
-  } catch (e) {
-    console.error('Error parsing user data:', e);
-  }
+  // Get user profile from Firebase to check role
+  FirebaseService.getUserProfile(currentUser.uid)
+    .then(profile => {
+      if (profile && profile.role === 'therapist') {
+        therapistSection.style.display = 'block';
+        loadTherapistStats();
+        if (window.FirebaseService && FirebaseService.isReady()) {
+          loadTherapistStatsFromFirebase().catch(console.error);
+        }
+      } else {
+        therapistSection.style.display = 'none';
+      }
+    })
+    .catch(error => {
+      console.error('Error getting user profile:', error);
+      therapistSection.style.display = 'none';
+    });
 }
 
 // ---------------------------
@@ -74,7 +95,7 @@ function loadTherapistStats() {
 
   // If using Firebase, load real data
   if (window.FirebaseService && FirebaseService.isReady()) {
-    loadTherapistStatsFromFirebase();
+    loadTherapistStatsFromFirebase().catch(console.error);
   }
 }
 
@@ -85,16 +106,17 @@ async function loadTherapistStatsFromFirebase() {
   try {
     const db = firebase.firestore();
     const user = FirebaseService.getCurrentUser();
-    
+
     if (!user) return;
 
     // Load upcoming sessions
+    const today = new Date();
     const sessionsSnapshot = await db.collection('therapySessions')
       .where('therapistId', '==', user.uid)
-      .where('date', '>=', new Date())
+      .where('date', '>=', today)
       .where('status', 'in', ['confirmed', 'scheduled'])
       .get();
-    
+
     const upcomingSessionsEl = document.getElementById('upcomingSessions');
     if (upcomingSessionsEl) {
       upcomingSessionsEl.textContent = sessionsSnapshot.size;
@@ -105,7 +127,7 @@ async function loadTherapistStatsFromFirebase() {
       .where('therapistId', '==', user.uid)
       .where('status', 'in', ['confirmed', 'scheduled', 'in-progress'])
       .get();
-    
+
     const uniqueClients = new Set();
     clientsSnapshot.forEach(doc => {
       const session = doc.data();
@@ -113,7 +135,7 @@ async function loadTherapistStatsFromFirebase() {
         uniqueClients.add(session.studentId);
       }
     });
-    
+
     const activeClientsEl = document.getElementById('activeClients');
     if (activeClientsEl) {
       activeClientsEl.textContent = uniqueClients.size;
@@ -124,7 +146,7 @@ async function loadTherapistStatsFromFirebase() {
       .where('therapistId', '==', user.uid)
       .where('status', '==', 'pending')
       .get();
-    
+
     const pendingNotesEl = document.getElementById('pendingNotes');
     if (pendingNotesEl) {
       pendingNotesEl.textContent = notesSnapshot.size;

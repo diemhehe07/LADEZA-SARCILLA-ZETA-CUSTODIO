@@ -39,9 +39,9 @@ body {
   padding: 0 20px;
 }
 
-/* Header Styles */
+/* Header Styles - FIXED: Remove extra padding/margin */
 .site-header {
-  padding: 0.8rem 0;
+  padding: 0; /* Changed from 0.8rem 0 */
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
@@ -55,6 +55,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  padding: 0.8rem 0; /* Moved padding here from .site-header */
 }
 
 .brand-logo {

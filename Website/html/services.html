@@ -28,19 +28,30 @@
         <button class="mobile-menu-toggle" aria-label="Toggle menu">
           <span></span><span></span><span></span>
         </button>
-        <div class="nav-links">
+       <div class="nav-links">
           <a href="/Website/html/index.html">Home</a>
           <a href="/Website/html/about.html">About</a>
           <a href="/Website/html/services.html">Services</a>
           <a href="/Website/html/resources.html">Resources</a>
+          <a href="/Website/html/contact.html">Contact</a>
         </div>
       </nav>
 
-      <div class="nav-cta">
+     <div class="nav-cta">
         <a class="btn btn-ghost" href="/Website/html/booking.html">Book Session</a>
+
         <div id="authButtons">
-          <button id="loginNavBtn" class="login-btn btn"><i class="fas fa-sign-in-alt"></i> Login</button>
-          <div id="userMenu" style="display:none;"><button class="profile-icon" id="profileNavIcon"><i class="fas fa-user"></i></button></div>
+          <!-- Shown when logged OUT — changed to open overlay -->
+          <button id="loginNavBtn" class="login-btn btn" aria-label="Open login">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </button>
+
+          <!-- Shown when logged IN (updated by auth code) -->
+          <div id="userMenu" style="display:none;">
+            <button class="profile-icon" id="profileNavIcon" aria-label="Your dashboard">
+              <i class="fas fa-user"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -389,6 +400,29 @@
       </div>
     </div>
   </section>
+
+  <!-- PROFILE SLIDE-OUT -->
+  <aside id="profilePanel" class="profile-panel" aria-hidden="true">
+    <button id="closeProfilePanel" class="close-profile" aria-label="Close profile">&times;</button>
+    <div class="profile-content">
+      <div class="user-avatar-large"><img id="profileAvatar" src="/Website/images/default-avatar.png" alt="avatar"></div>
+      <h3 id="profileName">User Name</h3>
+      <p id="profileRole">Role</p>
+
+      <div class="profile-info-grid">
+        <div><strong>ID</strong><div id="profileId">—</div></div>
+        <div><strong>Course / Spec</strong><div id="profileCourse">—</div></div>
+        <div><strong>Email</strong><div id="profileEmail">—</div></div>
+        <div><strong>Phone</strong><div id="profilePhone">—</div></div>
+      </div>
+
+      <div class="profile-actions">
+        <button id="editProfile" class="secondary-btn">Edit Profile</button>
+        <button id="logoutBtn" class="primary-btn">Log out</button>
+      </div>
+    </div>
+  </aside>
+
 
   <!-- Footer -->
   <footer>

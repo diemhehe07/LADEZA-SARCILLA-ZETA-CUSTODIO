@@ -39,12 +39,21 @@
       </nav>
       <!-- Replace the nav-cta section in all main pages -->
 <div class="nav-cta">
-  <a class="btn btn-ghost" href="booking.html">Book Session</a>
-  <!-- Login button instead of profile icon -->
-  <a href="/Website/html/login.html" class="btn btn-primary" id="loginNavBtn">
-    <i class="fas fa-sign-in-alt"></i> Login
-  </a>
-</div>
+
+        <div id="authButtons">
+          <!-- Shown when logged OUT — changed to open overlay -->
+          <button id="loginNavBtn" class="login-btn btn" aria-label="Open login">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </button>
+
+          <!-- Shown when logged IN (updated by auth code) -->
+          <div id="userMenu" style="display:none;">
+            <button class="profile-icon" id="profileNavIcon" aria-label="Your dashboard">
+              <i class="fas fa-user"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -160,6 +169,8 @@
       </form>
     </div>
   </div>
+
+  
 
   <!-- Footer -->
   <footer>

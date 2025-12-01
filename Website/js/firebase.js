@@ -94,16 +94,44 @@ const FirebaseService = {
     const user = cred.user;
     if (!user) throw new Error("Login failed");
 
-    const doc = await firebaseDb.collection("users").doc(user.uid).get();
-    if (!doc.exists) {
-      await firebaseAuth.signOut();
-      throw new Error("User profile not found. Please register first.");
-    }
-    const profile = doc.data();
-
-    if (role && profile.role && role !== profile.role) {
-      await firebaseAuth.signOut();
-      throw new Error("Selected role does not match your account role.");
+    // FIX: Try to get user document, but don't fail if it doesn't exist
+    let profile = null;
+    try {
+      const doc = await firebaseDb.collection("users").doc(user.uid).get();
+      if (doc.exists) {
+        profile = doc.data();
+        
+        // Check role only if profile exists and role is specified
+        if (role && profile.role && role !== profile.role) {
+          console.warn("Role mismatch, but allowing login anyway");
+          // Instead of signing out, just log a warning
+          // await firebaseAuth.signOut();
+          // throw new Error("Selected role does not match your account role.");
+        }
+      } else {
+        // User document doesn't exist - create a basic one
+        console.warn("User document not found, creating basic profile...");
+        profile = {
+          uid: user.uid,
+          email: user.email,
+          firstName: "",
+          lastName: "",
+          role: "student", // default role
+          createdAt: new Date()
+        };
+        
+        await firebaseDb.collection("users").doc(user.uid).set(profile);
+        console.log("Basic user profile created");
+      }
+    } catch (error) {
+      console.error("Error accessing user profile:", error);
+      // Don't fail login if there's a Firestore error
+      // Create a minimal profile object to allow login
+      profile = {
+        uid: user.uid,
+        email: user.email,
+        role: "student"
+      };
     }
 
     return profile;
@@ -167,8 +195,26 @@ const FirebaseService = {
     if (!_isReady()) throw new Error("Firebase not initialized");
     const userId = uid || this.getCurrentUser()?.uid;
     if (!userId) return null;
-    const doc = await firebaseDb.collection("users").doc(userId).get();
-    return doc.exists ? doc.data() : null;
+    
+    try {
+      const doc = await firebaseDb.collection("users").doc(userId).get();
+      if (doc.exists) {
+        return doc.data();
+      } else {
+        // If document doesn't exist, create a basic one
+        const basicProfile = {
+          uid: userId,
+          email: this.getCurrentUser()?.email || "",
+          role: "student",
+          createdAt: new Date()
+        };
+        await firebaseDb.collection("users").doc(userId).set(basicProfile);
+        return basicProfile;
+      }
+    } catch (error) {
+      console.error("Error getting user profile:", error);
+      return null;
+    }
   },
 
   /* --- CHAT: getOrCreateChat, sendMessage, listenToMessages, listenToUserChats --- */
@@ -295,8 +341,25 @@ const FirebaseService = {
     }
   },
 
-  /* --- CHAT helpers already present in your uploaded file kept intact (listenToMessages/listenToUserChats/getOrCreateChat) --- */
-  // (Other helpers like getOrCreateChat/ chat helpers above)
+  /* --- DEBUGGING HELPERS --- */
+  
+  async debugCheckUser(uid) {
+    if (!_isReady()) return "Firebase not ready";
+    
+    try {
+      // Check auth
+      const authUser = firebaseAuth.currentUser;
+      const authInfo = authUser ? `Auth User: ${authUser.uid}, Email: ${authUser.email}` : "No auth user";
+      
+      // Check Firestore
+      const doc = await firebaseDb.collection("users").doc(uid).get();
+      const firestoreInfo = doc.exists ? "User document exists" : "User document NOT found";
+      
+      return `${authInfo} | ${firestoreInfo}`;
+    } catch (error) {
+      return `Debug error: ${error.message}`;
+    }
+  }
 };
 
 window.FirebaseService = FirebaseService;

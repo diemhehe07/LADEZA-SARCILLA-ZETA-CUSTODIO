@@ -32,30 +32,28 @@
         </button>
         <div class="nav-links">
           <a href="/Website/html/index.html">Home</a>
-          <a href="/Website/html/resources.html">Resources</a>
+          <a href="/Website/html/about.html">About</a>
           <a href="/Website/html/services.html">Services</a>
-          <a href="/Website/html/booking.html">Book Session</a>
+          <a href="/Website/html/resources.html">Resources</a>
+          <a href="/Website/html/contact.html">Contact</a>
         </div>
       </nav>
 
       <div class="nav-cta">
-
         <a class="btn btn-ghost" href="/Website/html/booking.html">Book Session</a>
 
         <div id="authButtons">
-
-          <!-- FIXED: replaced <a href="login.html"> with overlay button -->
-          <button id="loginNavBtn" class="login-btn btn">
+          <!-- Shown when logged OUT — changed to open overlay -->
+          <button id="loginNavBtn" class="login-btn btn" aria-label="Open login">
             <i class="fas fa-sign-in-alt"></i> Login
           </button>
 
-          <!-- Visible when logged in -->
+          <!-- Shown when logged IN (updated by auth code) -->
           <div id="userMenu" style="display:none;">
             <button class="profile-icon" id="profileNavIcon" aria-label="Your dashboard">
               <i class="fas fa-user"></i>
             </button>
           </div>
-
         </div>
       </div>
     </div>

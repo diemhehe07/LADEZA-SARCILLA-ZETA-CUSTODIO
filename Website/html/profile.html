@@ -29,12 +29,12 @@
         <span></span><span></span><span></span>
       </button>
       <div class="nav-links">
-        <a href="/Website/html/index.html">Home</a>
-        <a href="/Website/html/about.html">About</a>
-        <a href="/Website/html/services.html">Services</a>
-        <a href="/Website/html/resources.html">Resources</a>
-        <a href="/Website/html/booking.html">Book Session</a>
-      </div>
+          <a href="/Website/html/index.html">Home</a>
+          <a href="/Website/html/about.html">About</a>
+          <a href="/Website/html/services.html">Services</a>
+          <a href="/Website/html/resources.html">Resources</a>
+          <a href="/Website/html/contact.html">Contact</a>
+        </div>
     </nav>
 
     <div class="nav-cta">
@@ -160,9 +160,75 @@
     </div>
   </section>
 
+  <!-- PROFILE SLIDE-OUT -->
+  <aside id="profilePanel" class="profile-panel" aria-hidden="true">
+    <button id="closeProfilePanel" class="close-profile" aria-label="Close profile">&times;</button>
+    <div class="profile-content">
+      <div class="user-avatar-large"><img id="profileAvatar" src="/Website/images/default-avatar.png" alt="avatar"></div>
+      <h3 id="profileName">User Name</h3>
+      <p id="profileRole">Role</p>
+
+      <div class="profile-info-grid">
+        <div><strong>ID</strong><div id="profileId">—</div></div>
+        <div><strong>Course / Spec</strong><div id="profileCourse">—</div></div>
+        <div><strong>Email</strong><div id="profileEmail">—</div></div>
+        <div><strong>Phone</strong><div id="profilePhone">—</div></div>
+      </div>
+
+      <div class="profile-actions">
+        <button id="editProfile" class="secondary-btn">Edit Profile</button>
+        <button id="logoutBtn" class="primary-btn">Log out</button>
+      </div>
+    </div>
+  </aside>
+
   <!-- Footer -->
   <footer>
-    <!-- Keep existing footer -->
+   <div class="wrap">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="/Website/images/logo2.png" alt="SLSU-U Matters Logo" class="footer-logo">
+          <p>Providing compassionate mental health support and resources for SLSU Lucena students.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="links-column">
+            <h4>Quick Links</h4>
+            <a href="/Website/html/about.html">About Us</a>
+            <a href="/Website/html/services.html">Services</a>
+            <a href="/Website/html/resources.html">Resources</a>
+            <a href="/Website/html/feedback.html">Feedback</a>
+            <!-- Quick Links: add Live Chat -->
+<a href="/Website/html/student-chat.html" class="footer-chat-link" aria-label="Live chat with counselor">
+  <i class="fas fa-comments"></i> Live Chat
+</a>
+
+          </div>
+          <div class="links-column">
+            <h4>Support</h4>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="faq.html">FAQs</a>
+            <a href="accessibility.html">Accessibility</a>
+          </div>
+          <div class="links-column contact">
+            <h4>Contact SLSU-U Matter</h4>
+            <p>Email: slsu-umatter@slsu.edu.ph</p>
+            <p>Campus Hotline: +63 912 345 6789</p>
+            <p>Guidance Office: (042) 710-2525</p>
+            <p>Address: SLSU Lucena Campus, Lucena City</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 SLSU-U Matters. All rights reserved.</p>
+      </div>
+    </div>
   </footer>
 
   <!-- Firebase SDK -->
