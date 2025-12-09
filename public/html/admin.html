@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | SLS-U Matter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f9ff;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* Layout */
+        .therapist-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .therapist-sidebar {
+            background: white;
+            border-right: 1px solid #e2e8f0;
+            padding: 2rem 1.5rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .therapist-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .therapist-brand i {
+            font-size: 1.75rem;
+            color: #0ea5e9;
+        }
+
+        .therapist-brand h1 {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .therapist-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 0.75rem;
+        }
+
+        .profile-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .profile-info h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .profile-info p {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .profile-status {
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-size: 0.75rem;
+            color: #16a34a;
+            background: #dcfce7;
+            padding: 0.25rem 0.5rem;
+            border-radius: 999px;
+            margin-top: 0.25rem;
+        }
+
+        .therapist-nav ul {
+            list-style: none;
+        }
+
+        .therapist-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .therapist-nav a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1rem;
+            color: #475569;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .therapist-nav a:hover,
+        .therapist-nav a.active {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .therapist-nav i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .nav-count {
+            margin-left: auto;
+            background: #0ea5e9;
+            color: white;
+            font-size: 0.75rem;
+            padding: 0.125rem 0.5rem;
+            border-radius: 999px;
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .availability-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem;
+            background: #f8fafc;
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .toggle-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .toggle-switch {
+            width: 44px;
+            height: 24px;
+            background: #cbd5e1;
+            border-radius: 999px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .toggle-switch.active {
+            background: #0ea5e9;
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-switch.active::after {
+            transform: translateX(20px);
+        }
+
+        /* Main Content */
+        .therapist-main {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .therapist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .welcome-message h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .welcome-message p {
+            color: #64748b;
+            margin-top: 0.25rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .stat-icon.appointments { background: #e0f2fe; color: #0369a1; }
+        .stat-icon.patients { background: #f0f9ff; color: #0ea5e9; }
+        .stat-icon.availability { background: #dcfce7; color: #16a34a; }
+        .stat-icon.satisfaction { background: #fef3c7; color: #d97706; }
+
+        .stat-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-content p {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        /* Schedule Section */
+        .schedule-section {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .section-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .schedule-tabs {
+            display: flex;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .schedule-tab {
+            padding: 1rem 1.5rem;
+            background: none;
+            border: none;
+            font-weight: 500;
+            color: #64748b;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .schedule-tab.active {
+            color: #0369a1;
+        }
+
+        .schedule-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #0369a1;
+        }
+
+        .schedule-content {
+            padding: 1.5rem;
+        }
+
+        /* Time Slots */
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .time-slot {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .time-slot:hover {
+            background: #e0f2fe;
+            border-color: #0ea5e9;
+        }
+
+        .time-slot.booked {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            cursor: default;
+        }
+
+        .time-slot.emergency {
+            background: #fee2e2;
+            border-color: #ef4444;
+        }
+
+        .slot-time {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .slot-info {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .slot-patient {
+            font-weight: 500;
+            color: #334155;
+        }
+
+        .slot-status {
+            display: inline-block;
+            padding: 0.125rem 0.5rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .status-available { background: #dcfce7; color: #16a34a; }
+        .status-booked { background: #fef3c7; color: #d97706; }
+        .status-emergency { background: #fee2e2; color: #dc2626; }
+
+        /* Patients List */
+        .patients-section,
+        .progress-section,
+        .messages-section,
+        .settings-section {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 2rem;
+        }
+
+        .patients-list {
+            padding: 1.5rem;
+        }
+
+        .patient-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .patient-card:last-child {
+            border-bottom: none;
+        }
+
+        .patient-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: white;
+            font-size: 0.875rem;
+        }
+
+        .patient-info {
+            flex: 1;
+        }
+
+        .patient-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .patient-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .patient-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Progress Reports */
+        .progress-list {
+            padding: 1.5rem;
+        }
+
+        .progress-card {
+            padding: 1rem;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-card:last-child {
+            border-bottom: none;
+        }
+
+        .progress-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .progress-meta {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .risk-pill {
+            display: inline-block;
+            padding: 0.125rem 0.5rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .risk-low { background: #dcfce7; color: #15803d; }
+        .risk-medium { background: #fef3c7; color: #b45309; }
+        .risk-high { background: #fee2e2; color: #b91c1c; }
+
+        /* Messages */
+        .messages-list {
+            padding: 1.5rem;
+        }
+
+        .message-thread {
+            padding: 1rem;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .message-thread:last-child {
+            border-bottom: none;
+        }
+
+        .thread-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            background: #e0f2fe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #0369a1;
+        }
+
+        .thread-info {
+            flex: 1;
+        }
+
+        .thread-info h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .thread-meta {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .unread-pill {
+            font-size: 0.75rem;
+            padding: 0.125rem 0.5rem;
+            border-radius: 999px;
+            background: #0ea5e9;
+            color: white;
+        }
+
+        /* Settings */
+        .settings-body {
+            padding: 1.5rem;
+        }
+
+        .settings-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .settings-group h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .settings-row {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .settings-label {
+            width: 200px;
+            color: #64748b;
+        }
+
+        /* Notes Section */
+        .notes-section {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .notes-list {
+            padding: 1.5rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .note-item {
+            background: #f8fafc;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .note-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .note-patient {
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .note-date {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .note-content {
+            color: #475569;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .note-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .note-tag {
+            font-size: 0.75rem;
+            padding: 0.125rem 0.5rem;
+            border-radius: 999px;
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: #0ea5e9;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0284c7;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn-secondary:hover {
+            background: #f8fafc;
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #64748b;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #334155;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            font-size: 0.875rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #0ea5e9;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .time-slots {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .therapist-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .therapist-sidebar {
+                display: none;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .header-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="therapist-container">
+        <!-- Sidebar -->
+        <aside class="therapist-sidebar">
+            <div class="therapist-brand">
+                <i class="fas fa-hands-helping"></i>
+                <h1>Therapist Portal</h1>
+            </div>
+            
+            <div class="therapist-profile">
+                <div class="profile-avatar" id="therapistAvatar">DR</div>
+                <div class="profile-info">
+                    <h3 id="therapistName">Dr. Maria Santos</h3>
+                    <p id="therapistSpecialization">Clinical Psychologist</p>
+                    <div class="profile-status">
+                        <i class="fas fa-circle" style="font-size: 0.5rem;"></i>
+                        <span>Available</span>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="therapist-nav">
+                <ul>
+                    <li><a href="#" class="active" data-target="dashboardTop"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="#" data-target="scheduleSection"><i class="fas fa-calendar-alt"></i> Schedule <span class="nav-count" id="pendingCount">3</span></a></li>
+                    <li><a href="#" data-target="patientsSection"><i class="fas fa-user-friends"></i> Patients <span class="nav-count" id="patientCount">12</span></a></li>
+                    <li><a href="#" data-target="notesSection"><i class="fas fa-file-medical"></i> Session Notes</a></li>
+                    <li><a href="#" data-target="progressSection"><i class="fas fa-chart-line"></i> Progress Reports</a></li>
+                    <li><a href="#" data-target="messagesSection"><i class="fas fa-comments"></i> Messages <span class="nav-count" id="messageCount">5</span></a></li>
+                    <li><a href="#" data-target="settingsSection"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="availability-toggle" id="availabilityToggle">
+                    <div class="toggle-label">
+                        <i class="fas fa-user-clock"></i>
+                        <span>Set Availability</span>
+                    </div>
+                    <div class="toggle-switch active"></div>
+                </div>
+                <button class="btn btn-secondary" style="width: 100%;" onclick="window.location.href='profile.html'">
+                    <i class="fas fa-sign-out-alt"></i> Back to Profile
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="therapist-main">
+            <div id="dashboardTop"></div>
+            <header class="therapist-header">
+                <div class="welcome-message">
+                    <h2>Welcome back, <span id="welcomeName">Dr. Santos</span>!</h2>
+                    <p>You have <span id="todayAppointments">3</span> appointments today</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" id="addNoteBtn">
+                        <i class="fas fa-plus"></i> Add Session Note
+                    </button>
+                    <button class="btn btn-primary" id="newAppointmentBtn">
+                        <i class="fas fa-calendar-plus"></i> New Appointment
+                    </button>
+                </div>
+            </header>
+
+            <!-- Stats Overview -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon appointments">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="weeklyAppointments">24</h3>
+                            <p>Weekly Appointments</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon patients">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="activePatients">12</h3>
+                            <p>Active Patients</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon availability">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="availabilityHours">32</h3>
+                            <p>Hours Available</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon satisfaction">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="satisfactionRate">4.8</h3>
+                            <p>Satisfaction Rate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Today's Schedule -->
+            <div class="schedule-section" id="scheduleSection">
+                <div class="section-header">
+                    <h3>Today's Schedule</h3>
+                    <button class="btn btn-secondary btn-sm" onclick="viewFullSchedule()">
+                        <i class="fas fa-calendar"></i> View Full Schedule
+                    </button>
+                </div>
+                
+                <div class="schedule-tabs">
+                    <button class="schedule-tab active" onclick="switchSchedule('today', event)">Today</button>
+                    <button class="schedule-tab" onclick="switchSchedule('tomorrow', event)">Tomorrow</button>
+                    <button class="schedule-tab" onclick="switchSchedule('week', event)">This Week</button>
+                </div>
+                
+                <div class="schedule-content">
+                    <div class="time-slots" id="todaySchedule">
+                        <!-- Time slots will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Active Patients -->
+            <div class="patients-section" id="patientsSection">
+                <div class="section-header">
+                    <h3>Active Patients</h3>
+                    <button class="btn btn-secondary btn-sm" onclick="viewAllPatients()">
+                        <i class="fas fa-list"></i> View All
+                    </button>
+                </div>
+                <div class="patients-list" id="activePatientsList">
+                    <!-- Patients will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Recent Session Notes -->
+            <div class="notes-section" id="notesSection">
+                <div class="section-header">
+                    <h3>Recent Session Notes</h3>
+                    <button class="btn btn-secondary btn-sm" onclick="viewAllNotes()">
+                        <i class="fas fa-book"></i> All Notes
+                    </button>
+                </div>
+                <div class="notes-list" id="recentNotes">
+                    <!-- Notes will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Progress Reports -->
+            <div class="progress-section" id="progressSection">
+                <div class="section-header">
+                    <h3>Progress Reports</h3>
+                    <button class="btn btn-secondary btn-sm" onclick="exportProgressReports()">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+                <div class="progress-list" id="progressReportsList">
+                    <!-- Progress reports populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Messages -->
+            <div class="messages-section" id="messagesSection">
+                <div class="section-header">
+                    <h3>Messages</h3>
+                    <button class="btn btn-primary btn-sm" onclick="composeMessage()">
+                        <i class="fas fa-plus"></i> New Message
+                    </button>
+                </div>
+                <div class="messages-list" id="messagesList">
+                    <!-- Message threads populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Settings -->
+            <div class="settings-section" id="settingsSection">
+                <div class="section-header">
+                    <h3>Therapist Settings</h3>
+                    <button class="btn btn-success btn-sm" onclick="saveSettings()">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                </div>
+                <div class="settings-body">
+                    <div class="settings-group">
+                        <h4>Account</h4>
+                        <div class="settings-row">
+                            <div class="settings-label">Email</div>
+                            <input id="settingsEmail" type="email" class="form-control" placeholder="dr.santos@slsu.edu.ph">
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-label">Default Session Duration</div>
+                            <select id="settingsDefaultDuration" class="form-control">
+                                <option value="30">30 minutes</option>
+                                <option value="45">45 minutes</option>
+                                <option value="60" selected>60 minutes</option>
+                                <option value="90">90 minutes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h4>Notifications</h4>
+                        <div class="settings-row">
+                            <div class="settings-label">Appointment Reminders</div>
+                            <input id="settingsReminders" type="checkbox" checked>
+                        </div>
+                        <div class="settings-row">
+                            <div class="settings-label">New Messages</div>
+                            <input id="settingsMessages" type="checkbox" checked>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h4>Availability</h4>
+                        <div class="settings-row">
+                            <div class="settings-label">Weekly Availability (hours)</div>
+                            <input id="settingsWeeklyHours" type="number" min="0" max="80" class="form-control" value="32">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Note Modal -->
+    <div id="noteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Session Note</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="noteForm">
+                    <div class="form-group">
+                        <label for="notePatient">Patient</label>
+                        <select id="notePatient" class="form-control" required>
+                            <option value="">Select patient</option>
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="noteDate">Session Date</label>
+                        <input type="date" id="noteDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="noteType">Session Type</label>
+                        <select id="noteType" class="form-control" required>
+                            <option value="">Select type</option>
+                            <option value="individual">Individual Therapy</option>
+                            <option value="group">Group Therapy</option>
+                            <option value="emergency">Emergency Session</option>
+                            <option value="followup">Follow-up</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="noteContent">Notes</label>
+                        <textarea id="noteContent" class="form-control" placeholder="Enter session notes, observations, treatment plan..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="noteTags">Tags</label>
+                        <input type="text" id="noteTags" class="form-control" placeholder="e.g., anxiety, progress, homework">
+                    </div>
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <button type="button" class="btn btn-secondary modal-close">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Note</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Appointment Modal -->
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Schedule New Appointment</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="appointmentForm">
+                    <div class="form-group">
+                        <label for="appointmentPatient">Patient</label>
+                        <select id="appointmentPatient" class="form-control" required>
+                            <option value="">Select patient</option>
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointmentDate">Date & Time</label>
+                        <input type="datetime-local" id="appointmentDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointmentDuration">Duration</label>
+                        <select id="appointmentDuration" class="form-control" required>
+                            <option value="30">30 minutes</option>
+                            <option value="45">45 minutes</option>
+                            <option value="60" selected>60 minutes</option>
+                            <option value="90">90 minutes</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointmentType">Type</label>
+                        <select id="appointmentType" class="form-control" required>
+                            <option value="regular">Regular Session</option>
+                            <option value="initial">Initial Assessment</option>
+                            <option value="emergency">Emergency</option>
+                            <option value="followup">Follow-up</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointmentNotes">Notes (Optional)</label>
+                        <textarea id="appointmentNotes" class="form-control" placeholder="Any special notes for this appointment..."></textarea>
+                    </div>
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                        <button type="button" class="btn btn-secondary modal-close">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Schedule Appointment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /*
+         * Suggested Firestore entities / collections:
+         *
+         * therapists (collection)
+         *   - id (doc id)
+         *   - name
+         *   - specialization
+         *   - email
+         *   - status ("available" | "unavailable")
+         *
+         * patients (collection)
+         *   - id (doc id)
+         *   - therapistId
+         *   - name
+         *   - studentId
+         *   - course
+         *   - lastSessionAt (timestamp)
+         *
+         * appointments (collection)
+         *   - id (doc id)
+         *   - therapistId
+         *   - patientId
+         *   - start (timestamp)
+         *   - end (timestamp)
+         *   - type ("regular" | "initial" | "emergency" | "followup")
+         *   - status ("booked" | "available" | "cancelled")
+         *   - notes
+         *
+         * sessionNotes (collection)
+         *   - id (doc id)
+         *   - therapistId
+         *   - patientId
+         *   - sessionDate (timestamp)
+         *   - sessionType
+         *   - content
+         *   - tags (array<string>)
+         *
+         * progressReports (collection)
+         *   - id (doc id)
+         *   - therapistId
+         *   - patientId
+         *   - createdAt (timestamp)
+         *   - riskLevel ("low" | "medium" | "high")
+         *   - summary
+         *   - improvementPercent (number)
+         *
+         * messages (collection)
+         *   - id (doc id)
+         *   - threadId
+         *   - fromUserId
+         *   - toUserId
+         *   - content
+         *   - sentAt (timestamp)
+         *   - read (boolean)
+         *
+         * therapistSettings (collection)
+         *   - therapistId (doc id)
+         *   - email
+         *   - defaultSessionDuration
+         *   - appointmentReminders (boolean)
+         *   - notifyOnMessage (boolean)
+         *   - weeklyAvailabilityHours (number)
+         */
+
+        // Sample Data (mock Firestore documents)
+        const samplePatients = [
+            { id: 1, therapistId: 'therapist1', name: 'Juan Dela Cruz', studentId: '23-001235', course: 'BS Engineering', lastSession: '2 days ago' },
+            { id: 2, therapistId: 'therapist1', name: 'Ana Reyes', studentId: '23-001236', course: 'BS Business', lastSession: '1 week ago' },
+            { id: 3, therapistId: 'therapist1', name: 'Carlos Lopez', studentId: '23-001237', course: 'BS Psychology', lastSession: '3 days ago' },
+            { id: 4, therapistId: 'therapist1', name: 'Sofia Garcia', studentId: '23-001238', course: 'BS Engineering', lastSession: '5 days ago' }
+        ];
+
+        const sampleSchedule = [
+            { id: 'appt1', therapistId: 'therapist1', time: '9:00 AM - 10:00 AM', patient: 'Juan Dela Cruz', patientId: 1, type: 'regular', status: 'booked' },
+            { id: 'appt2', therapistId: 'therapist1', time: '11:00 AM - 12:00 PM', patient: 'Available', patientId: null, type: 'available', status: 'available' },
+            { id: 'appt3', therapistId: 'therapist1', time: '2:00 PM - 3:00 PM', patient: 'Ana Reyes', patientId: 2, type: 'followup', status: 'booked' },
+            { id: 'appt4', therapistId: 'therapist1', time: '3:30 PM - 4:30 PM', patient: 'Emergency Slot', patientId: null, type: 'emergency', status: 'emergency' },
+            { id: 'appt5', therapistId: 'therapist1', time: '5:00 PM - 6:00 PM', patient: 'Available', patientId: null, type: 'available', status: 'available' }
+        ];
+
+        const sampleNotes = [
+            { id: 'note1', therapistId: 'therapist1', patientId: 1, patient: 'Juan Dela Cruz', date: '2024-01-15', content: 'Showing improvement in managing academic stress. Homework: Practice mindfulness daily.', tags: ['progress', 'homework'] },
+            { id: 'note2', therapistId: 'therapist1', patientId: 2, patient: 'Ana Reyes', date: '2024-01-14', content: 'Discussed career anxiety. Explored strengths and interests. More exploration needed.', tags: ['career', 'anxiety'] },
+            { id: 'note3', therapistId: 'therapist1', patientId: 3, patient: 'Carlos Lopez', date: '2024-01-12', content: 'Emergency session for panic attack. Taught grounding techniques. Follow up in 2 days.', tags: ['emergency', 'panic'] }
+        ];
+
+        const sampleProgressReports = [
+            { id: 'pr1', therapistId: 'therapist1', patientId: 1, patientName: 'Juan Dela Cruz', lastUpdated: '2024-01-15', riskLevel: 'low', improvementPercent: 65, summary: 'Consistent improvement in coping with academic stress.' },
+            { id: 'pr2', therapistId: 'therapist1', patientId: 2, patientName: 'Ana Reyes', lastUpdated: '2024-01-14', riskLevel: 'medium', improvementPercent: 40, summary: 'Moderate progress with career anxiety; still exploring options.' },
+            { id: 'pr3', therapistId: 'therapist1', patientId: 3, patientName: 'Carlos Lopez', lastUpdated: '2024-01-12', riskLevel: 'high', improvementPercent: 20, summary: 'Recent panic episode; monitoring closely and scheduling frequent follow-ups.' }
+        ];
+
+        const sampleMessages = [
+            { id: 'msg1', threadId: 'thread1', patientId: 1, patientName: 'Juan Dela Cruz', lastMessage: 'Thank you for the last session, doc.', lastTimestamp: '10:15 AM', unread: 0 },
+            { id: 'msg2', threadId: 'thread2', patientId: 2, patientName: 'Ana Reyes', lastMessage: 'Can we move my appointment?', lastTimestamp: 'Yesterday', unread: 2 },
+            { id: 'msg3', threadId: 'thread3', patientId: 4, patientName: 'Sofia Garcia', lastMessage: 'Submitted my homework journal.', lastTimestamp: 'Jan 12', unread: 1 }
+        ];
+
+        const sampleSettings = {
+            therapistId: 'therapist1',
+            email: 'dr.santos@slsu.edu.ph',
+            defaultSessionDuration: 60,
+            appointmentReminders: true,
+            notifyOnMessage: true,
+            weeklyAvailabilityHours: 32
+        };
+
+        // Initialize Dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load therapist info
+            loadTherapistInfo();
+            
+            // Populate data
+            populateSchedule();
+            populatePatients();
+            populateNotes();
+            populateNotePatientOptions();
+            populateAppointmentPatientOptions();
+            populateProgressReports();
+            populateMessages();
+            populateSettings();
+            
+            // Initialize event listeners
+            initializeEventListeners();
+            
+            // Initialize availability toggle
+            initializeAvailabilityToggle();
+        });
+
+        function loadTherapistInfo() {
+            // Load from localStorage or use sample data
+            const therapistData = JSON.parse(localStorage.getItem('slsuTherapist') || JSON.stringify({
+                id: 'therapist1',
+                name: 'Dr. Maria Santos',
+                specialization: 'Clinical Psychologist',
+                email: 'dr.santos@slsu.edu.ph'
+            }));
+            
+            document.getElementById('therapistName').textContent = therapistData.name;
+            document.getElementById('welcomeName').textContent = therapistData.name.split(' ')[1] || therapistData.name;
+            document.getElementById('therapistSpecialization').textContent = therapistData.specialization;
+            
+            // Set avatar initials
+            const initials = therapistData.name.split(' ').map(n => n[0]).join('').toUpperCase();
+            document.getElementById('therapistAvatar').textContent = initials;
+
+            // Fill settings email default from therapist
+            const emailInput = document.getElementById('settingsEmail');
+            if (emailInput && !emailInput.value) {
+                emailInput.value = therapistData.email;
+            }
+        }
+
+        function populateSchedule() {
+            const scheduleContainer = document.getElementById('todaySchedule');
+            scheduleContainer.innerHTML = '';
+            
+            sampleSchedule.forEach(slot => {
+                const timeSlot = document.createElement('div');
+                timeSlot.className = `time-slot ${slot.status}`;
+                
+                const statusText = slot.status === 'booked' ? 'Booked' : 
+                                 slot.status === 'emergency' ? 'Emergency' : 'Available';
+                
+                timeSlot.innerHTML = `
+                    <div class="slot-time">${slot.time}</div>
+                    <div class="slot-info">
+                        <div class="slot-patient">${slot.patient}</div>
+                        <div>${slot.type.charAt(0).toUpperCase() + slot.type.slice(1)} Session</div>
+                        <div class="slot-status status-${slot.status}">${statusText}</div>
+                    </div>
+                `;
+                
+                if (slot.status === 'available') {
+                    timeSlot.addEventListener('click', () => {
+                        openAppointmentModal(slot.time);
+                    });
+                }
+                
+                scheduleContainer.appendChild(timeSlot);
+            });
+        }
+
+        function populatePatients() {
+            const patientsContainer = document.getElementById('activePatientsList');
+            patientsContainer.innerHTML = '';
+            
+            samplePatients.forEach(patient => {
+                const patientCard = document.createElement('div');
+                patientCard.className = 'patient-card';
+                
+                // Create initials for avatar
+                const initials = patient.name.split(' ').map(n => n[0]).join('').toUpperCase();
+                
+                patientCard.innerHTML = `
+                    <div class="patient-avatar">${initials}</div>
+                    <div class="patient-info">
+                        <h4>${patient.name}</h4>
+                        <div class="patient-meta">
+                            <span>${patient.studentId}</span>
+                            <span>${patient.course}</span>
+                            <span>Last: ${patient.lastSession}</span>
+                        </div>
+                    </div>
+                    <div class="patient-actions">
+                        <button class="btn btn-secondary btn-sm" onclick="viewPatient(${patient.id})">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-primary btn-sm" onclick="messagePatient(${patient.id})">
+                            <i class="fas fa-comment"></i>
+                        </button>
+                    </div>
+                `;
+                
+                patientsContainer.appendChild(patientCard);
+            });
+        }
+
+        function populateNotes() {
+            const notesContainer = document.getElementById('recentNotes');
+            notesContainer.innerHTML = '';
+            
+            sampleNotes.forEach(note => {
+                const noteItem = document.createElement('div');
+                noteItem.className = 'note-item';
+                
+                const tagsHtml = note.tags.map(tag => 
+                    `<span class="note-tag">${tag}</span>`
+                ).join('');
+                
+                noteItem.innerHTML = `
+                    <div class="note-header">
+                        <div class="note-patient">${note.patient}</div>
+                        <div class="note-date">${formatDate(note.date)}</div>
+                    </div>
+                    <div class="note-content">${note.content}</div>
+                    <div class="note-tags">${tagsHtml}</div>
+                `;
+                
+                notesContainer.appendChild(noteItem);
+            });
+        }
+
+        function populateProgressReports() {
+            const container = document.getElementById('progressReportsList');
+            container.innerHTML = '';
+
+            sampleProgressReports.forEach(report => {
+                const card = document.createElement('div');
+                card.className = 'progress-card';
+
+                const riskClass = report.riskLevel === 'low'
+                    ? 'risk-low'
+                    : report.riskLevel === 'high'
+                        ? 'risk-high'
+                        : 'risk-medium';
+
+                card.innerHTML = `
+                    <div class="progress-info">
+                        <h4>${report.patientName}</h4>
+                        <div class="progress-meta">
+                            Updated: ${formatDate(report.lastUpdated)} &middot;
+                            <span class="risk-pill ${riskClass}">${report.riskLevel.toUpperCase()} RISK</span>
+                        </div>
+                        <p style="font-size:0.85rem;margin-top:0.35rem;">${report.summary}</p>
+                    </div>
+                    <div>
+                        <div style="font-size:0.8rem;color:#64748b;margin-bottom:0.25rem;">Improvement</div>
+                        <div style="font-size:1.25rem;font-weight:600;text-align:right;">${report.improvementPercent}%</div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function populateMessages() {
+            const container = document.getElementById('messagesList');
+            container.innerHTML = '';
+
+            sampleMessages.forEach(thread => {
+                const row = document.createElement('div');
+                row.className = 'message-thread';
+
+                const initials = thread.patientName.split(' ').map(n => n[0]).join('').toUpperCase();
+
+                row.innerHTML = `
+                    <div class="thread-avatar">${initials}</div>
+                    <div class="thread-info">
+                        <h4>${thread.patientName}</h4>
+                        <div style="font-size:0.85rem;color:#475569;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:320px;">
+                            ${thread.lastMessage}
+                        </div>
+                        <div class="thread-meta">
+                            Last message: ${thread.lastTimestamp}
+                        </div>
+                    </div>
+                    <div>
+                        ${thread.unread > 0 ? `<span class="unread-pill">${thread.unread} new</span>` : ''}
+                    </div>
+                `;
+
+                row.addEventListener('click', () => openThread(thread.threadId));
+
+                container.appendChild(row);
+            });
+        }
+
+        function populateSettings() {
+            document.getElementById('settingsEmail').value = sampleSettings.email;
+            document.getElementById('settingsDefaultDuration').value = String(sampleSettings.defaultSessionDuration);
+            document.getElementById('settingsReminders').checked = sampleSettings.appointmentReminders;
+            document.getElementById('settingsMessages').checked = sampleSettings.notifyOnMessage;
+            document.getElementById('settingsWeeklyHours').value = sampleSettings.weeklyAvailabilityHours;
+        }
+
+        function populateNotePatientOptions() {
+            const select = document.getElementById('notePatient');
+            samplePatients.forEach(patient => {
+                const option = document.createElement('option');
+                option.value = patient.id;
+                option.textContent = `${patient.name} (${patient.studentId})`;
+                select.appendChild(option);
+            });
+        }
+
+        function populateAppointmentPatientOptions() {
+            const select = document.getElementById('appointmentPatient');
+            // Add new patient option
+            const newOption = document.createElement('option');
+            newOption.value = 'new';
+            newOption.textContent = '+ Add New Patient';
+            select.appendChild(newOption);
+            
+            // Add existing patients
+            samplePatients.forEach(patient => {
+                const option = document.createElement('option');
+                option.value = patient.id;
+                option.textContent = `${patient.name} (${patient.studentId})`;
+                select.appendChild(option);
+            });
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) return dateString;
+            return date.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+        }
+
+        function initializeEventListeners() {
+            // Modal handling
+            const noteModal = document.getElementById('noteModal');
+            const appointmentModal = document.getElementById('appointmentModal');
+            const openNoteBtn = document.getElementById('addNoteBtn');
+            const openAppointmentBtn = document.getElementById('newAppointmentBtn');
+            const closeBtns = document.querySelectorAll('.modal-close');
+            
+            openNoteBtn.addEventListener('click', () => {
+                noteModal.style.display = 'flex';
+                // Set today's date as default
+                document.getElementById('noteDate').valueAsDate = new Date();
+            });
+            
+            openAppointmentBtn.addEventListener('click', () => {
+                appointmentModal.style.display = 'flex';
+                // Set default date/time (next hour)
+                const now = new Date();
+                now.setHours(now.getHours() + 1);
+                now.setMinutes(0);
+                document.getElementById('appointmentDate').value = now.toISOString().slice(0, 16);
+            });
+            
+            closeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    noteModal.style.display = 'none';
+                    appointmentModal.style.display = 'none';
+                });
+            });
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', (event) => {
+                if (event.target === noteModal) noteModal.style.display = 'none';
+                if (event.target === appointmentModal) appointmentModal.style.display = 'none';
+            });
+            
+            // Form submissions
+            const noteForm = document.getElementById('noteForm');
+            noteForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = {
+                    patientId: document.getElementById('notePatient').value,
+                    date: document.getElementById('noteDate').value,
+                    type: document.getElementById('noteType').value,
+                    content: document.getElementById('noteContent').value,
+                    tags: document.getElementById('noteTags').value.split(',').map(tag => tag.trim()).filter(tag => tag)
+                };
+                
+                // Get patient name
+                const patientSelect = document.getElementById('notePatient');
+                const patientName = patientSelect.options[patientSelect.selectedIndex].text.split(' (')[0];
+                
+                // Add to notes (simulating Firestore add)
+                const newNote = {
+                    id: 'note' + (sampleNotes.length + 1),
+                    therapistId: 'therapist1',
+                    patientId: formData.patientId,
+                    patient: patientName,
+                    date: formData.date,
+                    content: formData.content,
+                    tags: formData.tags
+                };
+                
+                sampleNotes.unshift(newNote);
+                populateNotes();
+                
+                alert('Session note saved successfully! (Save this to "sessionNotes" collection in Firestore)');
+                
+                noteModal.style.display = 'none';
+                noteForm.reset();
+            });
+            
+            const appointmentForm = document.getElementById('appointmentForm');
+            appointmentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = {
+                    patientId: document.getElementById('appointmentPatient').value,
+                    date: document.getElementById('appointmentDate').value,
+                    duration: document.getElementById('appointmentDuration').value,
+                    type: document.getElementById('appointmentType').value,
+                    notes: document.getElementById('appointmentNotes').value
+                };
+                
+                if (formData.patientId === 'new') {
+                    alert('Please add the new patient first.');
+                    return;
+                }
+                
+                alert('Appointment scheduled successfully! (Save this to "appointments" collection in Firestore)');
+                
+                appointmentModal.style.display = 'none';
+                appointmentForm.reset();
+                
+                updateTodayAppointments();
+            });
+            
+            // Navigation
+            const navLinks = document.querySelectorAll('.therapist-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Hide count badge (visual feedback)
+                    const countBadge = this.querySelector('.nav-count');
+                    if (countBadge) {
+                        countBadge.style.display = 'none';
+                    }
+
+                    // Scroll to section
+                    const targetId = this.getAttribute('data-target');
+                    if (targetId) {
+                        const targetEl = document.getElementById(targetId);
+                        if (targetEl) {
+                            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }
+                });
+            });
+        }
+
+        function initializeAvailabilityToggle() {
+            const toggle = document.querySelector('.toggle-switch');
+            const toggleContainer = document.getElementById('availabilityToggle');
+            
+            toggleContainer.addEventListener('click', function() {
+                toggle.classList.toggle('active');
+                
+                const isAvailable = toggle.classList.contains('active');
+                const statusElement = document.querySelector('.profile-status span');
+                
+                if (isAvailable) {
+                    statusElement.textContent = 'Available';
+                    statusElement.parentElement.style.background = '#dcfce7';
+                    statusElement.parentElement.style.color = '#16a34a';
+                    alert('You are now available for appointments. (Update "status" field in therapists doc)');
+                } else {
+                    statusElement.textContent = 'Unavailable';
+                    statusElement.parentElement.style.background = '#fee2e2';
+                    statusElement.parentElement.style.color = '#dc2626';
+                    alert('You are now unavailable for appointments. (Update "status" field in therapists doc)');
+                }
+                
+                updateAvailabilityHours(isAvailable);
+            });
+        }
+
+        function updateAvailabilityHours(isAvailable) {
+            const hoursElement = document.getElementById('availabilityHours');
+            let currentHours = parseInt(hoursElement.textContent);
+            
+            if (isAvailable) {
+                hoursElement.textContent = currentHours + 8; // Add typical work day
+            } else {
+                hoursElement.textContent = Math.max(0, currentHours - 8);
+            }
+        }
+
+        function updateTodayAppointments() {
+            const countElement = document.getElementById('todayAppointments');
+            let current = parseInt(countElement.textContent);
+            countElement.textContent = current + 1;
+            
+            const navCount = document.getElementById('pendingCount');
+            if (navCount) {
+                let navCurrent = parseInt(navCount.textContent);
+                navCount.textContent = navCurrent + 1;
+            }
+        }
+
+        function openAppointmentModal(timeSlot) {
+            const modal = document.getElementById('appointmentModal');
+            modal.style.display = 'flex';
+            
+            console.log('Opening appointment for time:', timeSlot);
+        }
+
+        // Schedule switching
+        function switchSchedule(period, event) {
+            const tabs = document.querySelectorAll('.schedule-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            
+            console.log('Switching to', period, 'schedule');
+            
+            const scheduleTitle = document.querySelector('.schedule-section h3');
+            if (period === 'today') {
+                scheduleTitle.textContent = "Today's Schedule";
+            } else if (period === 'tomorrow') {
+                scheduleTitle.textContent = "Tomorrow's Schedule";
+            } else {
+                scheduleTitle.textContent = "This Week's Schedule";
+            }
+        }
+
+        // Patient actions
+        function viewPatient(patientId) {
+            const patient = samplePatients.find(p => p.id === patientId);
+            alert(`Viewing patient: ${patient.name}\nStudent ID: ${patient.studentId}\nCourse: ${patient.course}\nLast Session: ${patient.lastSession}\n\n(Load this from "patients" collection in Firestore)`);
+        }
+
+        function messagePatient(patientId) {
+            const patient = samplePatients.find(p => p.id === patientId);
+            alert(`Opening chat with ${patient.name}\n\n(Messages should come from "messages" collection using patientId ${patientId})`);
+        }
+
+        // Messages actions
+        function openThread(threadId) {
+            const thread = sampleMessages.find(t => t.threadId === threadId);
+            if (!thread) return;
+            alert(`Open message thread with ${thread.patientName}\n\n(Load all docs where threadId == "${threadId}" from "messages" collection)`);
+        }
+
+        function composeMessage() {
+            alert('Open compose message UI.\n\n(On send, create a new doc in "messages" collection with fromUserId/toUserId, content, sentAt, read:false)');
+        }
+
+        // Navigation functions
+        function viewFullSchedule() {
+            alert('Opening full schedule view...\n\n(Load all appointments from "appointments" collection for this therapist)');
+        }
+
+        function viewAllPatients() {
+            alert('Opening all patients view...\n\n(Query "patients" collection by therapistId)');
+        }
+
+        function viewAllNotes() {
+            alert('Opening all session notes...\n\n(Query "sessionNotes" collection by therapistId)');
+        }
+
+        function exportProgressReports() {
+            alert('Exporting progress reports...\n\n(You can generate a report from "progressReports" collection)');
+        }
+
+        function saveSettings() {
+            const newSettings = {
+                email: document.getElementById('settingsEmail').value,
+                defaultSessionDuration: parseInt(document.getElementById('settingsDefaultDuration').value, 10),
+                appointmentReminders: document.getElementById('settingsReminders').checked,
+                notifyOnMessage: document.getElementById('settingsMessages').checked,
+                weeklyAvailabilityHours: parseInt(document.getElementById('settingsWeeklyHours').value, 10)
+            };
+            console.log('Save settings to therapistSettings collection:', newSettings);
+            alert('Settings saved! (Persist these in "therapistSettings" collection, doc id = therapistId)');
+        }
+
+        // Simulate real-time updates
+        setInterval(() => {
+            const messageCount = document.getElementById('messageCount');
+            if (messageCount && Math.random() > 0.7 && messageCount.style.display !== 'none') {
+                let current = parseInt(messageCount.textContent);
+                messageCount.textContent = Math.min(current + 1, 99);
+            }
+        }, 30000);
+    </script>
+</body>
+</html>

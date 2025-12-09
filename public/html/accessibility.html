@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accessibility | SLS-U Matter</title>
+
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    .page-hero {
+      padding: 80px 0 40px;
+      background: linear-gradient(135deg, #83c5be, #5a89aa);
+      color: #fff;
+    }
+    .page-hero .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .page-hero h1 {
+      font-size: 2.4rem;
+      margin-bottom: 8px;
+    }
+    .page-hero p {
+      max-width: 640px;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+    .legal-content {
+      padding: 40px 0 80px;
+    }
+    .legal-content .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 16px;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .legal-section {
+      padding: 32px 24px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .legal-section:last-child {
+      border-bottom: none;
+    }
+    .legal-section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+    .legal-section p,
+    .legal-section li {
+      line-height: 1.7;
+      color: #4b5563;
+    }
+    .legal-section ul {
+      padding-left: 20px;
+      margin: 4px 0 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Standardized Header -->
+ <header class="site-header">
+  <div class="wrap nav-row">
+    <div class="brand">
+      <img src="../images/logo2.png" alt="SLSU-U Matters Logo" class="brand-logo">
+    </div>
+
+    <nav class="main-nav">
+      <button class="mobile-menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="/html/index.html" data-section="index.html">Home</a>
+        <a href="/html/about.html" data-section="about.html">About</a>
+        <a href="/html/resources.html" data-section="resources.html">Resources</a>
+        <a href="/html/services.html" data-section="services.html">Services</a>
+        <a href="/html/feedback.html" data-section="feedback.html">Feedback</a>
+        <a href="/html/contact.html" data-section="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="/html/booking.html">Book Session</a>
+      <!-- Profile icon for login -->
+      <a href="/html/profile.html"
+         class="profile-icon active"
+         aria-label="View your profile"
+         id="profileNavIcon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z"
+                stroke="currentColor" stroke-width="2"/>
+          <path d="M20 21C20 19.6044 20 18.9067 19.8278 18.3389C19.44 17.0605 18.4395 16.06 17.1611 15.6722C16.5933 15.5 15.8956 15.5 14.5 15.5H9.5C8.10444 15.5 7.40665 15.5 6.83886 15.6722C5.56045 16.06 4.56004 17.0605 4.17224 18.3389C4 18.9067 4 19.6044 4 21"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="wrap">
+      <h1>Accessibility Statement</h1>
+      <p>
+        SLS-U Matter is committed to making this website as accessible and usable as possible
+        for all students, including those with disabilities.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <main class="legal-content">
+    <div class="wrap">
+      <section class="legal-section">
+        <h2>Our commitment</h2>
+        <p>
+          We aim to provide an inclusive digital experience for all users. This includes
+          students with visual, hearing, motor, cognitive, or other disabilities who
+          may use assistive technologies such as screen readers, keyboard navigation,
+          or screen magnifiers.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Accessibility features</h2>
+        <p>Examples of accessibility considerations on SLS-U Matter include:</p>
+        <ul>
+          <li>Clean, consistent layout and typography</li>
+          <li>Semantic HTML structure to improve screen reader navigation</li>
+          <li>High-contrast text and backgrounds where possible</li>
+          <li>Responsive design for use on different screen sizes</li>
+          <li>Descriptive link text and button labels where feasible</li>
+        </ul>
+        <p>
+          We are working towards alignment with widely recognized guidelines such as the
+          Web Content Accessibility Guidelines (WCAG) as far as is reasonable for this
+          project.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Keyboard and screen reader use</h2>
+        <p>
+          We aim to ensure that key parts of the site can be navigated using only the
+          keyboard and that important interactive elements provide appropriate labels
+          or roles for assistive technology.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Known limitations</h2>
+        <p>
+          While we strive for accessibility, some areas may still present challenges, such as:
+        </p>
+        <ul>
+          <li>Third-party content or embedded media that we do not fully control</li>
+          <li>Complex visual components that may not yet have full ARIA support</li>
+          <li>Occasional missing alternative text or labels</li>
+        </ul>
+        <p>
+          We are committed to gradually improving these areas based on available resources
+          and user feedback.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Feedback and support</h2>
+        <p>
+          If you experience barriers while using SLS-U Matter, or if you have suggestions
+          to improve accessibility, we encourage you to let us know. Please include:
+        </p>
+        <ul>
+          <li>The page or feature where you encountered the issue</li>
+          <li>Which device, browser, and assistive technology (if any) you were using</li>
+          <li>A brief description of the problem</li>
+        </ul>
+        <p>
+          You can share feedback via the Contact or Feedback pages, or by contacting the
+          SLSU Guidance and Counseling Office. Together, we can make this platform more
+          inclusive for everyone.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Emergency and alternative access</h2>
+        <p>
+          If accessibility issues prevent you from using this site to request help and you
+          are in immediate distress or danger, please use an alternative method such as:
+        </p>
+        <ul>
+          <li>Calling local emergency services</li>
+          <li>Visiting the Guidance and Counseling Office in person during office hours</li>
+          <li>Reaching out to a trusted friend, family member, or staff member</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <!-- PROFILE SLIDE-OUT -->
+  <aside id="profilePanel" class="profile-panel" aria-hidden="true">
+    <button id="closeProfilePanel" class="close-profile" aria-label="Close profile">&times;</button>
+    <div class="profile-content">
+      <div class="user-avatar-large"><img id="profileAvatar" src="../images/default-avatar.png" alt="avatar"></div>
+      <h3 id="profileName">User Name</h3>
+      <p id="profileRole">Role</p>
+
+      <div class="profile-info-grid">
+        <div><strong>ID</strong><div id="profileId">—</div></div>
+        <div><strong>Course / Spec</strong><div id="profileCourse">—</div></div>
+        <div><strong>Email</strong><div id="profileEmail">—</div></div>
+        <div><strong>Phone</strong><div id="profilePhone">—</div></div>
+      </div>
+
+      <div class="profile-actions">
+        <button id="editProfile" class="secondary-btn">Edit Profile</button>
+        <button id="logoutBtn" class="primary-btn">Log out</button>
+      </div>
+    </div>
+  </aside>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="../images/logo2.png" alt="SLSU-U Matters Logo" class="footer-logo" />
+          <p>Providing compassionate mental health support and resources for SLSU Lucena students.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Twitter">TW</a>
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="LinkedIn">IN</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="links-column">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="resources.html">Resources</a>
+
+          </div>
+          <div class="links-column">
+            <h4>Support</h4>
+            <a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms of Service</a>
+<a href="faqs.html">FAQs</a>
+<a href="accessibility.html">Accessibility</a>
+
+          </div>
+          <div class="links-column contact">
+            <h4>Contact</h4>
+            <p>Email: guidance@slsu.edu.ph (example)</p>
+            <p>Guidance Office: (042) 710-2525</p>
+            <p>Address: SLSU Lucena Campus, Lucena City</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 SLSU-U Matters. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+   <script src="../js/profile-dashboard.js"></script>
+</body>
+</html>

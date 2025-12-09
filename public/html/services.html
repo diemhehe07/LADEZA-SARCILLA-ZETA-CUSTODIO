@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services | SLS-U Matter</title>
+<head>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/services.css">
+</head>  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <!-- Header with responsive navigation -->
+<header class="site-header">
+  <div class="wrap nav-row">
+    <div class="brand">
+      <img src="../images/logo2.png" alt="SLSU-U Matters Logo" class="brand-logo">
+    </div>
+
+    <nav class="main-nav">
+      <button class="mobile-menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="/html/index.html" data-section="index.html">Home</a>
+        <a href="/html/about.html" data-section="about.html">About</a>
+        <a href="/html/resources.html" data-section="resources.html">Resources</a>
+        <a href="/html/services.html" data-section="services.html">Services</a>
+        <a href="/html/feedback.html" data-section="feedback.html">Feedback</a>
+        <a href="/html/contact.html" data-section="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="/html/booking.html">Book Session</a>
+      <!-- Profile icon for login -->
+      <a href="/html/profile.html"
+         class="profile-icon active"
+         aria-label="View your profile"
+         id="profileNavIcon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z"
+                stroke="currentColor" stroke-width="2"/>
+          <path d="M20 21C20 19.6044 20 18.9067 19.8278 18.3389C19.44 17.0605 18.4395 16.06 17.1611 15.6722C16.5933 15.5 15.8956 15.5 14.5 15.5H9.5C8.10444 15.5 7.40665 15.5 6.83886 15.6722C5.56045 16.06 4.56004 17.0605 4.17224 18.3389C4 18.9067 4 19.6044 4 21"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="wrap">
+      <h1>SLSU Campus Services</h1>
+      <p>Free mental health services tailored to SLSU students' unique needs and academic circumstances</p>
+    </div>
+  </section>
+  
+  <!-- Services Content -->
+  <section class="page-content">
+    <div class="wrap">
+      <div class="services-content">
+        <!-- Service Filter -->
+        <div class="service-filter">
+          <h2>Find the Right Campus Service for You</h2>
+          <div class="filter-options">
+            <button class="filter-btn active" data-filter="all">All Services</button>
+            <button class="filter-btn" data-filter="academic">Academic Support</button>
+            <button class="filter-btn" data-filter="counseling">Individual Counseling</button>
+            <button class="filter-btn" data-filter="group">Group Support</button>
+            <button class="filter-btn" data-filter="crisis">Crisis Services</button>
+          </div>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="services-grid detailed">
+          <div class="service-card" data-category="academic counseling">
+            <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+            <h3>Academic Stress Counseling</h3>
+            <p class="service-description">Manage exam anxiety, deadline pressure, and academic workload with SLSU counselors.</p>
+            <div class="service-details">
+              <div class="detail-item">
+                <i class="fas fa-clock"></i>
+                <span>50-minute sessions</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-calendar"></i>
+                <span>Flexible scheduling</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-user-md"></i>
+                <span>Licensed campus counselors</span>
+              </div>
+            </div>
+            <div class="service-pricing">
+              <span class="price">Free</span>
+              <span class="period">for SLSU students</span>
+            </div>
+            <div class="service-actions">
+              <button class="primary-btn book-service" data-service="academic-counseling">Book Session</button>
+              <button class="secondary-btn learn-more" data-service="academic-counseling">Learn More</button>
+            </div>
+          </div>
+
+          <div class="service-card" data-category="counseling">
+            <div class="service-icon"><i class="fas fa-briefcase"></i></div>
+            <h3>Career & Future Planning</h3>
+            <p class="service-description">Address anxiety about career choices, internships, and post-graduation plans.</p>
+            <div class="service-details">
+              <div class="detail-item">
+                <i class="fas fa-clock"></i>
+                <span>60-minute sessions</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-calendar"></i>
+                <span>Weekly or as needed</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-user-md"></i>
+                <span>Career specialists</span>
+              </div>
+            </div>
+            <div class="service-pricing">
+              <span class="price">Free</span>
+              <span class="period">for SLSU students</span>
+            </div>
+            <div class="service-actions">
+              <button class="primary-btn book-service" data-service="career-counseling">Book Session</button>
+              <button class="secondary-btn learn-more" data-service="career-counseling">Learn More</button>
+            </div>
+          </div>
+
+          <div class="service-card" data-category="counseling">
+            <div class="service-icon"><i class="fas fa-home"></i></div>
+            <h3>College Adjustment Support</h3>
+            <p class="service-description">Help with homesickness, adapting to campus life, and building new relationships.</p>
+            <div class="service-details">
+              <div class="detail-item">
+                <i class="fas fa-clock"></i>
+                <span>45-minute sessions</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-calendar"></i>
+                <span>Weekly</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-user-md"></i>
+                <span>Student development experts</span>
+              </div>
+            </div>
+            <div class="service-pricing">
+              <span class="price">Free</span>
+              <span class="period">for SLSU students</span>
+            </div>
+            <div class="service-actions">
+              <button class="primary-btn book-service" data-service="adjustment-support">Book Session</button>
+              <button class="secondary-btn learn-more" data-service="adjustment-support">Learn More</button>
+            </div>
+          </div>
+
+          <div class="service-card" data-category="group">
+            <div class="service-icon"><i class="fas fa-users"></i></div>
+            <h3>Peer Support Groups</h3>
+            <p class="service-description">Connect with fellow SLSU students facing similar challenges in moderated groups.</p>
+            <div class="service-details">
+              <div class="detail-item">
+                <i class="fas fa-clock"></i>
+                <span>90-minute sessions</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-calendar"></i>
+                <span>Weekly</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-user-md"></i>
+                <span>Peer facilitators & counselors</span>
+              </div>
+            </div>
+            <div class="service-pricing">
+              <span class="price">Free</span>
+              <span class="period">for SLSU students</span>
+            </div>
+            <div class="service-actions">
+              <button class="primary-btn book-service" data-service="peer-support">Join Group</button>
+              <button class="secondary-btn learn-more" data-service="peer-support">Learn More</button>
+            </div>
+          </div>
+
+          <div class="service-card" data-category="crisis">
+            <div class="service-icon"><i class="fas fa-first-aid"></i></div>
+            <h3>Crisis Intervention</h3>
+            <p class="service-description">Immediate support for urgent mental health concerns and emergencies.</p>
+            <div class="service-details">
+              <div class="detail-item">
+                <i class="fas fa-clock"></i>
+                <span>30-60 minute sessions</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-calendar"></i>
+                <span>Available immediately</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-user-md"></i>
+                <span>Crisis specialists</span>
+              </div>
+            </div>
+            <div class="service-pricing">
+              <span class="price">Free</span>
+              <span class="period">for SLSU students</span>
+            </div>
+            <div class="service-actions">
+              <button class="primary-btn book-service" data-service="crisis-support">Get Help Now</button>
+              <button class="secondary-btn learn-more" data-service="crisis-support">Learn More</button>
+            </div>
+          </div>
+
+          <div class="service-card" data-category="academic group">
+            <div class="service-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+            <h3>Study Skills & Time Management</h3>
+            <p class="service-description">Workshops and individual coaching for academic success and balance.</p>
+            <div class="service-details">
+              <div class="detail-item">
+                <i class="fas fa-clock"></i>
+                <span>60-minute workshops</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-calendar"></i>
+                <span>Monthly sessions</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-user-md"></i>
+                <span>Academic counselors</span>
+              </div>
+            </div>
+            <div class="service-pricing">
+              <span class="price">Free</span>
+              <span class="period">for SLSU students</span>
+            </div>
+            <div class="service-actions">
+              <button class="primary-btn book-service" data-service="study-skills">Join Workshop</button>
+              <button class="secondary-btn learn-more" data-service="study-skills">Learn More</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service Comparison -->
+        <div class="service-comparison">
+          <h2>SLSU Service Comparison</h2>
+          <div class="comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Service</th>
+                  <th>Duration</th>
+                  <th>Format</th>
+                  <th>Cost</th>
+                  <th>Best For</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Academic Stress Counseling</td>
+                  <td>50 minutes</td>
+                  <td>Individual</td>
+                  <td>Free</td>
+                  <td>Exam anxiety, Course stress</td>
+                </tr>
+                <tr>
+                  <td>Career Planning</td>
+                  <td>60 minutes</td>
+                  <td>Individual</td>
+                  <td>Free</td>
+                  <td>Career anxiety, Future plans</td>
+                </tr>
+                <tr>
+                  <td>Peer Support Groups</td>
+                  <td>90 minutes</td>
+                  <td>Group</td>
+                  <td>Free</td>
+                  <td>Social support, Shared experiences</td>
+                </tr>
+                <tr>
+                  <td>Crisis Intervention</td>
+                  <td>30-60 minutes</td>
+                  <td>Individual</td>
+                  <td>Free</td>
+                  <td>Urgent concerns, Emergencies</td>
+                </tr>
+                <tr>
+                  <td>Study Skills Workshops</td>
+                  <td>60 minutes</td>
+                  <td>Group/Individual</td>
+                  <td>Free</td>
+                  <td>Academic performance, Time management</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Campus Support Information -->
+        <div class="campus-support-section">
+          <h2>Campus Support & Accessibility</h2>
+          <div class="campus-support-content">
+            <div class="support-info">
+              <h3>Location & Hours</h3>
+              <div class="campus-details">
+                <div class="detail-item">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <div>
+                    <strong>Guidance Office</strong>
+                    <p>SLSU Lucena Campus, Main Building, 2nd Floor</p>
+                  </div>
+                </div>
+                <div class="detail-item">
+                  <i class="fas fa-clock"></i>
+                  <div>
+                    <strong>Operating Hours</strong>
+                    <p>Monday-Friday: 8:00 AM - 5:00 PM</p>
+                    <p>Saturday: By appointment only</p>
+                  </div>
+                </div>
+                <div class="detail-item">
+                  <i class="fas fa-phone-alt"></i>
+                  <div>
+                    <strong>Contact</strong>
+                    <p>Guidance Office: (042) 710-2525</p>
+                    <p>Crisis Hotline: 0917-899-8727</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accessibility-options">
+              <h3>Accessibility Options</h3>
+              <div class="accessibility-features">
+                <div class="feature">
+                  <i class="fas fa-video"></i>
+                  <span>Online Sessions Available</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-wheelchair"></i>
+                  <span>Wheelchair Accessible</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-sign-language"></i>
+                  <span>Accommodations Available</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-language"></i>
+                  <span>Multilingual Support</span>
+                </div>
+              </div>
+              <button class="secondary-btn" id="requestAccommodation">Request Accommodations</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Student Testimonials -->
+        <div class="testimonials-section">
+          <h2>What SLSU Students Say</h2>
+          <div class="testimonials-grid">
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <p>"The academic stress counseling helped me manage my thesis anxiety. I finally submitted my capstone project with confidence!"</p>
+              </div>
+              <div class="testimonial-author">
+                <strong>Maria Santos</strong>
+                <span>BS Psychology, 4th Year</span>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <p>"As an incoming freshman, the adjustment support made my transition to campus life so much smoother. I found my community here."</p>
+              </div>
+              <div class="testimonial-author">
+                <strong>James Reyes</strong>
+                <span>BS Engineering, 1st Year</span>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <p>"The peer support group connected me with other students who understood the pressure of balancing work and studies."</p>
+              </div>
+              <div class="testimonial-author">
+                <strong>Andrea Cruz</strong>
+                <span>BS Business Admin, 3rd Year</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="../images/logo2.png" alt="SLSU-U Matters Logo" class="footer-logo">
+          <p>Providing compassionate mental health support and resources for SLSU Lucena students.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="links-column">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="resources.html">Resources</a>
+
+          </div>
+          <div class="links-column">
+            <h4>Support</h4>
+           <a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms of Service</a>
+<a href="faqs.html">FAQs</a>
+<a href="accessibility.html">Accessibility</a>
+
+          </div>
+          <div class="links-column contact">
+            <h4>Contact SLSU-U Matter</h4>
+            <p>Email: slsu-umatter@slsu.edu.ph</p>
+            <p>Campus Hotline: +63 912 345 6789</p>
+            <p>Guidance Office: (042) 710-2525</p>
+            <p>Address: SLSU Lucena Campus, Lucena City</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 SLSU-U Matters. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Service Detail Modal -->
+  <div id="serviceModal" class="modal">
+    <div class="modal-content large">
+      <span class="close">&times;</span>
+      <div id="serviceModalContent">
+        <!-- Content loaded dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Accommodation Request Modal -->
+  <div id="accommodationModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Request Accommodations</h2>
+      <form id="accommodationForm">
+        <div class="form-group">
+          <label for="studentName">Your Name</label>
+          <input type="text" id="studentName" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="studentId">SLSU Student ID</label>
+          <input type="text" id="studentId" name="studentId" required>
+        </div>
+        <div class="form-group">
+          <label for="accommodationType">Type of Accommodation Needed</label>
+          <select id="accommodationType" name="accommodationType" required>
+            <option value="">Select accommodation</option>
+            <option value="physical">Physical Accessibility</option>
+            <option value="language">Language Support</option>
+            <option value="hearing">Hearing Assistance</option>
+            <option value="visual">Visual Assistance</option>
+            <option value="schedule">Schedule Accommodation</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="accommodationDetails">Specific Needs or Requests</label>
+          <textarea id="accommodationDetails" name="details" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="primary-btn">Submit Request</button>
+      </form>
+    </div>
+  </div>
+
+   <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <!-- Your Firebase wrapper -->
+  <script src="../js/firebase.js"></script>
+
+  <!-- Global behaviors -->
+  <script src="../js/script.js"></script>
+  <script src="../js/auth.js"></script>
+
+  <script src="../js/services.js"></script>
+</body>
+</html>

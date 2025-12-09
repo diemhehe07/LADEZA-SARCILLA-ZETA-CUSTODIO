@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | SLS-U Matter</title>
+
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/contact.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="wrap nav-row">
+      <div class="brand">
+        <img src="../images/logo2.png" alt="SLSU-U Matters Logo" class="brand-logo">
+      </div>
+
+      <nav class="main-nav">
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-links">
+          <a href="/html/index.html">Home</a>
+          <a href="/html/about.html">About</a>
+          <a href="/html/resources.html">Resources</a>
+          <a href="/html/services.html">Services</a>
+          <a href="/html/feedback.html">Feedback</a>
+          <a href="/html/contact.html" class="active">Contact</a>
+        </div>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-ghost" href="/html/booking.html">Book Session</a>
+        <a href="/html/profile.html" class="profile-icon active" aria-label="View your profile" id="profileNavIcon">
+          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 12C14.2091 12 16 10.2091..." stroke="currentColor"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="wrap">
+      <h1>Contact SLSU-U Matter</h1>
+      <p>Get in touch with our campus team. We're here to support SLSU students.</p>
+    </div>
+  </section>
+
+  <!-- Contact Content -->
+  <section class="page-content">
+    <div class="wrap">
+      <div class="contact-content">
+        <!-- LEFT SIDE CONTENT -->
+        <div class="contact-info">
+          <h2>Campus Support Channels</h2>
+          <p>Our compassionate SLSU team is here to listen and provide support.</p>
+
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+              <div class="contact-details">
+                <h3>Campus Hotline</h3>
+                <p>+63 912 345 6789</p>
+                <p>Available during campus hours</p>
+                <button class="primary-btn" onclick="window.location.href='tel:+639123456789'">Call Campus Line</button>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+              <div class="contact-details">
+                <h3>SLSU Email</h3>
+                <p>slsu-umatter@slsu.edu.ph</p>
+                <p>We respond within 24 hours</p>
+                <button class="primary-btn" onclick="window.location.href='mailto:slsu-umatter@slsu.edu.ph'">Send SLSU Email</button>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div class="contact-details">
+                <h3>Guidance Office</h3>
+                <p>SLSU Lucena Campus</p>
+                <p>Main Building, 2nd Floor</p>
+                <button class="primary-btn" onclick="openCampusMap()">Get Campus Directions</button>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <div class="contact-icon"><i class="fas fa-comments"></i></div>
+              <div class="contact-details">
+                <h3>Student Chat</h3>
+                <p>Mon–Fri, 8AM–5PM</p>
+                <p>Instant counselor support</p>
+                <button class="primary-btn" id="startChat">Start Student Chat</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="office-hours">
+            <h3>Campus Service Hours</h3>
+            <table class="hours-table">
+              <tr><td>Mon–Fri</td><td>8AM – 5PM</td></tr>
+              <tr><td>Saturday</td><td>By Appointment Only</td></tr>
+              <tr><td>Sunday</td><td>Closed</td></tr>
+              <tr><td>24/7 Crisis Line</td><td>0917-899-8727</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE FORM -->
+        <div class="contact-form-container">
+          <div class="contact-form">
+            <h2>Send Message to SLSU-U Matter</h2>
+
+            <form id="contactForm">
+              <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" name="fullName" required>
+              </div>
+
+              <div class="form-group">
+                <label>SLSU Student ID</label>
+                <input type="text" name="studentId" placeholder="e.g., 2023-00123">
+              </div>
+
+              <div class="form-group">
+                <label>SLSU Email Address *</label>
+                <input type="email" name="slsuEmail" placeholder="yourname@slsu.edu.ph" required>
+              </div>
+
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" name="phone">
+              </div>
+
+              <div class="form-group">
+                <label>Course & Year Level</label>
+                <input type="text" name="courseYear" placeholder="e.g., BS Psychology, 2nd Year">
+              </div>
+
+              <div class="form-group">
+                <label>Subject *</label>
+                <select name="subject" required>
+                  <option value="">Select subject…</option>
+                  <option value="appointment">Counseling Appointment</option>
+                  <option value="academic">Academic Stress Support</option>
+                  <option value="career">Career Guidance</option>
+                  <option value="adjustment">College Adjustment</option>
+                  <option value="crisis">Crisis Support</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="feedback">Feedback</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Message *</label>
+                <textarea name="message" rows="6" required></textarea>
+              </div>
+
+              <div class="form-group">
+                <label>Urgency Level</label>
+                <select name="urgency">
+                  <option value="low">Low</option>
+                  <option value="medium" selected>Medium (24 hours)</option>
+                  <option value="high">High (Today)</option>
+                  <option value="emergency">Emergency</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>
+                  <input type="checkbox" name="confirmStudent" required>
+                  I confirm I am an SLSU Lucena student *
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label>
+                  <input type="checkbox" name="consentContact" required>
+                  I consent to being contacted and agree to confidentiality *
+                </label>
+              </div>
+
+              <button type="submit" class="primary-btn">Send Campus Message</button>
+            </form>
+
+            <div id="contactMessageResult" class="message" style="display:none;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chat Modal -->
+  <div id="chatModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>SLSU Student Chat Support</h2>
+      <div class="chat-container">
+        <div class="chat-messages" id="chatMessages">
+          <div class="chat-message bot">
+            <p>Hello! How can we support you today?</p>
+          </div>
+        </div>
+
+        <div class="chat-input">
+          <input type="text" id="chatInput" placeholder="Type your message…">
+          <button id="sendMessage" class="primary-btn">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <!-- Firebase wrapper -->
+  <script src="../js/firebase.js"></script>
+
+  <!-- Scripts -->
+  <script src="../js/script.js"></script>
+  <script src="../js/auth.js"></script>
+
+  <!-- Contact handler (now correctly wired to Firebase) -->
+  <script src="../js/contact.js"></script>
+
+</body>
+</html>

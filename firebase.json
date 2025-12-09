@@ -1,10 +1,10 @@
-{
-  "firestore": {
-    "database": "(default)",
-    "location": "nam5",
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
-  },
+  {
+    "firestore": {
+      "database": "(default)",
+      "location": "nam5",
+      "rules": "firestore.rules",
+      "indexes": "firestore.indexes.json"
+    },
   "hosting": {
     "public": "public",
     "ignore": [
@@ -15,14 +15,14 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "destination": "/html/profile.html"
       }
     ]
   },
-  "emulators": {
-    "singleProjectMode": true
-  },
-  "database": {
-    "rules": "database.rules.json"
+    "emulators": {  
+      "singleProjectMode": true
+    },
+    "database": {
+      "rules": "database.rules.json"
+    }
   }
-}

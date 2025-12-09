@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile | SLS-U Matter</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/profile.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+  <div class="wrap nav-row">
+    <div class="brand">
+      <img src="../images/logo2.png" alt="SLSU-U Matters Logo" class="brand-logo">
+    </div>
+
+    <nav class="main-nav">
+      <button class="mobile-menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="/html/index.html" data-section="index.html">Home</a>
+        <a href="/html/about.html" data-section="about.html">About</a>
+        <a href="/html/resources.html" data-section="resources.html">Resources</a>
+        <a href="/html/services.html" data-section="services.html">Services</a>
+        <a href="/html/feedback.html" data-section="feedback.html">Feedback</a>
+        <a href="/html/contact.html" data-section="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="/html/booking.html">Book Session</a>
+      <!-- Profile icon for login -->
+      <a href="/html/profile.html"
+         class="profile-icon active"
+         aria-label="View your profile"
+         id="profileNavIcon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z"
+                stroke="currentColor" stroke-width="2"/>
+          <path d="M20 21C20 19.6044 20 18.9067 19.8278 18.3389C19.44 17.0605 18.4395 16.06 17.1611 15.6722C16.5933 15.5 15.8956 15.5 14.5 15.5H9.5C8.10444 15.5 7.40665 15.5 6.83886 15.6722C5.56045 16.06 4.56004 17.0605 4.17224 18.3389C4 18.9067 4 19.6044 4 21"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="wrap">
+      <h1>My Profile</h1>
+      <p>Manage your mental health journey and campus support services</p>
+    </div>
+  </section>
+
+  <!-- Profile Content -->
+  <section class="page-content">
+    <div class="wrap">
+      <!-- Login/Register Section (Visible when not logged in) -->
+      <div class="auth-section" id="authSection">
+        <div class="auth-container">
+          <div class="auth-tabs">
+            <button class="auth-tab active" data-tab="login">Login</button>
+            <button class="auth-tab" data-tab="register">Register</button>
+          </div>
+
+          <!-- Login Form -->
+          <div class="auth-form active" id="loginForm">
+            <h2>Welcome Back, Leopard!</h2>
+            <p class="auth-subtitle">Sign in to access your personalized dashboard</p>
+            
+            <form id="loginFormData">
+              <div class="form-group">
+                <label for="loginEmail">SLSU Email Address</label>
+                <input type="email" id="loginEmail" name="email" placeholder="yourname@slsu.edu.ph" required>
+                <i class="fas fa-envelope input-icon"></i>
+              </div>
+              
+              <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+                <i class="fas fa-lock input-icon"></i>
+                <button type="button" class="password-toggle" id="loginPasswordToggle">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+
+              <div class="form-options">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="remember"> Remember me
+                </label>
+                <a href="#" class="forgot-password">Forgot Password?</a>
+              </div>
+
+              <button type="submit" class="primary-btn full-width">Sign In</button>
+            </form>
+
+            <div class="auth-divider">
+              <span>or continue with</span>
+            </div>
+
+            <div class="social-auth">
+              <button class="social-btn google-btn">
+                <i class="fab fa-google"></i>
+                Google
+              </button>
+              <button class="social-btn microsoft-btn">
+                <i class="fab fa-microsoft"></i>
+                Microsoft
+              </button>
+            </div>
+          </div>
+
+          <!-- Register Form -->
+          <div class="auth-form" id="registerForm">
+            <h2>Join SLS-U Matter</h2>
+            <p class="auth-subtitle">Create your account to access campus mental health resources</p>
+            
+            <form id="registerFormData">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" id="lastName" name="lastName" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="studentId">SLSU Student ID</label>
+                <input type="text" id="studentId" name="studentId" placeholder="e.g., 23-000001" required>
+                <i class="fas fa-id-card input-icon"></i>
+              </div>
+
+              <div class="form-group">
+                <label for="registerEmail">SLSU Email Address</label>
+                <input type="email" id="registerEmail" name="email" placeholder="yourname@slsu.edu.ph" required>
+                <i class="fas fa-envelope input-icon"></i>
+              </div>
+
+              <div class="form-group">
+                <label for="courseYear">Course & Year Level</label>
+                <select id="courseYear" name="courseYear" required>
+                  <option value="">Select your course and year</option>
+                  <option value="bs-psych-1">BS Psychology - 1st Year</option>
+                  <option value="bs-psych-2">BS Psychology - 2nd Year</option>
+                  <option value="bs-psych-3">BS Psychology - 3rd Year</option>
+                  <option value="bs-psych-4">BS Psychology - 4th Year</option>
+                  <option value="bs-eng-1">BS Engineering - 1st Year</option>
+                  <option value="bs-eng-2">BS Engineering - 2nd Year</option>
+                  <option value="bs-eng-3">BS Engineering - 3rd Year</option>
+                  <option value="bs-eng-4">BS Engineering - 4th Year</option>
+                  <option value="bs-ba-1">BS Business Admin - 1st Year</option>
+                  <option value="bs-ba-2">BS Business Admin - 2nd Year</option>
+                  <option value="bs-ba-3">BS Business Admin - 3rd Year</option>
+                  <option value="bs-ba-4">BS Business Admin - 4th Year</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="registerPassword">Password</label>
+                <input type="password" id="registerPassword" name="password" placeholder="Create a strong password" required>
+                <i class="fas fa-lock input-icon"></i>
+                <button type="button" class="password-toggle" id="registerPasswordToggle">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+
+              <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                <i class="fas fa-lock input-icon"></i>
+              </div>
+
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="terms" required>
+                  I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="newsletter">
+                  Send me mental health tips and campus updates
+                </label>
+              </div>
+
+              <button type="submit" class="primary-btn full-width">Create Account</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="auth-features">
+          <h3>Why Create an Account?</h3>
+          <div class="features-list">
+            <div class="feature-item">
+              <i class="fas fa-calendar-check"></i>
+              <div>
+                <h4>Book Sessions Easily</h4>
+                <p>Schedule counseling appointments with campus professionals</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-heart"></i>
+              <div>
+                <h4>Track Your Progress</h4>
+                <p>Monitor your mental wellness journey with personalized tools</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-bookmark"></i>
+              <div>
+                <h4>Save Resources</h4>
+                <p>Bookmark helpful articles and tools for quick access</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <i class="fas fa-users"></i>
+              <div>
+                <h4>Join Support Groups</h4>
+                <p>Connect with fellow SLSU students in safe spaces</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard Section (Visible when logged in) -->
+      <div class="dashboard-section" id="dashboardSection" style="display: none;">
+        <div class="dashboard-header">
+          <div class="user-welcome">
+            <div class="user-avatar">
+              <img src="/assets/default-avatar.jpg" alt="User Avatar" id="userAvatar">
+              <button class="avatar-edit" id="editAvatar">
+                <i class="fas fa-camera"></i>
+              </button>
+            </div>
+            <div class="user-info">
+              <h2 id="userGreeting">Welcome back, Leopard!</h2>
+              <p class="user-status" id="userStatus">You're taking great steps for your mental health</p>
+              <div class="user-meta">
+                <span><i class="fas fa-id-card"></i> <span id="userStudentId">-</span></span>
+                <span><i class="fas fa-graduation-cap"></i> <span id="userCourse">-</span></span>
+                <span><i class="fas fa-calendar-alt"></i> Member since <span id="memberSince">-</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-actions">
+            <button class="secondary-btn" id="editProfile">
+              <i class="fas fa-edit"></i> Edit Profile
+            </button>
+            <button class="secondary-btn" id="logoutBtn">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <!-- Upcoming Appointments -->
+          <div class="dashboard-card appointments-card">
+            <div class="card-header">
+              <h3><i class="fas fa-calendar-alt"></i> Upcoming Appointments</h3>
+              <a href="booking.html" class="card-action">Book New</a>
+            </div>
+            <div class="appointments-list" id="appointmentsList">
+              <div class="empty-state">
+                <i class="fas fa-calendar-plus"></i>
+                <p>No upcoming appointments</p>
+                <a href="booking.html" class="primary-btn small">Book Your First Session</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="dashboard-card actions-card">
+            <div class="card-header">
+              <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+            </div>
+            <div class="actions-grid">
+              <a href="resources.html" class="action-item">
+                <i class="fas fa-book-open"></i>
+                <span>Resources</span>
+              </a>
+              <a href="services.html" class="action-item">
+                <i class="fas fa-hand-holding-heart"></i>
+                <span>Services</span>
+              </a>
+              <a href="feedback.html" class="action-item">
+                <i class="fas fa-comment"></i>
+                <span>Feedback</span>
+              </a>
+              <a href="contact.html" class="action-item">
+                <i class="fas fa-headset"></i>
+                <span>Support</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Wellness Progress -->
+          <div class="dashboard-card progress-card">
+            <div class="card-header">
+              <h3><i class="fas fa-chart-line"></i> Wellness Progress</h3>
+              <a href="#" class="card-action">View Details</a>
+            </div>
+            <div class="progress-stats">
+              <div class="progress-item">
+                <div class="progress-circle" data-percent="75">
+                  <span>75%</span>
+                </div>
+                <label>Session Attendance</label>
+              </div>
+              <div class="progress-item">
+                <div class="progress-circle" data-percent="60">
+                  <span>60%</span>
+                </div>
+                <label>Resource Usage</label>
+              </div>
+              <div class="progress-item">
+                <div class="progress-circle" data-percent="85">
+                  <span>85%</span>
+                </div>
+                <label>Goal Progress</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Saved Resources -->
+          <div class="dashboard-card resources-card">
+            <div class="card-header">
+              <h3><i class="fas fa-bookmark"></i> Saved Resources</h3>
+              <a href="resources.html" class="card-action">View All</a>
+            </div>
+            <div class="saved-resources" id="savedResources">
+              <div class="empty-state">
+                <i class="fas fa-bookmark"></i>
+                <p>No saved resources yet</p>
+                <a href="resources.html" class="secondary-btn small">Explore Resources</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="dashboard-card activity-card">
+            <div class="card-header">
+              <h3><i class="fas fa-history"></i> Recent Activity</h3>
+            </div>
+            <div class="activity-list" id="activityList">
+              <div class="empty-state">
+                <i class="fas fa-history"></i>
+                <p>No recent activity</p>
+                <p class="small">Your activity will appear here</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Emergency Contacts -->
+          <div class="dashboard-card emergency-card">
+            <div class="card-header">
+              <h3><i class="fas fa-phone-alt"></i> Emergency Contacts</h3>
+            </div>
+            <div class="emergency-contacts">
+              <div class="emergency-item">
+                <i class="fas fa-phone emergency-icon"></i>
+                <div>
+                  <strong>SLSU Crisis Hotline</strong>
+                  <p>0917-899-8727</p>
+                </div>
+                <button class="emergency-btn" onclick="window.location.href='tel:09178998727'">
+                  <i class="fas fa-phone"></i>
+                </button>
+              </div>
+              <div class="emergency-item">
+                <i class="fas fa-building emergency-icon"></i>
+                <div>
+                  <strong>Guidance Office</strong>
+                  <p>(042) 710-2525</p>
+                </div>
+                <button class="emergency-btn" onclick="window.location.href='tel:+63427102525'">
+                  <i class="fas fa-phone"></i>
+                </button>
+              </div>
+              <div class="emergency-item">
+                <i class="fas fa-shield-alt emergency-icon"></i>
+                <div>
+                  <strong>Campus Security</strong>
+                  <p>(042) 710-2525</p>
+                </div>
+                <button class="emergency-btn" onclick="window.location.href='tel:+63427102525'">
+                  <i class="fas fa-phone"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="../images/logo2.png" alt="SLSU-U Matters Logo" class="footer-logo">
+          <p>Providing compassionate mental health support and resources for SLSU Lucena students.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="links-column">
+            <h4>Quick Links</h4>
+           <a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="services.html">Services</a>
+<a href="resources.html">Resources</a>
+
+          </div>
+          <div class="links-column">
+            <h4>Support</h4>
+           <a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms of Service</a>
+<a href="faqs.html">FAQs</a>
+<a href="accessibility.html">Accessibility</a>
+
+          </div>
+          <div class="links-column contact">
+            <h4>Contact SLSU-U Matter</h4>
+            <p>Email: slsu-umatter@slsu.edu.ph</p>
+            <p>Campus Hotline: +63 912 345 6789</p>
+            <p>Guidance Office: (042) 710-2525</p>
+            <p>Address: SLSU Lucena Campus, Lucena City</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 SLS-U Matters. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Edit Profile Modal -->
+  <div id="editProfileModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Edit Profile</h2>
+      <form id="editProfileForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="editFirstName">First Name</label>
+            <input type="text" id="editFirstName" name="firstName" required>
+          </div>
+          <div class="form-group">
+            <label for="editLastName">Last Name</label>
+            <input type="text" id="editLastName" name="lastName" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="editStudentId">SLSU Student ID</label>
+          <input type="text" id="editStudentId" name="studentId" required>
+        </div>
+        <div class="form-group">
+          <label for="editCourseYear">Course & Year Level</label>
+          <select id="editCourseYear" name="courseYear" required>
+            <option value="">Select your course and year</option>
+            <option value="bs-psych-1">BS Psychology - 1st Year</option>
+            <option value="bs-psych-2">BS Psychology - 2nd Year</option>
+            <option value="bs-psych-3">BS Psychology - 3rd Year</option>
+            <option value="bs-psych-4">BS Psychology - 4th Year</option>
+            <option value="bs-eng-1">BS Engineering - 1st Year</option>
+            <option value="bs-eng-2">BS Engineering - 2nd Year</option>
+            <option value="bs-eng-3">BS Engineering - 3rd Year</option>
+            <option value="bs-eng-4">BS Engineering - 4th Year</option>
+            <option value="bs-ba-1">BS Business Admin - 1st Year</option>
+            <option value="bs-ba-2">BS Business Admin - 2nd Year</option>
+            <option value="bs-ba-3">BS Business Admin - 3rd Year</option>
+            <option value="bs-ba-4">BS Business Admin - 4th Year</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="editEmail">SLSU Email Address</label>
+          <input type="email" id="editEmail" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="editPhone">Phone Number (Optional)</label>
+          <input type="tel" id="editPhone" name="phone">
+        </div>
+        <div class="form-actions">
+          <button type="button" class="secondary-btn" id="cancelEdit">Cancel</button>
+          <button type="submit" class="primary-btn">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+   <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <!-- Your Firebase wrapper -->
+  <script src="../js/firebase.js"></script>
+
+  <!-- Global behaviors -->
+  <script src="../js/script.js"></script>
+  <script src="../js/auth.js"></script>
+
+  <script src="../js/profile.js"></script>
+</body>
+</html>
